@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contatti - Pharmabot</title>
-    <meta name="description" content="Contatta il team di Pharmabot per informazioni, supporto o per richiedere una demo per la tua farmacia.">
+    <title>Guida all'Uso - Pharmabot</title>
+    <meta name="description" content="Una guida dettagliata e visiva per utilizzare l'app Pharmabot e inviare le tue ricette mediche in modo semplice e veloce.">
     
     <link rel="icon" href="../assets/images/icona.png" type="image/png">
 
@@ -15,6 +15,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
+        .step-image-container {
+            max-width: 300px; /* Controlla la larghezza massima degli screenshot */
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
@@ -36,66 +40,72 @@
     <main>
         <div class="container mx-auto px-6 py-16 md:py-24">
             <div class="text-center max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900" data-aos="fade-up">Mettiamoci in Contatto</h1>
-                <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="100">Siamo qui per rispondere a ogni tua domanda, che tu sia un utente, un farmacista o semplicemente curioso di saperne di più sul nostro progetto.</p>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900" data-aos="fade-up">Guida Completa a Pharmabot</h1>
+                <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="100">Abbiamo reso ogni passaggio il più semplice possibile. Segui questa guida visiva per diventare un esperto di Pharmabot in pochi minuti.</p>
             </div>
 
-            <div class="mt-20 max-w-4xl mx-auto grid md:grid-cols-2 gap-10">
-                <!-- Contact Info -->
-                <div data-aos="fade-right">
-                    <h2 class="text-2xl font-bold text-gray-800">Informazioni di Contatto</h2>
-                    <div class="mt-6 space-y-4">
-                        <!-- Email -->
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="bg-teal-100 p-3 rounded-lg">
-                                    <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold">Email</h3>
-                                <p class="text-gray-600">Per richieste generali e demo per farmacie.</p>
-                                <a href="mailto:alessandro.rosi@roskoltd.it" class="text-teal-600 hover:underline">alessandro.rosi@roskoltd.it</a>
-                            </div>
-                        </div>
-                        <!-- PEC -->
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="bg-teal-100 p-3 rounded-lg">
-                                    <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold">Posta Elettronica Certificata (PEC)</h3>
-                                <p class="text-gray-600">Per comunicazioni ufficiali e legali.</p>
-                                <a href="mailto:alessandro.rosi89@legalmail.it" class="text-teal-600 hover:underline">alessandro.rosi89@legalmail.it</a>
-                            </div>
-                        </div>
-                        <!-- Phone -->
-                        <div class="flex items-start">
-                            <div class="flex-shrink-0">
-                                <div class="bg-teal-100 p-3 rounded-lg">
-                                    <svg class="w-6 h-6 text-teal-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                                </div>
-                            </div>
-                            <div class="ml-4">
-                                <h3 class="text-lg font-semibold">Telefono</h3>
-                                <p class="text-gray-600">Disponibile per contatti diretti.</p>
-                                <a href="tel:+393515666587" class="text-teal-600 hover:underline">+39 351 56 66 587</a>
-                            </div>
-                        </div>
+            <!-- Steps -->
+            <div class="mt-20 space-y-24">
+                <!-- Step 1 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-right">
+                    <div class="md:w-1/2 step-image-container">
+                        <img src="../assets/images/dati anagrafici.jpg" alt="Passo 1: Inserisci i dati" class="rounded-2xl shadow-xl">
+                    </div>
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <span class="text-6xl font-extrabold text-teal-200">01</span>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Inserisci i tuoi Dati Anagrafici</h2>
+                        <p class="mt-4 text-gray-600 leading-relaxed">La prima volta che usi l'app, ti chiederemo nome, cognome, telefono e codice fiscale. Spunta la casella "Salva questi dati" per non doverli più reinserire. Puoi anche salvare i profili dei tuoi familiari per gestire le loro ricette con facilità.</p>
                     </div>
                 </div>
-                <!-- Location -->
-                <div data-aos="fade-left">
-                    <h2 class="text-2xl font-bold text-gray-800">Sede Operativa</h2>
-                    <div class="mt-6">
-                        <p class="text-gray-600">Via Giacomo Leopardi 10,<br>58100 Grosseto (GR), Italia</p>
-                        <div class="mt-4 rounded-lg overflow-hidden shadow-lg">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.837332194918!2d11.10931361549223!3d42.76639497916183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1329b13a3b0b5b1b%3A0x8e0e6a8e8e6a8e8e!2sVia%20Giacomo%20Leopardi%2C%2010%2C%2058100%20Grosseto%20GR!5e0!3m2!1sit!2sit!4v1628080000000!5m2!1sit!2sit" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                        </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-left">
+                    <div class="md:w-1/2 step-image-container">
+                        <img src="../assets/images/selezione farmacia.jpg" alt="Passo 2: Scegli la farmacia" class="rounded-2xl shadow-xl">
+                    </div>
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <span class="text-6xl font-extrabold text-teal-200">02</span>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Scegli la tua Farmacia</h2>
+                        <p class="mt-4 text-gray-600 leading-relaxed">L'app rileverà automaticamente la tua posizione per mostrarti le farmacie convenzionate più vicine. Ti basterà un tocco per selezionare quella a cui vuoi inviare la richiesta.</p>
                     </div>
                 </div>
+                
+                <!-- Step 3 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-right">
+                    <div class="md:w-1/2 step-image-container">
+                        <img src="../assets/images/dati ricette.jpg" alt="Passo 3: Inserisci le ricette" class="rounded-2xl shadow-xl">
+                    </div>
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <span class="text-6xl font-extrabold text-teal-200">03</span>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Aggiungi i Codici Ricetta (NRE)</h2>
+                        <p class="mt-4 text-gray-600 leading-relaxed">Hai tre modi semplici per inserire i codici: digitali manualmente, incollali da un messaggio, oppure usa la fotocamera o la galleria per farli leggere automaticamente all'app. Puoi aggiungere più ricette in un'unica richiesta.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-left">
+                    <div class="md:w-1/2 step-image-container">
+                        <img src="../assets/images/note e preferenze.jpg" alt="Passo 4: Indica le preferenze" class="rounded-2xl shadow-xl">
+                    </div>
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <span class="text-6xl font-extrabold text-teal-200">04</span>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Indica Preferenze e Note</h2>
+                        <p class="mt-4 text-gray-600 leading-relaxed">Preferisci un farmaco generico o l'originale? Hai bisogno della consegna a domicilio? In questa sezione puoi comunicare al farmacista ogni tua esigenza specifica.</p>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-right">
+                    <div class="md:w-1/2 step-image-container">
+                        <img src="../assets/images/riepilogo.jpg" alt="Passo 5: Controlla e invia" class="rounded-2xl shadow-xl">
+                    </div>
+                    <div class="md:w-1/2 text-center md:text-left">
+                        <span class="text-6xl font-extrabold text-teal-200">05</span>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Controlla e Invia</h2>
+                        <p class="mt-4 text-gray-600 leading-relaxed">Prima dell'invio finale, l'app ti mostrerà un riepilogo completo di tutti i dati. Controlla che sia tutto corretto e, con un ultimo tocco, invia la tua richiesta. Fatto!</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </main>
@@ -120,3 +130,4 @@
 
 </body>
 </html>
+
