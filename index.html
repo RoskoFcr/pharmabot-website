@@ -3,8 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO e Titolo -->
     <title>Pharmabot - La Tua Farmacia a Portata di App</title>
     <meta name="description" content="Invia le tue ricette mediche alla farmacia di fiducia in modo semplice e veloce. Ottimizza il tuo tempo e gestisci la tua salute con Pharmabot.">
+    
+    <!-- NUOVO: Favicon per il browser -->
+    <link rel="icon" href="assets/images/icona.jpg" type="image/jpeg">
+
+    <!-- NUOVO: Meta Tag per la condivisione sui Social (Open Graph) -->
+    <meta property="og:title" content="Pharmabot - La Tua Farmacia a Portata di App">
+    <meta property="og:description" content="Dimentica le attese. Invia le ricette alla tua farmacia con un click e ricevi una notifica quando i farmaci sono pronti.">
+    <meta property="og:image" content="https://pharmabot.roskoltd.it/assets/images/home.jpg">
+    <meta property="og:url" content="https://pharmabot.roskoltd.it">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="it_IT">
+
+    <!-- NUOVO: Meta Tag per la condivisione su Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Pharmabot - La Tua Farmacia a Portata di App">
+    <meta name="twitter:description" content="Dimentica le attese. Invia le ricette alla tua farmacia con un click e ricevi una notifica quando i farmaci sono pronti.">
+    <meta name="twitter:image" content="https://pharmabot.roskoltd.it/assets/images/home.jpg">
+
+    <!-- Stili e Script -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +48,7 @@
     <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="flex items-center">
-                <img src="assets/images/icona.png" alt="Logo Pharmabot" class="h-10 w-10 mr-3 rounded-full">
+                <img src="assets/images/icona.jpg" alt="Logo Pharmabot" class="h-10 w-10 mr-3 rounded-full">
                 <span class="font-extrabold text-2xl text-teal-700">Pharmabot</span>
             </a>
             <!-- Desktop Menu -->
@@ -64,7 +85,7 @@
                     Dimentica le attese e le telefonate. Invia le tue ricette elettroniche in pochi secondi e ricevi una notifica quando i tuoi farmaci sono pronti.
                 </p>
             </div>
-            <!-- Video Player moved here -->
+            <!-- Video Player -->
             <div class="mt-12 w-full max-w-4xl" data-aos="fade-up" data-aos-delay="400">
                 <div class="relative rounded-2xl shadow-2xl overflow-hidden border-4 border-white">
                     <video id="heroVideo" autoplay muted playsinline class="w-full">
@@ -81,6 +102,7 @@
         </div>
     </main>
 
+    <!-- Rest of the sections remain the same... -->
     <!-- Tutorial Section -->
     <section id="tutorial" class="bg-white py-16 md:py-24">
         <div class="container mx-auto px-6">
@@ -139,7 +161,7 @@
                         "Questa esperienza diretta mi ha spinto a cercare una soluzione. Ho iniziato a studiare programmazione, creando prima un'applicazione per automatizzare il caricamento dei documenti per i farmacisti. Ma la vera sfida era un'altra: semplificare la vita delle persone. Così è nato <strong>Pharmabot</strong>, un ponte tra le esigenze operative delle farmacie e il bisogno di semplicità dei cittadini."
                     </p>
                     <p class="mt-6 font-bold text-teal-200 text-xl">
-                        Dott. Alessandro Rosi, Fondatore di Pharmabot Rosko ltd
+                        Alessandro Rosi, Fondatore di Pharmabot
                     </p>
                 </div>
              </div>
@@ -227,10 +249,11 @@
             </div>
 
             <div class="mt-20 text-center" data-aos="fade-up">
-                 <!-- h3 class="text-2xl font-bold text-gray-800">Una dashboard semplice. Potente. Pensata per te.</h3 -->
-                 <!-- p class="mt-2 text-gray-600">Ecco un'anteprima di come vedrai le richieste in arrivo.</p -->
-                 <!-- div class="mt-8 max-w-4xl mx-auto"-->
+                 <h3 class="text-2xl font-bold text-gray-800">Una dashboard semplice. Potente. Pensata per te.</h3>
+                 <p class="mt-2 text-gray-600">Ecco un'anteprima di come vedrai le richieste in arrivo.</p>
+                 <div class="mt-8 max-w-4xl mx-auto">
                     <!-- QUI VA LO SCREENSHOT DELLA DASHBOARD -->
+                    <img src="assets/images/riepilogo.jpg" alt="Anteprima della dashboard per farmacisti" class="rounded-xl shadow-2xl border-4 border-white">
                  </div>
             </div>
 
@@ -250,7 +273,7 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white">
         <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Dott. Alessandro Rosi Rosko ltd. Tutti i diritti riservati.</p>
+            <p>&copy; 2025 Alessandro Rosi. Tutti i diritti riservati.</p>
             <div class="mt-4">
                 <a href="/privacy" class="text-gray-400 hover:text-white underline">Informativa sulla Privacy</a>
             </div>
@@ -274,7 +297,6 @@
         // Video Stop Logic
         const heroVideo = document.getElementById('heroVideo');
         heroVideo.addEventListener('timeupdate', () => {
-            // Check if duration is available and if current time is within 1 second of the end
             if (!isNaN(heroVideo.duration) && heroVideo.currentTime >= heroVideo.duration - 1) {
                 heroVideo.pause();
             }
@@ -283,3 +305,4 @@
 
 </body>
 </html>
+
