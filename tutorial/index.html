@@ -14,94 +14,93 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
         .step-image-container {
-            max-width: 300px; /* Controlla la larghezza massima degli screenshot */
+            max-width: 320px;
             margin: 0 auto;
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="flex items-center">
-                <img src="../assets/images/icona.png" alt="Logo Pharmabot" class="h-10 w-10 mr-3 rounded-full">
-                <span class="font-extrabold text-2xl text-teal-700">Pharmabot</span>
+                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
             </a>
             <nav>
-                <a href="/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-lg transition-colors">Torna alla Home</a>
+                <a href="/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105">Torna alla Home</a>
             </nav>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main>
-        <div class="container mx-auto px-6 py-16 md:py-24">
+    <main class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto">
                 <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900" data-aos="fade-up">Guida Completa a Pharmabot</h1>
                 <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="100">Abbiamo reso ogni passaggio il più semplice possibile. Segui questa guida visiva per diventare un esperto di Pharmabot in pochi minuti.</p>
             </div>
 
             <!-- Steps -->
-            <div class="mt-20 space-y-24">
+            <div class="mt-16 md:mt-20 space-y-16 md:space-y-24">
                 <!-- Step 1 -->
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
                     <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/dati anagrafici.jpg" alt="Passo 1: Inserisci i dati" class="rounded-2xl shadow-xl">
+                        <img src="../assets/images/dati anagrafici.jpg" alt="Passo 1: Inserisci i dati" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="md:w-1/2 text-center md:text-left">
                         <span class="text-6xl font-extrabold text-teal-200">01</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Inserisci i tuoi Dati Anagrafici</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">I tuoi Dati Anagrafici</h2>
                         <p class="mt-4 text-gray-600 leading-relaxed">La prima volta che usi l'app, ti chiederemo nome, cognome, telefono e codice fiscale. Spunta la casella "Salva questi dati" per non doverli più reinserire. Puoi anche salvare i profili dei tuoi familiari per gestire le loro ricette con facilità.</p>
                     </div>
                 </div>
 
                 <!-- Step 2 -->
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-left">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16" data-aos="fade-left">
                     <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/selezione farmacia.jpg" alt="Passo 2: Scegli la farmacia" class="rounded-2xl shadow-xl">
+                        <img src="../assets/images/selezione farmacia.jpg" alt="Passo 2: Scegli la farmacia" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="md:w-1/2 text-center md:text-left">
                         <span class="text-6xl font-extrabold text-teal-200">02</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Scegli la tua Farmacia</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">La tua Farmacia</h2>
                         <p class="mt-4 text-gray-600 leading-relaxed">L'app rileverà automaticamente la tua posizione per mostrarti le farmacie convenzionate più vicine. Ti basterà un tocco per selezionare quella a cui vuoi inviare la richiesta.</p>
                     </div>
                 </div>
                 
                 <!-- Step 3 -->
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
                     <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/dati ricette.jpg" alt="Passo 3: Inserisci le ricette" class="rounded-2xl shadow-xl">
+                        <img src="../assets/images/dati ricette.jpg" alt="Passo 3: Inserisci le ricette" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="md:w-1/2 text-center md:text-left">
                         <span class="text-6xl font-extrabold text-teal-200">03</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Aggiungi i Codici Ricetta (NRE)</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">I Codici Ricetta (NRE)</h2>
                         <p class="mt-4 text-gray-600 leading-relaxed">Hai tre modi semplici per inserire i codici: digitali manualmente, incollali da un messaggio, oppure usa la fotocamera o la galleria per farli leggere automaticamente all'app. Puoi aggiungere più ricette in un'unica richiesta.</p>
                     </div>
                 </div>
 
                 <!-- Step 4 -->
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-12" data-aos="fade-left">
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16" data-aos="fade-left">
                     <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/note e preferenze.jpg" alt="Passo 4: Indica le preferenze" class="rounded-2xl shadow-xl">
+                        <img src="../assets/images/note e preferenze.jpg" alt="Passo 4: Indica le preferenze" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="md:w-1/2 text-center md:text-left">
                         <span class="text-6xl font-extrabold text-teal-200">04</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Indica Preferenze e Note</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Preferenze e Note</h2>
                         <p class="mt-4 text-gray-600 leading-relaxed">Preferisci un farmaco generico o l'originale? Hai bisogno della consegna a domicilio? In questa sezione puoi comunicare al farmacista ogni tua esigenza specifica.</p>
                     </div>
                 </div>
 
                 <!-- Step 5 -->
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-12" data-aos="fade-right">
+                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
                     <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/riepilogo.jpg" alt="Passo 5: Controlla e invia" class="rounded-2xl shadow-xl">
+                        <img src="../assets/images/riepilogo.jpg" alt="Passo 5: Controlla e invia" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
                     </div>
                     <div class="md:w-1/2 text-center md:text-left">
                         <span class="text-6xl font-extrabold text-teal-200">05</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Controlla e Invia</h2>
+                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Riepilogo e Invio</h2>
                         <p class="mt-4 text-gray-600 leading-relaxed">Prima dell'invio finale, l'app ti mostrerà un riepilogo completo di tutti i dati. Controlla che sia tutto corretto e, con un ultimo tocco, invia la tua richiesta. Fatto!</p>
                     </div>
                 </div>
@@ -111,11 +110,36 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-16">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Alessandro Rosi. Tutti i diritti riservati.</p>
-            <div class="mt-4">
-                <a href="/privacy" class="text-gray-400 hover:text-white underline">Informativa sulla Privacy</a>
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- About -->
+                <div class="md:col-span-1">
+                    <a href="/" class="flex items-center">
+                        <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
+                    </a>
+                    <p class="mt-4 text-gray-400 text-sm">La tua farmacia, a casa tua, con un click.</p>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h3 class="font-bold tracking-wide">Menu</h3>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="/tutorial" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
+                        <li><a href="/#about" class="text-gray-400 hover:text-white transition-colors">La Storia</a></li>
+                        <li><a href="/#pharmacies" class="text-gray-400 hover:text-white transition-colors">Per le Farmacie</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contatti</a></li>
+                    </ul>
+                </div>
+                <!-- Legal -->
+                <div>
+                    <h3 class="font-bold tracking-wide">Informazioni</h3>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Informativa Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">&copy; 2025 Alessandro Rosi. Tutti i diritti riservati.</p>
             </div>
         </div>
     </footer>
