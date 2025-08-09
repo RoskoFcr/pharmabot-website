@@ -4,99 +4,128 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informativa Privacy - Pharmabot</title>
+    <link rel="icon" href="../assets/images/icona.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .privacy-content h2 { @apply text-2xl font-bold text-gray-800 mt-8 mb-4; }
+        .privacy-content p { @apply text-gray-700 leading-relaxed; }
+        .privacy-content ul { @apply list-disc list-inside mt-2 space-y-2 text-gray-700; }
+        .privacy-content strong { @apply font-semibold text-gray-800; }
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0">
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="flex items-center">
-                <!-- Assicurati che il percorso del logo sia corretto rispetto a questa pagina -->
-                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10 w-10 mr-3">
-                <span class="font-bold text-2xl text-teal-600">Pharmabot</span>
+                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
             </a>
             <nav>
-                <a href="/" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-lg">Torna alla Home</a>
+                <a href="/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105">Torna alla Home</a>
             </nav>
         </div>
     </header>
 
     <!-- Privacy Content -->
-    <main class="container mx-auto px-6 py-16">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Informativa sul Trattamento dei Dati Personali</h1>
-            <p class="text-gray-600 mb-8">(ai sensi dell'art. 13 del Regolamento UE 2016/679 - GDPR)</p>
+    <main class="py-16 md:py-24">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-sm">
+                <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 mb-2">Informativa sulla Privacy</h1>
+                <p class="text-gray-500 mb-8">(ai sensi dell'art. 13 del Regolamento UE 2016/679 - GDPR)</p>
 
-            <div class="space-y-6 text-justify">
-                <p><strong>Gentile Utente,</strong><br>questa applicazione ("App") è progettata per aiutarti a inviare le tue richieste di ricette mediche in modo semplice e veloce. La tua privacy è la nostra massima priorità. Di seguito ti spieghiamo quali dati raccogliamo, come li utilizziamo e come li proteggiamo.</p>
+                <div class="privacy-content space-y-6">
+                    <p><strong>Gentile Utente,</strong><br>questa applicazione ("App") è progettata per aiutarti a inviare le tue richieste di ricette mediche in modo semplice e veloce. La tua privacy è la nostra massima priorità. Di seguito ti spieghiamo quali dati raccogliamo, come li utilizziamo e come li proteggiamo.</p>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-2">1. Titolare del Trattamento</h2>
-                    <p>Il Titolare del Trattamento è Alessandro Rosi con sede in Via G. Leopardi 10, Grosseto (GR) 58100, email: alessandro.rosi@roskoltd.it.</p>
-                </section>
+                    <section>
+                        <h2>1. Titolare del Trattamento</h2>
+                        <p>Il Titolare del Trattamento è Alessandro Rosi con sede in Via G. Leopardi 10, Grosseto (GR) 58100, email: <a href="mailto:alessandro.rosi@roskoltd.it" class="text-teal-600 hover:underline">alessandro.rosi@roskoltd.it</a>.</p>
+                    </section>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-2">2. Quali Dati Raccogliamo?</h2>
-                    <p>L'App raccoglie esclusivamente i dati che tu fornisci volontariamente per eseguire il servizio richiesto:</p>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        <li><strong>Dati Inseriti Manualmente:</strong> Codice Fiscale (CF), Codici delle Ricette Elettroniche (NRE), Note Aggiuntive.</li>
-                        <li><strong>Accesso alla Fotocamera (con il tuo esplicito permesso):</strong> Se scegli di utilizzare la funzione "Importa da Foto", l'App richiederà l'accesso alla tua fotocamera. L'immagine viene utilizzata solo per l'operazione di lettura del testo e immediatamente eliminata dal tuo dispositivo, senza essere mai salvata o trasmessa.</li>
-                    </ul>
-                </section>
+                    <section>
+                        <h2>2. Quali Dati Raccogliamo?</h2>
+                        <p>L'App raccoglie esclusivamente i dati che tu fornisci volontariamente per eseguire il servizio richiesto:</p>
+                        <ul>
+                            <li><strong>Dati Inseriti Manualmente:</strong> Codice Fiscale (CF), Codici delle Ricette Elettroniche (NRE), Note Aggiuntive.</li>
+                            <li><strong>Accesso alla Fotocamera (con il tuo esplicito permesso):</strong> Se scegli di utilizzare la funzione "Importa da Foto", l'App richiederà l'accesso alla tua fotocamera. L'immagine viene utilizzata solo per l'operazione di lettura del testo e immediatamente eliminata dal tuo dispositivo, senza essere mai salvata o trasmessa.</li>
+                        </ul>
+                    </section>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-2">3. Finalità e Base Giuridica del Trattamento</h2>
-                    <p>Utilizziamo i tuoi dati per le seguenti finalità, basate sull'esecuzione di un servizio da te richiesto (art. 6, par. 1, lett. b del GDPR):</p>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        <li><strong>Generare e Inviare la Richiesta:</strong> Creare la richiesta con i dati da te forniti e inviarla in modo sicuro alla farmacia da te selezionata.</li>
-                        <li><strong>Monitoraggio della Richiesta:</strong> Permetterti di visualizzare lo stato di avanzamento in tempo reale della tua richiesta (es. "In Lavorazione", "Pronta per il Ritiro").</li>
-                        <li><strong>Sistema di Feedback:</strong> Consentirti di lasciare una recensione facoltativa alla farmacia al termine del servizio.</li>
-                    </ul>
-                </section>
+                    <section>
+                        <h2>3. Finalità e Base Giuridica del Trattamento</h2>
+                        <p>Utilizziamo i tuoi dati per le seguenti finalità, basate sull'esecuzione di un servizio da te richiesto (art. 6, par. 1, lett. b del GDPR):</p>
+                        <ul>
+                            <li><strong>Generare e Inviare la Richiesta:</strong> Creare la richiesta con i dati da te forniti e inviarla in modo sicuro alla farmacia da te selezionata.</li>
+                            <li><strong>Monitoraggio della Richiesta:</strong> Permetterti di visualizzare lo stato di avanzamento in tempo reale della tua richiesta (es. "In Lavorazione", "Pronta per il Ritiro").</li>
+                            <li><strong>Sistema di Feedback:</strong> Consentirti di lasciare una recensione facoltativa alla farmacia al termine del servizio.</li>
+                        </ul>
+                    </section>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-2">4. Come Vengono Trattati e Conservati i Dati?</h2>
-                    <p>Il nostro principio guida è la minimizzazione dei dati e la privacy by design.</p>
-                     <ul class="list-disc list-inside mt-2 space-y-1">
-                        <li><strong>Memorizzazione e Sicurezza:</strong> I dati da Lei forniti vengono salvati in forma crittografata sui nostri server sicuri (Google Cloud Firestore), localizzati all'interno dell'Unione Europea, per il tempo strettamente necessario a erogare il servizio.</li>
-                        <li><strong>Periodo di Conservazione (Data Retention):</strong> In ottemperanza alla normativa, i dati relativi alla tua richiesta vengono cancellati automaticamente e in modo permanente 30 giorni dopo che la richiesta risulta "Completata" o "Annullata".</li>
-                        <li><strong>Immagini (OCR):</strong> Come specificato, le immagini catturate per la lettura dei codici non vengono mai salvate né trasmesse.</li>
-                    </ul>
-                </section>
+                    <section>
+                        <h2>4. Come Vengono Trattati e Conservati i Dati?</h2>
+                        <p>Il nostro principio guida è la minimizzazione dei dati e la privacy by design.</p>
+                         <ul>
+                            <li><strong>Memorizzazione e Sicurezza:</strong> I dati da Lei forniti vengono salvati in forma crittografata sui nostri server sicuri (Google Cloud Firestore), localizzati all'interno dell'Unione Europea, per il tempo strettamente necessario a erogare il servizio.</li>
+                            <li><strong>Periodo di Conservazione (Data Retention):</strong> In ottemperanza alla normativa, i dati relativi alla tua richiesta vengono cancellati automaticamente e in modo permanente 30 giorni dopo che la richiesta risulta "Completata" o "Annullata".</li>
+                            <li><strong>Immagini (OCR):</strong> Come specificato, le immagini catturate per la lettura dei codici non vengono mai salvate né trasmesse.</li>
+                        </ul>
+                    </section>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-2">5. A Chi Vengono Comunicati i Dati?</h2>
-                    <p>I tuoi dati vengono comunicati esclusivamente al destinatario dell'email da te autorizzato (la tua farmacia/medico). Per l'invio tecnico delle notifiche, ci avvaliamo di fornitori di servizi terzi (come SendGrid), che agiscono come Responsabili del Trattamento vincolati a obblighi di riservatezza e sicurezza.</p>
-                </section>
+                    <section>
+                        <h2>5. A Chi Vengono Comunicati i Dati?</h2>
+                        <p>I tuoi dati vengono comunicati esclusivamente al destinatario dell'email da te autorizzato (la tua farmacia/medico). Per l'invio tecnico delle notifiche, ci avvaliamo di fornitori di servizi terzi (come SendGrid), che agiscono come Responsabili del Trattamento vincolati a obblighi di riservatezza e sicurezza.</p>
+                    </section>
 
-                <section>
-                    <h2 class="text-2xl font-bold mb-2">6. I Tuoi Diritti</h2>
-                    <p>In ogni momento, hai il diritto di:</p>
-                    <ul class="list-disc list-inside mt-2 space-y-1">
-                        <li>Negare o revocare il consenso all'accesso alla fotocamera tramite le impostazioni del tuo sistema operativo.</li>
-                        <li>Chiedere la rettifica dei tuoi dati personali.</li>
-                        <li>Chiedere la cancellazione dei tuoi dati personali (Diritto all'Oblio, art. 17 GDPR), che verranno rimossi dai sistemi attivi e cancellati in via definitiva alla prima esecuzione utile del nostro processo di pulizia automatizzato.</li>
-                        <li>Per qualsiasi domanda o per esercitare i tuoi diritti, puoi contattarci all'indirizzo email indicato al punto 1.</li>
-                    </ul>
-                </section>
-
+                    <section>
+                        <h2>6. I Tuoi Diritti</h2>
+                        <p>In ogni momento, hai il diritto di:</p>
+                        <ul>
+                            <li>Negare o revocare il consenso all'accesso alla fotocamera tramite le impostazioni del tuo sistema operativo.</li>
+                            <li>Chiedere la rettifica dei tuoi dati personali.</li>
+                            <li>Chiedere la cancellazione dei tuoi dati personali (Diritto all'Oblio, art. 17 GDPR), che verranno rimossi dai sistemi attivi e cancellati in via definitiva alla prima esecuzione utile del nostro processo di pulizia automatizzato.</li>
+                            <li>Per qualsiasi domanda o per esercitare i tuoi diritti, puoi contattarci all'indirizzo email indicato al punto 1.</li>
+                        </ul>
+                    </section>
+                </div>
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white mt-16">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <p>&copy; 2025 Alessandro Rosi. Tutti i diritti riservati.</p>
-            <div class="mt-4">
-                <a href="/" class="text-gray-400 hover:text-white underline">Home</a>
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- About -->
+                <div class="md:col-span-1">
+                    <a href="/" class="flex items-center">
+                        <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
+                    </a>
+                    <p class="mt-4 text-gray-400 text-sm">La tua farmacia, a casa tua, con un click.</p>
+                </div>
+                <!-- Links -->
+                <div>
+                    <h3 class="font-bold tracking-wide">Menu</h3>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="/tutorial" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
+                        <li><a href="/#about" class="text-gray-400 hover:text-white transition-colors">La Storia</a></li>
+                        <li><a href="/#pharmacies" class="text-gray-400 hover:text-white transition-colors">Per le Farmacie</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contatti</a></li>
+                    </ul>
+                </div>
+                <!-- Legal -->
+                <div>
+                    <h3 class="font-bold tracking-wide">Informazioni</h3>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Informativa Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8 flex flex-col sm:flex-row justify-between items-center">
+                <p class="text-sm text-gray-500">&copy; 2025 Alessandro Rosi. Tutti i diritti riservati.</p>
             </div>
         </div>
     </footer>
