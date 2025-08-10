@@ -14,10 +14,22 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .step-image-container {
-            max-width: 320px;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .video-container {
+            max-width: 1000px; /* Aumentato per un aspetto più cinematografico su schermi grandi */
             margin: 0 auto;
+            border-radius: 1.5rem; /* Bordi più arrotondati */
+            overflow: hidden; /* Assicura che il video rispetti i bordi arrotondati */
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Ombra più pronunciata per un effetto "fluttuante" */
+            position: relative;
+        }
+        video {
+            width: 100%;
+            height: auto;
+            display: block; /* Rimuove spazi extra sotto il video */
         }
     </style>
 </head>
@@ -38,79 +50,27 @@
     <!-- Main Content -->
     <main class="py-16 md:py-24">
         <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900" data-aos="fade-up">Guida Completa a Pharmabot</h1>
-                <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="100">Abbiamo reso ogni passaggio il più semplice possibile. Segui questa guida visiva per diventare un esperto di Pharmabot in pochi minuti.</p>
+            <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Tutorial Interattivo</h1>
+                <p class="mt-4 text-lg text-gray-600">
+                    Guarda questo breve video per scoprire quanto è semplice e veloce usare Pharmabot. Premi play per iniziare!
+                </p>
             </div>
 
-            <!-- Steps -->
-            <div class="mt-16 md:mt-20 space-y-16 md:space-y-24">
-                <!-- Step 1 -->
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
-                    <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/dati anagrafici.jpg" alt="Passo 1: Inserisci i dati" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="md:w-1/2 text-center md:text-left">
-                        <span class="text-6xl font-extrabold text-teal-200">01</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">I tuoi Dati Anagrafici</h2>
-                        <p class="mt-4 text-gray-600 leading-relaxed">La prima volta che usi l'app, ti chiederemo nome, cognome, telefono e codice fiscale. Spunta la casella "Salva questi dati" per non doverli più reinserire. Puoi anche salvare i profili dei tuoi familiari per gestire le loro ricette con facilità.</p>
-                    </div>
+            <!-- Video Tutorial -->
+            <div class="mt-12 md:mt-16" data-aos="fade-up" data-aos-delay="200">
+                <div class="video-container">
+                    <video controls playsinline poster="../assets/images/home.jpg">
+                        <source src="../assets/videos/spot.mp4" type="video/mp4">
+                        Il tuo browser non supporta il tag video. Prova ad aggiornarlo.
+                    </video>
                 </div>
-
-                <!-- Step 2 -->
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16" data-aos="fade-left">
-                    <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/selezione farmacia.jpg" alt="Passo 2: Scegli la farmacia" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="md:w-1/2 text-center md:text-left">
-                        <span class="text-6xl font-extrabold text-teal-200">02</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">La tua Farmacia</h2>
-                        <p class="mt-4 text-gray-600 leading-relaxed">L'app rileverà automaticamente la tua posizione per mostrarti le farmacie convenzionate più vicine. Ti basterà un tocco per selezionare quella a cui vuoi inviare la richiesta.</p>
-                    </div>
-                </div>
-                
-                <!-- Step 3 -->
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
-                    <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/dati ricette.jpg" alt="Passo 3: Inserisci le ricette" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="md:w-1/2 text-center md:text-left">
-                        <span class="text-6xl font-extrabold text-teal-200">03</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">I Codici Ricetta (NRE)</h2>
-                        <p class="mt-4 text-gray-600 leading-relaxed">Hai tre modi semplici per inserire i codici: digitali manualmente, incollali da un messaggio, oppure usa la fotocamera o la galleria per farli leggere automaticamente all'app. Puoi aggiungere più ricette in un'unica richiesta.</p>
-                    </div>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="flex flex-col md:flex-row-reverse items-center gap-8 md:gap-16" data-aos="fade-left">
-                    <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/note e preferenze.jpg" alt="Passo 4: Indica le preferenze" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="md:w-1/2 text-center md:text-left">
-                        <span class="text-6xl font-extrabold text-teal-200">04</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Preferenze e Note</h2>
-                        <p class="mt-4 text-gray-600 leading-relaxed">Preferisci un farmaco generico o l'originale? Hai bisogno della consegna a domicilio? In questa sezione puoi comunicare al farmacista ogni tua esigenza specifica.</p>
-                    </div>
-                </div>
-
-                <!-- Step 5 -->
-                <div class="flex flex-col md:flex-row items-center gap-8 md:gap-16" data-aos="fade-right">
-                    <div class="md:w-1/2 step-image-container">
-                        <img src="../assets/images/riepilogo.jpg" alt="Passo 5: Controlla e invia" class="rounded-2xl shadow-xl transform hover:scale-105 transition-transform duration-300">
-                    </div>
-                    <div class="md:w-1/2 text-center md:text-left">
-                        <span class="text-6xl font-extrabold text-teal-200">05</span>
-                        <h2 class="text-3xl font-bold text-gray-800 mt-2">Riepilogo e Invio</h2>
-                        <p class="mt-4 text-gray-600 leading-relaxed">Prima dell'invio finale, l'app ti mostrerà un riepilogo completo di tutti i dati. Controlla che sia tutto corretto e, con un ultimo tocco, invia la tua richiesta. Fatto!</p>
-                    </div>
-                </div>
-
             </div>
         </div>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white">
+    <footer class="bg-gray-900 text-white mt-16 md:mt-24">
         <div class="container mx-auto px-6 py-12">
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- About -->
@@ -154,4 +114,3 @@
 
 </body>
 </html>
-
