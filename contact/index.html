@@ -11,19 +11,16 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-    </style>
+    <link rel="stylesheet" href="../assets/css/style.css">
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-50">
 
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <header class="bg-white/90 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="flex items-center">
-                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
+                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10 transition-transform duration-300 hover:scale-105">
             </a>
             <nav>
                 <a href="/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105">Torna alla Home</a>
@@ -32,16 +29,16 @@
     </header>
 
     <!-- Main Content -->
-    <main class="py-16 md:py-24">
+    <main class="section-padding">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900" data-aos="fade-up">Mettiamoci in Contatto</h1>
-                <p class="mt-4 text-lg text-gray-600" data-aos="fade-up" data-aos-delay="100">Siamo qui per rispondere a ogni tua domanda, che tu sia un utente, un farmacista o semplicemente curioso di saperne di più sul nostro progetto.</p>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Mettiamoci in Contatto</h1>
+                <p class="mt-4 text-lg text-gray-600">Siamo qui per rispondere a ogni tua domanda, che tu sia un utente, un farmacista o semplicemente curioso di saperne di più sul nostro progetto.</p>
             </div>
 
-            <div class="mt-16 md:mt-20 max-w-5xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16">
+            <div class="mt-16 md:mt-20 max-w-5xl mx-auto grid md:grid-cols-2 gap-10">
                 <!-- Contact Info -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm" data-aos="fade-right">
+                <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
                     <h2 class="text-2xl font-bold text-gray-800">Informazioni di Contatto</h2>
                     <div class="mt-8 space-y-6">
                         <!-- Email -->
@@ -86,11 +83,11 @@
                     </div>
                 </div>
                 <!-- Location -->
-                <div class="bg-white p-8 rounded-2xl shadow-sm" data-aos="fade-left">
+                <div class="bg-white p-8 rounded-2xl shadow-xl hover:shadow-2xl transition-shadow duration-300">
                     <h2 class="text-2xl font-bold text-gray-800">Sede Operativa</h2>
                     <div class="mt-8">
                         <p class="text-gray-600">Via Giacomo Leopardi 10,<br>58100 Grosseto (GR), Italia</p>
-                        <div class="mt-4 rounded-xl overflow-hidden shadow-lg">
+                        <div class="mt-4 rounded-xl overflow-hidden shadow-inner">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2894.837332194918!2d11.10931361549223!3d42.76639497916183!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1329b13a3b0b5b1b%3A0x8e0e6a8e8e6a8e8e!2sVia%20Giacomo%20Leopardi%2C%2010%2C%2058100%20Grosseto%20GR!5e0!3m2!1sit!2sit!4v1628080000000!5m2!1sit!2sit" width="100%" height="280" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
@@ -112,7 +109,7 @@
                 </div>
                 <!-- Links -->
                 <div>
-                    <h3 class="font-bold tracking-wide">Menu</h3>
+                    <h3 class="font-bold tracking-wide uppercase text-gray-500">Menu</h3>
                     <ul class="mt-4 space-y-2 text-sm">
                         <li><a href="/tutorial" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
                         <li><a href="/#about" class="text-gray-400 hover:text-white transition-colors">La Storia</a></li>
@@ -122,7 +119,7 @@
                 </div>
                 <!-- Legal -->
                 <div>
-                    <h3 class="font-bold tracking-wide">Informazioni</h3>
+                    <h3 class="font-bold tracking-wide uppercase text-gray-500">Informazioni</h3>
                     <ul class="mt-4 space-y-2 text-sm">
                         <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Informativa Privacy</a></li>
                     </ul>
@@ -133,14 +130,6 @@
             </div>
         </div>
     </footer>
-    
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({
-            duration: 800,
-            once: true,
-        });
-    </script>
 
 </body>
 </html>

@@ -1,0 +1,69 @@
+/* Global Styles and Custom Animations for Pharmabot Restyling */
+
+:root {
+    /* Color Palette - based on existing Tailwind colors */
+    --color-primary: #0d9488; /* teal-600 */
+    --color-primary-dark: #0f766e; /* teal-700 */
+    --color-primary-light: #ccfbf1; /* teal-100 */
+
+    --color-text-base: #374151; /* gray-700 */
+    --color-text-dark: #1f2937; /* gray-800 */
+    --color-text-headings: #111827; /* gray-900 */
+    --color-text-muted: #6b7280; /* gray-500 */
+
+    --color-background-light: #f9fafb; /* gray-50 */
+    --color-background-white: #ffffff;
+    --color-background-dark: #111827; /* gray-900 */
+
+    --font-family-base: 'Inter', sans-serif;
+}
+
+body {
+    font-family: var(--font-family-base);
+    color: var(--color-text-base);
+    background-color: var(--color-background-light);
+    scroll-behavior: smooth;
+}
+
+/* Custom Animation Classes */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+/* We can add more animations here later */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+/* A class to apply to sections for consistent padding */
+.section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+    .section-padding {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}

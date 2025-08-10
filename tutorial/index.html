@@ -3,44 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guida all'Uso - Pharmabot</title>
-    <meta name="description" content="Una guida dettagliata e visiva per utilizzare l'app Pharmabot e inviare le tue ricette mediche in modo semplice e veloce.">
+    <title>Guida Interattiva - Pharmabot</title>
+    <meta name="description" content="Una guida interattiva per scoprire passo dopo passo come utilizzare l'app Pharmabot e inviare le tue ricette mediche.">
     
     <link rel="icon" href="../assets/images/icona.png" type="image/png">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/style.css">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
+        .tutorial-image-container {
+            transition: transform 0.5s ease, opacity 0.5s ease;
         }
-        .video-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            border-radius: 1rem; /* Leggermente meno arrotondato per un look più netto */
-            overflow: hidden;
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2); /* Ombra leggermente più morbida */
-            position: relative;
-            border: 1px solid rgba(0, 0, 0, 0.05); /* Bordo sottile per definizione */
-        }
-        video {
-            width: 100%;
-            height: auto;
-            display: block; /* Rimuove spazi extra sotto il video */
+        .tutorial-image.loading {
+            transform: scale(1.05);
+            opacity: 0;
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="bg-gray-50">
 
     <!-- Header -->
-    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <header class="bg-white/90 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="flex items-center">
-                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
+                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10 transition-transform duration-300 hover:scale-105">
             </a>
             <nav>
                 <a href="/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105">Torna alla Home</a>
@@ -49,23 +38,42 @@
     </header>
 
     <!-- Main Content -->
-    <main class="py-12 md:py-20">
+    <main class="section-padding">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12">
-                <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
-                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Tutorial Interattivo</h1>
-                    <p class="mt-4 text-lg text-gray-600">
-                        Guarda questo breve video per scoprire quanto è semplice e veloce usare Pharmabot. Premi play per iniziare!
-                    </p>
-                </div>
+            <div class="text-center max-w-3xl mx-auto">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Guida Interattiva</h1>
+                <p class="mt-4 text-lg text-gray-600">
+                    Scopri quanto è semplice usare Pharmabot. Segui i passaggi qui sotto per vedere l'app in azione.
+                </p>
+            </div>
 
-                <!-- Video Tutorial -->
-                <div class="mt-8 md:mt-12" data-aos="fade-up" data-aos-delay="200">
-                    <div class="video-container">
-                        <video controls playsinline poster="../assets/images/home.jpg">
-                            <source src="../assets/videos/spot.mp4" type="video/mp4">
-                            Il tuo browser non supporta il tag video. Prova ad aggiornarlo.
-                        </video>
+            <!-- Interactive Tutorial Component -->
+            <div id="interactive-tutorial" class="mt-12 md:mt-16 max-w-4xl mx-auto">
+                <div class="bg-white rounded-2xl shadow-xl overflow-hidden">
+                    <div class="p-4 sm:p-6 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
+                        <h2 id="tutorial-title" class="text-xl md:text-2xl font-bold text-gray-800"></h2>
+                        <span id="tutorial-progress" class="text-sm font-semibold text-gray-500 px-3 py-1 bg-gray-200 rounded-full"></span>
+                    </div>
+
+                    <div class="p-4 md:p-8 flex flex-col md:flex-row gap-8 items-center">
+                        <!-- Image -->
+                        <div class="w-full md:w-1/2">
+                            <div class="tutorial-image-container bg-gray-100 rounded-lg overflow-hidden shadow-inner">
+                                <img id="tutorial-image" src="" alt="Screenshot del passaggio del tutorial" class="tutorial-image w-full h-auto">
+                            </div>
+                        </div>
+                        <!-- Description and Navigation -->
+                        <div class="w-full md:w-1/2">
+                            <p id="tutorial-description" class="text-base text-gray-700 leading-relaxed min-h-[100px]"></p>
+                            <div class="mt-8 flex justify-between items-center">
+                                <button id="prev-step" class="bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Indietro
+                                </button>
+                                <button id="next-step" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-6 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed">
+                                    Avanti
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -85,7 +93,7 @@
                 </div>
                 <!-- Links -->
                 <div>
-                    <h3 class="font-bold tracking-wide">Menu</h3>
+                    <h3 class="font-bold tracking-wide uppercase text-gray-500">Menu</h3>
                     <ul class="mt-4 space-y-2 text-sm">
                         <li><a href="/tutorial" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
                         <li><a href="/#about" class="text-gray-400 hover:text-white transition-colors">La Storia</a></li>
@@ -95,7 +103,7 @@
                 </div>
                 <!-- Legal -->
                 <div>
-                    <h3 class="font-bold tracking-wide">Informazioni</h3>
+                    <h3 class="font-bold tracking-wide uppercase text-gray-500">Informazioni</h3>
                     <ul class="mt-4 space-y-2 text-sm">
                         <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Informativa Privacy</a></li>
                     </ul>
@@ -107,11 +115,77 @@
         </div>
     </footer>
     
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 800,
-            once: true,
+        document.addEventListener('DOMContentLoaded', () => {
+            const tutorialSteps = [
+                {
+                    title: "1. Gestisci i tuoi Dati",
+                    description: "Per prima cosa, inserisci i tuoi dati anagrafici e il codice fiscale. L'app li salverà in modo sicuro per non doverli più digitare.",
+                    image: "../assets/images/dati anagrafici.jpg"
+                },
+                {
+                    title: "2. Scegli la Farmacia",
+                    description: "Seleziona la tua farmacia di fiducia da un elenco o cercane una nuova nelle vicinanze. La tua richiesta arriverà direttamente a loro.",
+                    image: "../assets/images/selezione farmacia.jpg"
+                },
+                {
+                    title: "3. Inserisci le Ricette",
+                    description: "Puoi digitare i codici delle ricette (NRE), incollarli o usare la fotocamera per una scansione rapida. Aggiungi note se necessario.",
+                    image: "../assets/images/dati ricette.jpg"
+                },
+                {
+                    title: "4. Controlla e Invia",
+                    description: "Rivedi il riepilogo finale per assicurarti che sia tutto corretto. Con un ultimo tocco, la tua richiesta è inviata! Riceverai una notifica a breve.",
+                    image: "../assets/images/riepilogo.jpg"
+                }
+            ];
+
+            let currentStep = 0;
+
+            const titleEl = document.getElementById('tutorial-title');
+            const progressEl = document.getElementById('tutorial-progress');
+            const imageEl = document.getElementById('tutorial-image');
+            const descriptionEl = document.getElementById('tutorial-description');
+            const prevBtn = document.getElementById('prev-step');
+            const nextBtn = document.getElementById('next-step');
+
+            function updateTutorial() {
+                const step = tutorialSteps[currentStep];
+
+                // Add a class to trigger the animation
+                imageEl.classList.add('loading');
+
+                setTimeout(() => {
+                    titleEl.textContent = step.title;
+                    descriptionEl.textContent = step.description;
+                    imageEl.src = step.image;
+                    imageEl.alt = `Screenshot per ${step.title}`;
+                    progressEl.textContent = `Passo ${currentStep + 1} di ${tutorialSteps.length}`;
+
+                    // Remove the class after the content is updated
+                    imageEl.classList.remove('loading');
+                }, 200); // A short delay for the transition effect
+
+                prevBtn.disabled = currentStep === 0;
+                nextBtn.disabled = currentStep === tutorialSteps.length - 1;
+            }
+
+            prevBtn.addEventListener('click', () => {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateTutorial();
+                }
+            });
+
+            nextBtn.addEventListener('click', () => {
+                if (currentStep < tutorialSteps.length - 1) {
+                    currentStep++;
+                    updateTutorial();
+                }
+            });
+
+            // Initial load
+            updateTutorial();
         });
     </script>
 
