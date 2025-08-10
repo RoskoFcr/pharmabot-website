@@ -19,12 +19,13 @@
             background-color: #f8fafc;
         }
         .video-container {
-            max-width: 1000px; /* Aumentato per un aspetto più cinematografico su schermi grandi */
+            max-width: 1000px;
             margin: 0 auto;
-            border-radius: 1.5rem; /* Bordi più arrotondati */
-            overflow: hidden; /* Assicura che il video rispetti i bordi arrotondati */
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Ombra più pronunciata per un effetto "fluttuante" */
+            border-radius: 1rem; /* Leggermente meno arrotondato per un look più netto */
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2); /* Ombra leggermente più morbida */
             position: relative;
+            border: 1px solid rgba(0, 0, 0, 0.05); /* Bordo sottile per definizione */
         }
         video {
             width: 100%;
@@ -48,22 +49,24 @@
     </header>
 
     <!-- Main Content -->
-    <main class="py-16 md:py-24">
-        <div class="container mx-auto px-6">
-            <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Tutorial Interattivo</h1>
-                <p class="mt-4 text-lg text-gray-600">
-                    Guarda questo breve video per scoprire quanto è semplice e veloce usare Pharmabot. Premi play per iniziare!
-                </p>
-            </div>
+    <main class="py-12 md:py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-2xl shadow-sm p-8 md:p-12">
+                <div class="text-center max-w-3xl mx-auto" data-aos="fade-up">
+                    <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900">Tutorial Interattivo</h1>
+                    <p class="mt-4 text-lg text-gray-600">
+                        Guarda questo breve video per scoprire quanto è semplice e veloce usare Pharmabot. Premi play per iniziare!
+                    </p>
+                </div>
 
-            <!-- Video Tutorial -->
-            <div class="mt-12 md:mt-16" data-aos="fade-up" data-aos-delay="200">
-                <div class="video-container">
-                    <video controls playsinline poster="../assets/images/home.jpg">
-                        <source src="../assets/videos/spot.mp4" type="video/mp4">
-                        Il tuo browser non supporta il tag video. Prova ad aggiornarlo.
-                    </video>
+                <!-- Video Tutorial -->
+                <div class="mt-8 md:mt-12" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-container">
+                        <video controls playsinline poster="../assets/images/home.jpg">
+                            <source src="../assets/videos/spot.mp4" type="video/mp4">
+                            Il tuo browser non supporta il tag video. Prova ad aggiornarlo.
+                        </video>
+                    </div>
                 </div>
             </div>
         </div>
