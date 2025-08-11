@@ -16,6 +16,12 @@
     --color-background-dark: #111827; /* gray-900 */
 
     --font-family-base: 'Inter', sans-serif;
+    --font-family-headings: 'Montserrat', sans-serif;
+}
+
+/* Utility class for headings */
+.font-montserrat {
+    font-family: var(--font-family-headings);
 }
 
 body {
