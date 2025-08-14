@@ -31,8 +31,8 @@
 }
 
 #mascot-video {
-    margin-bottom: -40px; /* Sovrappone leggermente il fumetto */
-    z-index: 10;
+    margin-bottom: -40px; /* Mantiene la sovrapposizione per l'effetto di profondità */
+    z-index: 5; /* Assicura che il video stia SOTTO il fumetto */
     position: relative;
 }
 
@@ -42,6 +42,7 @@
     border-radius: 20px;
     padding: 1.5rem;
     position: relative;
+    z-index: 20; /* Assicura che il fumetto stia SOPRA il video */
     box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     min-height: 180px; /* Altezza minima per evitare ridimensionamenti bruschi */
     display: flex;
@@ -123,7 +124,7 @@
     background: rgba(20, 184, 166, 0.3);
     border: 2px solid #14b8a6;
     border-radius: 8px;
-    animation: highlight-field 3s ease-in-out forwards;
+    animation: highlight-field 2.5s ease-in-out infinite alternate;
     animation-delay: 0.5s;
 }
 
@@ -132,8 +133,8 @@
     background: rgba(20, 184, 166, 0.3);
     border: 2px solid #14b8a6;
     border-radius: 8px;
-    animation: highlight-field 3s ease-in-out forwards;
-    animation-delay: 2s; /* Parte dopo la prima */
+    animation: highlight-field 2.5s ease-in-out infinite alternate;
+    animation-delay: 1.5s; /* Parte dopo la prima */
 }
 
 
@@ -145,30 +146,28 @@
 
 .effect-step-2-camera {
     top: 50%; left: 25%; width: 20%; height: auto;
-    animation: pop-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    animation-delay: 1s;
+    animation: pop-in 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
+    animation-delay: 0.5s;
 }
 
 .effect-step-2-gallery {
     top: 50%; left: 55%; width: 20%; height: auto;
-    animation: pop-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    animation-delay: 1.2s;
+    animation: pop-in 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
+    animation-delay: 0.7s;
 }
 
 /* 3. Animazione selettore Generici/Originali e nota */
-@keyframes wiggle-and-fade {
+@keyframes wiggle {
     0%, 100% { transform: translateX(0); }
-    10%, 30%, 50% { transform: translateX(-5px); }
-    20%, 40% { transform: translateX(5px); }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
 
 .effect-step-3-selector {
     top: 48%; left: 8%; width: 84%; height: 7%;
     border: 2px solid #14b8a6;
     border-radius: 8px;
-    animation: wiggle-and-fade 2.5s ease-in-out forwards;
+    animation: wiggle 2s ease-in-out infinite;
     animation-delay: 0.5s;
 }
 
@@ -177,7 +176,7 @@
     border: 2px solid #14b8a6;
     border-radius: 8px;
     background: rgba(20, 184, 166, 0.1);
-    animation: highlight-field 3s ease-in-out forwards;
+    animation: highlight-field 2.5s ease-in-out infinite alternate;
     animation-delay: 1.5s;
 }
 
@@ -213,4 +212,22 @@
     text-align: center;
     line-height: 1;
     text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* --- ANIMAZIONE PER IL TESTO DEL FUMETTO --- */
+@keyframes fade-in-word {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animated-word {
+    display: inline-block; /* Necessario per far funzionare la trasformazione */
+    opacity: 0; /* Parte invisibile */
+    animation: fade-in-word 0.4s ease forwards;
 }

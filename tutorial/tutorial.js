@@ -86,12 +86,17 @@ document.addEventListener('DOMContentLoaded', () => {
         // Prende i dati dello step corrente
         const stepData = tutorialSteps[stepIndex];
 
-        // Aggiorna il messaggio del fumetto con una piccola animazione di fade
-        tutorialMessage.style.opacity = 0;
-        setTimeout(() => {
-            tutorialMessage.innerText = stepData.message;
-            tutorialMessage.style.opacity = 1;
-        }, 200);
+        // Aggiorna il messaggio del fumetto con un'animazione parola per parola
+        tutorialMessage.innerHTML = ''; // Svuota il contenitore
+        const words = stepData.message.split(' ');
+        words.forEach((word, index) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.innerText = word + ' ';
+            wordSpan.className = 'animated-word';
+            // Applica un ritardo crescente a ogni parola per un effetto a cascata
+            wordSpan.style.animationDelay = `${index * 0.05}s`;
+            tutorialMessage.appendChild(wordSpan);
+        });
 
         // Aggiorna l'immagine dello smartphone
         phoneScreen.src = stepData.image;
