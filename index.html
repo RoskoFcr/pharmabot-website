@@ -45,8 +45,6 @@
             z-index: -1;
         }
         .hero-video {
-            justify-content: center;
-            align-items: center;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -65,10 +63,6 @@
             .hero-section-mobile-view {
                 display: flex;
                 flex-direction: column;
-                min-height: calc(100vh - 72px); /* Header height approx 72px */
-                justify-content: center;
-                align-items: center;
-                padding-top: 1rem;
                 padding-bottom: 2rem;
             }
             .hero-section-mobile-view .hero-video-container {
@@ -122,6 +116,25 @@
 
     <!-- Hero Section -->
     <main class="hero-section-mobile-view md:relative md:overflow-hidden">
+
+        <!-- Mobile Text Content (was Below Video) -->
+        <div class="md:hidden w-full text-center px-6 py-8 animate-fade-in">
+            <h1 class="font-montserrat text-3xl font-extrabold text-gray-900 leading-tight">
+                La farmacia, <br>mai così comoda!
+            </h1>
+            <p class="font-montserrat text-base text-gray-600 max-w-md mx-auto mt-4 leading-relaxed">
+                Invia le tue ricette in un attimo, senza attese e senza stress.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="/tutorial/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto">
+                    Come Funziona
+                </a>
+                <a href="#pharmacies" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-full text-base transition-colors w-full sm:w-auto">
+                    Sei una Farmacia?
+                </a>
+            </div>
+        </div>
+
         <!-- Video Container -->
         <div class="hero-video-container">
             <video autoplay muted playsinline class="hero-video">
@@ -134,13 +147,13 @@
         </div>
 
         <!-- Desktop Text Content (Overlay) -->
-        <div class="hidden md:flex container mx-auto px-6 min-h-[calc(100vh-20px)] items-center">
-            <div class="w-full md:w-90% lg:w-90% xl:w-90% animate-fade-in">
-                <h1 class="font-anton text-4xl sm:text-5xl md:text-6xl font-extrabold text-#0D9588 leading-tight" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.6);">
+        <div class="hidden md:flex container mx-auto px-6 min-h-[calc(100vh-20px)] items-start pt-32">
+            <div class="w-full md:w-3/4 lg:w-2/3 xl:w-1/2 animate-fade-in">
+                <h1 class="font-anton text-4xl sm:text-5xl md:text-6xl font-extrabold text-#303030 leading-tight" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.6);">
                     LA FARMACIA, <br>MAI COSÌ COMODA!
                 </h1>
-                <h2 class="font-anton text-xl sm:text-2xl md:text-2xl font-extrabold text-#303030 max-w-2xl mt-4 leading-relaxed" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
-                    Invia le tue ricette elettroniche in un attimo, senza attese e senza stress.<br>
+                <h2 class="font-anton text-xl sm:text-2xl md:text-2xl text-#303030 max-w-2xl mt-4 leading-relaxed" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.5);">
+                    Invia le tue ricette elettroniche in un attimo, senza attese e senza stress. PHARMABOT si prende cura della tua salute e del tuo tempo.
                 </h2>
                 <div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
                     <a href="/tutorial/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
@@ -153,28 +166,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- Mobile Text Content (Below Video) -->
-        <div class="md:hidden w-full text-center px-6 pt-8 animate-fade-in">
-            <h1 class="font-montserrat text-3xl font-extrabold text-gray-900 leading-tight">
-                LA FARMACIA, <br>MAI COSÌ COMODA!
-            </h1>
-            <p class="font-montserrat text-base text-gray-600 max-w-md mx-auto mt-4 leading-relaxed">
-                Invia le tue ricette in un attimo, senza attese e senza stress.
-            </p>
-            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/tutorial/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto">
-                    Come Funziona
-                </a>
-                <a href="#pharmacies" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-full text-base transition-colors w-full sm:w-auto">
-                    Sei una Farmacia?
-                </a>
-                <br>
-                <br>
-                <br>
-            </div>
-        </div>
     </main>
+
+    <div class="md:hidden h-16 bg-gradient-to-b from-gray-50 to-white"></div>
     
     <!-- How it Works Section -->
     <section id="tutorial" class="bg-white section-padding">
