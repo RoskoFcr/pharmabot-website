@@ -1,69 +1,59 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. DEFINIZIONE DATI DEL TUTORIAL ---
+    // --- 1. DEFINIZIONE DATI DEL TUTORIAL (v3 - Final) ---
     const tutorialSteps = [
         {
-            message: "Salva i dati una volta, usali per sempre. Dimentica di dover ridigitare tutto ogni volta. Inserisci i tuoi dati anagrafici (o quelli dei tuoi familiari) una sola volta. Pharmabot li ricorderà per te, in totale sicurezza.",
+            message: "<strong>Salva i dati una volta, usali per sempre.</strong> Dimentica di dover ridigitare tutto ogni volta. Inserisci i tuoi dati anagrafici una sola volta. Pharmabot li ricorderà per te, <em>in totale sicurezza.</em>",
             image: "../assets/images/dati anagrafici.jpg",
             video: "../assets/videos/pt 1 di 4.mp4",
             effect: () => {
-                // Evidenziazione animata in sequenza dei campi
-                const highlight1 = document.createElement('div');
-                highlight1.className = 'effect-element effect-step-1-highlight';
-                highlight1.style.top = '13.5%'; // Posizione del primo campo (es. Nome)
-                highlight1.style.animationDelay = '0.5s';
+                const highlightNome = document.createElement('div');
+                highlightNome.className = 'effect-element effect-step-1-highlight';
+                highlightNome.style.top = '22.5%';
+                highlightNome.style.animationDelay = '0.5s';
 
-                const highlight2 = document.createElement('div');
-                highlight2.className = 'effect-element effect-step-1-highlight';
-                highlight2.style.top = '22%'; // Posizione del secondo campo (es. Cognome)
-                highlight2.style.animationDelay = '1s';
+                const highlightCognome = document.createElement('div');
+                highlightCognome.className = 'effect-element effect-step-1-highlight';
+                highlightCognome.style.top = '33.5%';
+                highlightCognome.style.animationDelay = '1.0s';
 
-                // Simulazione della pressione del checkbox
-                const checkboxPress = document.createElement('div');
-                checkboxPress.className = 'effect-element effect-step-1-checkbox-press';
-
-                const checkmarkSymbol = document.createElement('div');
-                checkmarkSymbol.className = 'checkmark-symbol';
-                checkboxPress.appendChild(checkmarkSymbol);
-
-                return [highlight1, highlight2, checkboxPress];
+                // Checkbox animation removed as it was problematic.
+                return [highlightNome, highlightCognome];
             }
         },
         {
-            message: "Invia le ricette, come vuoi tu. Digita, incolla o scatta una foto. Bastano pochi secondi per aggiungere i codici delle tue ricette elettroniche. L'errore di trascrizione è solo un lontano ricordo.",
+            message: "Invia le ricette, <strong>come vuoi tu.</strong> Digita, incolla o <em>scatta una foto.</em> Bastano pochi secondi per aggiungere i codici delle tue ricette elettroniche. L'errore di trascrizione è solo un lontano ricordo.",
             image: "../assets/images/dati ricette.jpg",
             video: "../assets/videos/pt 2 di 4.mp4",
             effect: () => {
-                // Evidenziazione per l'icona della fotocamera
                 const cameraHighlight = document.createElement('div');
-                cameraHighlight.className = 'effect-element effect-step-2-icon-highlight effect-step-2-camera-highlight';
-                cameraHighlight.style.animationDelay = '0.5s';
+                cameraHighlight.className = 'effect-element effect-step-2-icon-highlight';
+                cameraHighlight.style.cssText = 'top: 65%; left: 9%; width: 40%; height: 8%; animation-delay: 0.5s;';
 
-                // Evidenziazione per l'icona della galleria
                 const galleryHighlight = document.createElement('div');
-                galleryHighlight.className = 'effect-element effect-step-2-icon-highlight effect-step-2-gallery-highlight';
-                galleryHighlight.style.animationDelay = '1s';
+                galleryHighlight.className = 'effect-element effect-step-2-icon-highlight';
+                galleryHighlight.style.cssText = 'top: 65%; left: 51%; width: 40%; height: 8%; animation-delay: 1.0s;';
 
                 return [cameraHighlight, galleryHighlight];
             }
         },
         {
-            message: "Scegli la tua farmacia e personalizza. Seleziona la tua farmacia di fiducia dall'elenco. Hai bisogno di un farmaco generico o hai altre preferenze? Aggiungi una nota. Hai il pieno controllo.",
+            message: "<strong>Scegli la tua farmacia</strong> e personalizza. Seleziona la tua farmacia di fiducia dall'elenco. Hai bisogno di un <em>farmaco generico</em> o hai altre preferenze? Aggiungi una nota. Hai il pieno controllo.",
             image: "../assets/images/note e preferenze.jpg",
             video: "../assets/videos/pt 3 di 4.mp4",
             effect: () => {
-                // Animazione per il selettore "Generici/Originali"
                 const selectorHighlight = document.createElement('div');
                 selectorHighlight.className = 'effect-element effect-step-3-selector-highlight';
+                selectorHighlight.style.cssText = 'top: 36.5%; left: 8.5%; width: 83%; height: 8.5%; animation-delay: 0.5s;';
 
-                // Contenitore per l'animazione di testo
                 const notesContainer = document.createElement('div');
-                notesContainer.className = 'effect-element effect-step-3-notes-container';
+                notesContainer.className = 'effect-element';
+                notesContainer.style.cssText = 'top: 50.5%; left: 8.5%; width: 83%; height: 15%;';
 
-                // Il testo che si animerà con l'effetto macchina da scrivere
                 const notesText = document.createElement('div');
                 notesText.className = 'effect-step-3-notes-text';
                 notesText.textContent = 'NOTE PER IL FARMACISTA';
+                notesText.style.animationDelay = '1.5s';
 
                 notesContainer.appendChild(notesText);
 
@@ -71,15 +61,15 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         {
-            message: "Un ultimo controllo e via! Rivedi il riepilogo della tua richiesta. È tutto corretto? Con un semplice tocco, la tua farmacia riceverà l'ordine. Ti avviseremo noi quando sarà tutto pronto.",
+            message: "<strong>Un ultimo controllo e via!</strong> Rivedi il riepilogo della tua richiesta. È tutto corretto? Con un semplice tocco, la tua farmacia riceverà l'ordine. Ti avviseremo noi <em>quando sarà tutto pronto.</em>",
             image: "../assets/images/riepilogo.jpg",
             video: "../assets/videos/pt 4 di 4.mp4",
             effect: () => {
-                // Evidenziazione animata per il pulsante finale
                 const buttonHighlight = document.createElement('div');
                 buttonHighlight.className = 'effect-element effect-step-4-button-highlight';
+                buttonHighlight.style.cssText = 'top: 88%; left: 8.5%; width: 83%; height: 9.5%;';
 
-                return [buttonHighlight]; // Ritorna solo l'evidenziazione, senza emoji
+                return [buttonHighlight];
             }
         }
     ];
@@ -110,8 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const words = stepData.message.split(' ');
         words.forEach((word, index) => {
             const wordSpan = document.createElement('span');
-            // Usiamo textContent e uno spazio non divisibile (\u00A0) per garantire la spaziatura
-            wordSpan.textContent = word + '\u00A0';
+            // Usiamo innerHTML per renderizzare i tag <strong>, <em>, etc.
+            wordSpan.innerHTML = word + '\u00A0'; // Aggiungiamo uno spazio non divisibile
             wordSpan.className = 'animated-word';
             wordSpan.style.animationDelay = `${index * 0.04}s`;
             tutorialMessage.appendChild(wordSpan);

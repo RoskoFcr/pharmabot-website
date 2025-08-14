@@ -1,5 +1,9 @@
 /* Stili specifici per la pagina tutorial interattiva di Pharmabot */
 
+body {
+    background-image: linear-gradient(to bottom, #ffffff, #f7fafc);
+}
+
 /* Stili per il mockup del telefono (Mantenuti e leggermente adattati) */
 .phone-mockup {
     background: #111;
@@ -25,71 +29,70 @@
 }
 
 
-/* Stili per la mascotte e il fumetto (Riprogettati) */
+/* Stili per la mascotte e il fumetto (Riprogettati e Ingranditi) */
 #mascot-column .relative {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    max-width: 320px;
+    max-width: 380px; /* Aumentato per dare più spazio */
     margin: 0 auto;
 }
 
 #mascot-video {
-    order: 2; /* La mascotte sta sotto */
-    width: 200px; /* Riduciamo un po' la mascotte per dare spazio */
+    order: 2;
+    width: 260px; /* Mascotte più grande */
     height: auto;
     position: relative;
     z-index: 5;
+    transition: transform 0.3s ease;
+}
+#mascot-video:hover {
+    transform: scale(1.05); /* Leggero effetto al passaggio del mouse */
 }
 
 .speech-bubble {
-    order: 1; /* Il fumetto sta sopra */
+    order: 1;
     background-color: #ffffff;
     border: 2px solid #e2e8f0;
-    /* Forma a nuvoletta, più organica */
-    border-radius: 30px;
-    padding: 1.5rem 2rem;
+    border-radius: 35px; /* Arrotondamento più accentuato */
+    padding: 2rem 2.5rem; /* Più padding per un fumetto più grande */
     position: relative;
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    min-height: 170px;
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+    min-height: 200px; /* Altezza minima aumentata */
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: -30px; /* Sovrapposizione leggera e naturale */
+    margin-bottom: -40px; /* Sovrapposizione più decisa */
     z-index: 10;
-    /* Animazione di comparsa */
-    opacity: 0;
-    transform: scale(0.8) translateY(20px);
-    animation: bubble-pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 /* Freccia del fumetto che punta in basso */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -12px;
+    bottom: -14px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 15px solid #ffffff;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 18px solid #ffffff;
     filter: drop-shadow(0 2px 1px rgba(0,0,0,0.05));
 }
 .speech-bubble::before {
     content: '';
     position: absolute;
-    bottom: -15px;
+    bottom: -17px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 16px solid transparent;
-    border-right: 16px solid transparent;
-    border-top: 16px solid #e2e8f0;
+    border-left: 19px solid transparent;
+    border-right: 19px solid transparent;
+    border-top: 19px solid #e2e8f0;
 }
 
 #tutorial-message {
@@ -131,196 +134,86 @@
 }
 
 
-/* --- ANIMAZIONI PER GLI EFFETTI SULLO SMARTPHONE --- */
+/* --- ANIMAZIONI PER GLI EFFETTI SULLO SMARTPHONE (v4 - Final) --- */
 
-/* Rimuove le animazioni precedenti alla fine */
 .effect-element {
     position: absolute;
-    opacity: 0;
-    pointer-events: none; /* Non intercettare click */
+    opacity: 1;
+    pointer-events: none;
+    transition: all 0.3s ease;
 }
 
-/* 1. Evidenziazione campi e simulazione checkbox */
+/* --- Keyframes Comuni --- */
 @keyframes pulse-highlight {
-    0% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.02); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.7; }
+    from { background-color: rgba(20, 184, 166, 0.4); }
+    to { background-color: rgba(20, 184, 166, 0.2); }
 }
-
-.effect-step-1-highlight {
-    left: 8%; width: 84%; height: 8%;
-    background: rgba(20, 184, 166, 0.2);
-    border: 2px solid #14b8a6;
-    border-radius: 8px;
-    animation: pulse-highlight 2s ease-in-out infinite;
-}
-
-@keyframes checkbox-press-and-check {
-    0%, 100% { transform: scale(1); }
-    10% { transform: scale(0.95); background: rgba(20, 184, 166, 0.4); } /* Press down */
-    20% { transform: scale(1); background: rgba(20, 184, 166, 0.2); } /* Release */
-    /* from 20% to 100% the checkmark is visible */
-}
-
-@keyframes checkmark-appear {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-.effect-step-1-checkbox-press {
-    top: 30.5%; left: 8%; width: 84%; height: 6.5%; /* Posizione precisa del checkbox */
-    border-radius: 8px;
-    animation: checkbox-press-and-check 1s ease-in-out forwards;
-    animation-delay: 2.5s; /* Dopo le evidenziazioni */
-}
-
-.checkmark-symbol {
-    position: absolute;
-    top: 50%;
-    left: 10px; /* Posizionato a sinistra dentro il box */
-    width: 8px;
-    height: 15px;
-    border: solid #0f766e; /* Colore più scuro per visibilità */
-    border-width: 0 3px 3px 0;
-    transform: translate(0, -50%) rotate(45deg);
-    opacity: 0;
-    animation: checkmark-appear 0.2s forwards;
-    animation-delay: 2.7s; /* Appare subito dopo la pressione */
-}
-
-
-/* 2. Evidenziazione animata icone Fotocamera e Galleria */
 @keyframes icon-glow {
-    from {
-        background-color: rgba(20, 184, 166, 0.4);
-        box-shadow: 0 0 15px 5px rgba(20, 184, 166, 0.6);
-    }
-    to {
-        background-color: rgba(20, 184, 166, 0.2);
-        box-shadow: 0 0 25px 12px rgba(20, 184, 166, 0.3);
-    }
+    from { box-shadow: 0 0 15px 5px rgba(20, 184, 166, 0.2); }
+    to { box-shadow: 0 0 25px 12px rgba(20, 184, 166, 0.5); }
 }
-
-.effect-step-2-icon-highlight {
-    position: absolute;
-    border-radius: 50%; /* Le icone sono circolari */
-    animation: icon-glow 1.5s ease-in-out infinite alternate;
-    /* Valori precisi per sovrapporre le icone nell'immagine */
-    top: 48.5%;
-    width: 20%;
-    height: 11%;
-}
-
-.effect-step-2-camera-highlight {
-    left: 27.5%;
-}
-
-.effect-step-2-gallery-highlight {
-    left: 52.5%;
-}
-
-/* 3. Animazione selettore e testo nelle note */
 @keyframes wiggle {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-4px); }
     75% { transform: translateX(4px); }
 }
-
-.effect-step-3-selector-highlight {
-    top: 48.5%; left: 8%; width: 84%; height: 7%;
-    border: 3px solid #14b8a6;
-    border-radius: 8px;
-    animation: wiggle 1.5s ease-in-out infinite 0.5s;
-}
-
 @keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+    from { width: 0; }
+    to { width: 100%; }
 }
-
 @keyframes blink-caret {
-    from, to { border-color: transparent }
+    from, to { border-color: transparent; }
     50% { border-color: #374151; }
 }
 
-.effect-step-3-notes-container {
+/* --- Passo 1: Dati Anagrafici --- */
+.effect-step-1-highlight {
+    left: 8.5%; width: 83%; height: 8.5%;
+    background: rgba(20, 184, 166, 0.3);
+    border: 1px solid #14b8a6;
+    border-radius: 12px;
+    animation: pulse-highlight 1.8s ease-in-out infinite alternate;
+}
+.effect-step-1-checkbox-press {
+    animation: pulse-highlight 1s ease-in-out 1;
+}
+.checkmark-symbol {
     position: absolute;
-    top: 58%; left: 8%; width: 84%; height: 15%;
-    opacity: 1;
+    top: 50%; left: 50%;
+    width: 10px; height: 20px;
+    border: solid #0f766e;
+    border-width: 0 4px 4px 0;
+    transform: translate(-50%, -60%) rotate(45deg);
+    opacity: 0;
+    animation: checkmark-draw 0.3s forwards;
+}
+@keyframes checkmark-draw { to { opacity: 1; } }
+
+/* --- Passo 2: Invio Ricette --- */
+.effect-step-2-icon-highlight {
+    border-radius: 25px;
+    animation: icon-glow 1.5s ease-in-out infinite alternate;
 }
 
+/* --- Passo 3: Preferenze Farmacia --- */
+.effect-step-3-selector-highlight {
+    border: 2px solid #14b8a6;
+    border-radius: 25px;
+    animation: wiggle 1.8s ease-in-out infinite;
+}
 .effect-step-3-notes-text {
-    position: absolute;
-    top: 15px;
-    left: 10px;
     color: #374151;
     font-family: 'Courier New', Courier, monospace;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: bold;
     overflow: hidden;
     white-space: nowrap;
     border-right: .12em solid #374151;
-    animation:
-        typing 2s steps(22, end) 1.5s forwards,
-        blink-caret .75s step-end infinite 1.5s;
+    animation: typing 2s steps(22, end) forwards, blink-caret .75s step-end infinite 2s;
 }
 
-
-/* 4. Illuminazione e pressione del pulsante "Invia" */
-@keyframes button-glow-press {
-    0% {
-        transform: scale(1);
-        box-shadow: 0 0 8px 2px rgba(20, 184, 166, 0.3);
-    }
-    50% {
-        transform: scale(1.04);
-        box-shadow: 0 0 35px 12px rgba(20, 184, 166, 0.6); /* Glow più intenso */
-    }
-    100% {
-        transform: scale(1);
-        box-shadow: 0 0 8px 2px rgba(20, 184, 166, 0.3);
-    }
-}
-
+/* --- Passo 4: Riepilogo Finale --- */
 .effect-step-4-button-highlight {
-    top: 85.5%; left: 8%; width: 84%; height: 8%;
-    border-radius: 9999px; /* Forma a pillola */
-    animation: button-glow-press 2s ease-in-out infinite 0.5s;
-    opacity: 1; /* Assicuriamoci che sia visibile */
-}
-
-/* Stile per le icone emoji */
-.emoji-icon {
-    font-size: 4rem; /* Rende le emoji grandi e visibili */
-    text-align: center;
-    line-height: 1;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.2);
-}
-
-/* --- ANIMAZIONI GENERALI --- */
-
-/* Animazione di comparsa per il fumetto */
-@keyframes bubble-pop-in {
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-/* Animazione per il testo che compare parola per parola */
-@keyframes fade-in-word {
-    from {
-        opacity: 0;
-        transform: translateY(8px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animated-word {
-    display: inline-block;
-    opacity: 0;
-    animation: fade-in-word 0.3s ease-out forwards;
+    border-radius: 9999px;
+    animation: icon-glow 1.8s ease-in-out infinite alternate 0.5s; /* Added delay for rhythm */
 }
