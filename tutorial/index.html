@@ -52,49 +52,54 @@
     <!-- Main Content -->
     <main>
         <!-- 1. Sezione introduttiva (Hero) -->
-        <section class="hero-tutorial text-center py-20 px-6">
-            <img src="../assets/images/robot.jpg" alt="Mascotte Pharmabot" class="w-24 h-24 mx-auto mb-6 animate-float">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 font-montserrat">La tua farmacia, più semplice che mai.</h1>
+        <section class="hero-tutorial text-center py-16 px-6">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 font-montserrat">Ti mostro come funziona!</h1>
             <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                Scopri in 4 passaggi come Pharmabot ti restituisce il tempo e semplifica la gestione della tua salute. Scorri per iniziare il viaggio.
+                Segui i miei passaggi. Ti guiderò attraverso le funzioni principali di Pharmabot in modo semplice e veloce.
             </p>
-            <div class="mt-8 animate-bounce">
-                <svg class="w-8 h-8 text-teal-500 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
-            </div>
         </section>
 
-        <!-- 2. Sezione Scrollytelling -->
-        <section class="scrollytelling-container container mx-auto px-6 flex flex-col md:flex-row gap-16">
-            
-            <!-- Colonna sinistra per il testo descrittivo -->
-            <div class="text-column md:w-1/2">
-                <div id="step-1" class="step-content" data-image="../assets/images/dati anagrafici.jpg">
-                    <h2 class="text-3xl font-bold text-gray-800">1. Salva i dati una volta, usali per sempre.</h2>
-                    <p class="mt-4 text-lg text-gray-700">Dimentica di dover ridigitare tutto ogni volta. Inserisci i tuoi dati anagrafici (o quelli dei tuoi familiari) una sola volta. Pharmabot li ricorderà per te, in totale sicurezza.</p>
-                </div>
-                <div id="step-2" class="step-content" data-image="../assets/images/dati ricette.jpg">
-                    <h2 class="text-3xl font-bold text-gray-800">2. Invia le ricette, come vuoi tu.</h2>
-                    <p class="mt-4 text-lg text-gray-700">Digita, incolla o scatta una foto. Bastano pochi secondi per aggiungere i codici delle tue ricette elettroniche. L'errore di trascrizione è solo un lontano ricordo.</p>
-                </div>
-                <div id="step-3" class="step-content" data-image="../assets/images/note e preferenze.jpg">
-                    <h2 class="text-3xl font-bold text-gray-800">3. Scegli la farmacia e personalizza.</h2>
-                    <p class="mt-4 text-lg text-gray-700">Seleziona la tua farmacia di fiducia dall'elenco. Hai bisogno di un farmaco generico o hai altre preferenze? Aggiungi una nota. Hai il pieno controllo.</p>
-                </div>
-                <div id="step-4" class="step-content" data-image="../assets/images/riepilogo.jpg">
-                    <h2 class="text-3xl font-bold text-gray-800">4. Un ultimo controllo e via!</h2>
-                    <p class="mt-4 text-lg text-gray-700">Rivedi il riepilogo della tua richiesta. È tutto corretto? Con un semplice tocco, la tua farmacia riceverà l'ordine. Ti avviseremo noi quando sarà tutto pronto.</p>
-                </div>
-            </div>
+        <!-- 2. Sezione Tutorial Interattivo -->
+        <section id="interactive-tutorial-container" class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
 
-            <!-- Colonna destra per il mockup del telefono (sticky) -->
-            <div class="phone-column md:w-1/2">
-                <div class="phone-mockup-wrapper">
+                <!-- Colonna sinistra: Mascotte e Fumetto -->
+                <div id="mascot-column" class="flex flex-col items-center justify-center text-center">
+                    <div class="relative">
+                        <video id="mascot-video" class="w-64 h-auto" autoplay muted loop playsinline>
+                            <!-- Il src del video verrà impostato da JS -->
+                        </video>
+                        <div id="speech-bubble" class="speech-bubble">
+                            <p id="tutorial-message" class="text-gray-800"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Colonna destra: Mockup del Telefono -->
+                <div id="phone-column" class="flex justify-center">
                     <div class="phone-mockup">
-                        <img id="phone-screen" src="../assets/images/dati anagrafici.jpg" alt="Schermata dell'app Pharmabot in azione">
+                        <div id="phone-screen-container" class="relative w-full h-full">
+                            <img id="phone-screen" src="" alt="Schermata dell'app Pharmabot in azione">
+                            <!-- Qui verranno aggiunti gli elementi per gli effetti speciali -->
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Controlli di Navigazione -->
+            <div id="navigation-controls" class="flex justify-between items-center mt-12 max-w-lg mx-auto">
+                <button id="prev-step" class="nav-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span>Indietro</span>
+                </button>
+                <div id="step-indicator" class="text-sm font-semibold text-gray-600">
+                    Passo <span id="current-step-number">1</span> di 4
+                </div>
+                <button id="next-step" class="nav-button">
+                    <span>Avanti</span>
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
         </section>
 
         <!-- 3. Sezione Finale: Call to Action (CTA) -->
@@ -107,7 +112,7 @@
                 </p>
                 <div class="mt-10 flex flex-col sm:flex-row justify-center items-center gap-4">
                     <a href="#" class="bg-black text-white font-semibold py-3 px-6 rounded-lg flex items-center gap-3 hover:bg-gray-800 transition-colors transform hover:scale-105">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.365 10.333H16.93v-1.85a1.482 1.482 0 00-1.482-1.481H11.2a1.482 1.482 0 00-1.482 1.481v1.85H7.282a1.482 1.482 0 00-1.481 1.482v4.226c0 .818.664 1.482 1.481 1.482h2.435v1.85a1.482 1.482 0 001.482 1.481h4.248a1.482 1.482 0 001.482-1.481v-1.85h2.432a1.482 1.482 0 001.482-1.482v-4.226a1.482 1.482 0 00-1.482-1.482zM12 4.167a.91.91 0 110 1.819.91.91 0 010-1.819zm-3.333 16.58a.91.91 0 110-1.819.91.91 0 010 1.819zm6.666 0a.91.91 0 110-1.819.91.91 0 010 1.819zM21.25 8.417h-2.917v-1.25a.834.834 0 00-.833-.833h-1.25V4.167a2.5 2.5 0 00-5 0v2.167h-1.25a.834.834 0 00-.833.833v1.25H2.75a2.5 2.5 0 00-2.5 2.5v5.833a2.5 2.5 0 002.5 2.5h2.917v1.25a.834.834 0 00.833.833h1.25v2.167a2.5 2.5 0 005 0v-2.167h1.25a.834.834 0 00.833-.833v-1.25h2.917a2.5 2.5 0 002.5-2.5V10.917a2.5 2.5 0 00-2.5-2.5z"/></svg>
+                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M19.365 10.333H16.93v-1.85a1.482 1.482 0 00-1.482-1.481H11.2a1.482 1.482 0 00-1.482 1.481v1.85H7.282a1.482 1.482 0 00-1.481 1.482v4.226c0 .818.664 1.482 1.481 1.482h2.435v1.85a1.482 1.482 0 001.482 1.481h4.248a1.482 1.482 0 001.482-1.481v-1.85h2.432a1.482 1.482 0 001.482-1.482v-4.226a1.482 1.482 0 00-1.482-1.482zM12 4.167a.91.91 0 110 1.819.91.91 0 010-1.819zm-3.333 16.58a.91.91 0 110-1.819.91.91 0 010 1.819zm6.666 0a.91.91 0 110-1.819.91.91 0 010 1.819zM21.25 8.417h-2.917v-1.25a.834.834 0 00-.833-.833h-1.25V4.167a2.5 2.5 0 00-5 0v2.167h-1.25a.834.834 0 00-.833-.833v1.25H2.75a2.5 2.5 0 00-2.5 2.5v5.833a2.5 2.5 0 002.5 2.5h2.917v1.25a.834.834 0 00.833.833h1.25v2.167a2.5 2.5 0 005 0v-2.167h1.25a.834.834 0 00.833-.833v-1.25h2.917a2.5 2.5 0 002.5-2.5V10.917a2.5 2.5 0 00-2.5-2.5z"/></svg>
                         <div>
                             <span class="text-xs">Disponibile su</span>
                             <span class="block text-lg leading-tight">Google Play</span>
