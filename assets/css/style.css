@@ -73,3 +73,14 @@ body {
         padding-bottom: 4rem;
     }
 }
+
+/* Stili per il Cookie Banner */
+.cookie-banner {
+    transition: opacity 0.5s ease-in-out;
+}
+
+.cookie-banner.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: none;
+}

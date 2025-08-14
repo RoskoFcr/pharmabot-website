@@ -7,7 +7,7 @@
     <meta name="description" content="Invia le tue ricette mediche alla farmacia di fiducia in modo semplice e veloce. Ottimizza il tuo tempo e gestisci la tua salute con Pharmabot.">
     
     <!-- Favicon per il browser -->
-    <link rel="icon" href="assets/images/icona.png" type="image/png">
+    <link rel="icon" href="../assets/images/icona.png" type="image/png">
 
     <!-- Meta Tag per la condivisione sui Social (Open Graph) -->
     <meta property="og:title" content="Pharmabot - La Tua Farmacia a Portata di App">
@@ -29,7 +29,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
 
     <style>
         /* Stili specifici per la nuova homepage, se necessari */
@@ -88,16 +88,16 @@
     <!-- Header -->
     <header class="bg-white/20 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="flex items-center">
-                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
-                <img src="https://placehold.co/160x40/ffffff/14b8a6?text=Pharmabot" alt="Logo Pharmabot" class="h-10 transition-transform duration-300 hover:scale-105">
+            <a href="/" class="flex items-center space-x-2 group">
+                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10 transition-transform duration-300 group-hover:scale-105">
+                <span class="text-2xl font-bold text-gray-800 transition-colors duration-300 group-hover:text-teal-600" style="font-family: 'Montserrat', sans-serif;">PHARMABOT</span>
             </a>
             <!-- Desktop Menu -->
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="/tutorial" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">Guida</a>
-                <a href="#about" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">La Storia</a>
-                <a href="#pharmacies" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">Per le Farmacie</a>
-                <a href="/contact" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105">Contattaci</a>
+                <a href="/tutorial/" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">Guida</a>
+                <a href="/#about" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">La Storia</a>
+                <a href="/#pharmacies" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">Per le Farmacie</a>
+                <a href="/contact/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105">Contattaci</a>
             </nav>
             <!-- Mobile Menu Button -->
             <div class="md:hidden">
@@ -108,10 +108,10 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white/20 backdrop-blur-md">
-            <a href="/tutorial" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Guida all'Uso</a>
-            <a href="#about" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">La Storia</a>
-            <a href="#pharmacies" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Per le Farmacie</a>
-            <a href="/contact" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Contattaci</a>
+            <a href="/tutorial/" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Guida all'Uso</a>
+            <a href="/#about" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">La Storia</a>
+            <a href="/#pharmacies" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Per le Farmacie</a>
+            <a href="/contact/" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Contattaci</a>
         </div>
     </header>
     <!-- Privacy Content Main Section -->
@@ -267,10 +267,9 @@
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- About -->
                 <div class="md:col-span-1">
-                    <a href="/" class="flex items-center">
-                         <!-- Using a placeholder for the logo -->
-                        <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
-                        <img src="https://placehold.co/160x40/1f2937/ffffff?text=Pharmabot" alt="Logo Pharmabot" class="h-10">
+                    <a href="/" class="flex items-center space-x-2 group">
+                        <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10 transition-transform duration-300 group-hover:scale-105">
+                        <span class="text-xl font-bold text-white transition-colors duration-300 group-hover:text-teal-400" style="font-family: 'Montserrat', sans-serif;">PHARMABOT</span>
                     </a>
                     <p class="mt-4 text-gray-400 text-sm">La tua farmacia, a casa tua, con un click.</p>
                 </div>
@@ -278,17 +277,18 @@
                 <div>
                     <h3 class="font-bold tracking-wide uppercase text-gray-500 text-sm">Menu</h3>
                     <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="/tutorial" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
+                        <li><a href="/tutorial/" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
                         <li><a href="/#about" class="text-gray-400 hover:text-white transition-colors">La Storia</a></li>
                         <li><a href="/#pharmacies" class="text-gray-400 hover:text-white transition-colors">Per le Farmacie</a></li>
-                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contatti</a></li>
+                        <li><a href="/contact/" class="text-gray-400 hover:text-white transition-colors">Contatti</a></li>
                     </ul>
                 </div>
                 <!-- Legal -->
                 <div>
                     <h3 class="font-bold tracking-wide uppercase text-gray-500 text-sm">Informazioni</h3>
                     <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Informativa Privacy</a></li>
+                        <li><a href="/privacy/" class="text-gray-400 hover:text-white transition-colors">Informativa Privacy</a></li>
+                        <li><a href="/cookie-policy/" class="text-gray-400 hover:text-white transition-colors">Cookie Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -298,7 +298,26 @@
         </div>
     </footer>
 
-</body>
-</html>
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="hidden fixed bottom-0 left-0 right-0 bg-gray-800 text-white p-4 text-center z-50 cookie-banner">
+        <p class="inline">
+            Utilizziamo i cookie per migliorare la tua esperienza. Per saperne di più, consulta la nostra
+            <a href="/cookie-policy/" class="text-teal-400 hover:underline">Cookie Policy</a>.
+        </p>
+        <button id="accept-cookie-consent" class="ml-4 bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded-full">
+            Accetta
+        </button>
+    </div>
 
+    <script src="../assets/js/cookie-banner.js"></script>
+
+    <script>
+        // Mobile Menu Logic
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
 </html>
