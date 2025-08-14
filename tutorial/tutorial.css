@@ -1,0 +1,104 @@
+/* Stili specifici per la pagina tutorial interattiva di Pharmabot */
+
+/* Animazione per la mascotte nella sezione Hero */
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-15px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
+}
+
+.animate-float {
+	animation: float 4s ease-in-out infinite;
+}
+
+/* Contenitore principale dello scrollytelling */
+.scrollytelling-container {
+    padding-bottom: 5rem; /* Spazio extra alla fine */
+}
+
+/* Colonna del testo */
+.text-column {
+    /* Su mobile, i testi appaiono uno dopo l'altro */
+    display: flex;
+    flex-direction: column;
+    gap: 12rem; /* Spazio verticale tra i blocchi di testo */
+    padding-bottom: 50vh; /* Assicura che ci sia abbastanza spazio per scrollare fino all'ultimo step */
+}
+
+/* Stile per ogni blocco di testo (step) */
+.step-content {
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    opacity: 0.3; /* Gli step non attivi sono semi-trasparenti */
+    transform: scale(0.95);
+}
+
+/* Stile per lo step attivo (quando è visibile) */
+.step-content.is-active {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* Colonna del telefono (destra) */
+.phone-column {
+    /* Nascondiamo la colonna del telefono su mobile per un layout più semplice */
+    display: none;
+}
+
+/* Stili per il mockup del telefono */
+.phone-mockup-wrapper {
+    position: sticky; /* L'elemento chiave! */
+    top: 120px; /* Distanza dal top dello schermo */
+    height: 80vh; /* Altezza del contenitore sticky */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.phone-mockup {
+    background: #111;
+    border: 10px solid #111;
+    border-radius: 40px;
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.4);
+    width: 320px; /* Larghezza fissa per il mockup */
+    height: 650px; /* Altezza fissa per il mockup */
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.phone-mockup:hover {
+     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+
+#phone-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.4s ease-in-out;
+}
+
+
+/* Media Query per schermi desktop (da 768px in su) */
+@media (min-width: 768px) {
+    .phone-column {
+        display: block; /* Mostriamo la colonna del telefono */
+    }
+
+    /* Su desktop, la colonna del testo occupa metà spazio */
+    .text-column {
+        padding-bottom: 0; /* Rimuoviamo il padding extra */
+    }
+}
+
+/* Stili per la Call to Action finale */
+.cta-finale {
+    border-top: 1px solid #e5e7eb;
+}
