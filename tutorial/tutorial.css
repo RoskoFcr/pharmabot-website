@@ -25,44 +25,71 @@
 }
 
 
-/* Stili per la mascotte e il fumetto */
+/* Stili per la mascotte e il fumetto (Riprogettati) */
 #mascot-column .relative {
-    max-width: 300px; /* Limita la larghezza della mascotte e del fumetto */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    max-width: 320px;
+    margin: 0 auto;
 }
 
 #mascot-video {
-    margin-bottom: -40px; /* Mantiene la sovrapposizione per l'effetto di profondità */
-    z-index: 5; /* Assicura che il video stia SOTTO il fumetto */
+    order: 2; /* La mascotte sta sotto */
+    width: 200px; /* Riduciamo un po' la mascotte per dare spazio */
+    height: auto;
     position: relative;
+    z-index: 5;
 }
 
 .speech-bubble {
+    order: 1; /* Il fumetto sta sopra */
     background-color: #ffffff;
-    border: 2px solid #e5e7eb;
-    border-radius: 20px;
-    padding: 1.5rem;
+    border: 2px solid #e2e8f0;
+    /* Forma a nuvoletta, più organica */
+    border-radius: 30px;
+    padding: 1.5rem 2rem;
     position: relative;
-    z-index: 20; /* Assicura che il fumetto stia SOPRA il video */
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08);
-    min-height: 180px; /* Altezza minima per evitare ridimensionamenti bruschi */
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    min-height: 170px;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: -30px; /* Sovrapposizione leggera e naturale */
+    z-index: 10;
+    /* Animazione di comparsa */
+    opacity: 0;
+    transform: scale(0.8) translateY(20px);
+    animation: bubble-pop-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
-/* Freccia del fumetto */
-.speech-bubble::before {
+/* Freccia del fumetto che punta in basso */
+.speech-bubble::after {
     content: '';
     position: absolute;
-    top: -12px;
+    bottom: -12px;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 12px solid transparent;
-    border-right: 12px solid transparent;
-    border-bottom: 12px solid #ffffff;
-    filter: drop-shadow(0 -1px 0 #e5e7eb); /* Simula il bordo */
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 15px solid #ffffff;
+    filter: drop-shadow(0 2px 1px rgba(0,0,0,0.05));
+}
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 16px solid transparent;
+    border-right: 16px solid transparent;
+    border-top: 16px solid #e2e8f0;
 }
 
 #tutorial-message {
@@ -113,97 +140,153 @@
     pointer-events: none; /* Non intercettare click */
 }
 
-/* 1. Evidenziazione campo "Nome" e checkbox */
-@keyframes highlight-field {
-    0%, 100% { opacity: 0; }
-    20%, 80% { opacity: 1; }
+/* 1. Evidenziazione campi e simulazione checkbox */
+@keyframes pulse-highlight {
+    0% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.02); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.7; }
 }
 
-.effect-step-1 {
-    top: 13.5%; left: 8%; width: 84%; height: 8%;
-    background: rgba(20, 184, 166, 0.3);
+.effect-step-1-highlight {
+    left: 8%; width: 84%; height: 8%;
+    background: rgba(20, 184, 166, 0.2);
     border: 2px solid #14b8a6;
     border-radius: 8px;
-    animation: highlight-field 2.5s ease-in-out infinite alternate;
-    animation-delay: 0.5s;
+    animation: pulse-highlight 2s ease-in-out infinite;
 }
 
-.effect-step-1-checkbox {
-    top: 23%; left: 8%; width: 84%; height: 8%;
-    background: rgba(20, 184, 166, 0.3);
-    border: 2px solid #14b8a6;
-    border-radius: 8px;
-    animation: highlight-field 2.5s ease-in-out infinite alternate;
-    animation-delay: 1.5s; /* Parte dopo la prima */
-}
-
-
-/* 2. Apparizione icone Fotocamera e Galleria */
-@keyframes pop-in {
-    0% { opacity: 0; transform: scale(0.5); }
-    100% { opacity: 1; transform: scale(1); }
-}
-
-.effect-step-2-camera {
-    top: 50%; left: 25%; width: 20%; height: auto;
-    animation: pop-in 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
-    animation-delay: 0.5s;
-}
-
-.effect-step-2-gallery {
-    top: 50%; left: 55%; width: 20%; height: auto;
-    animation: pop-in 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite alternate;
-    animation-delay: 0.7s;
-}
-
-/* 3. Animazione selettore Generici/Originali e nota */
-@keyframes wiggle {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-.effect-step-3-selector {
-    top: 48%; left: 8%; width: 84%; height: 7%;
-    border: 2px solid #14b8a6;
-    border-radius: 8px;
-    animation: wiggle 2s ease-in-out infinite;
-    animation-delay: 0.5s;
-}
-
-.effect-step-3-notes {
-    top: 58%; left: 8%; width: 84%; height: 15%;
-    border: 2px solid #14b8a6;
-    border-radius: 8px;
-    background: rgba(20, 184, 166, 0.1);
-    animation: highlight-field 2.5s ease-in-out infinite alternate;
-    animation-delay: 1.5s;
-}
-
-
-/* 4. Illuminazione e pressione pulsante "Invia" + icona di conferma */
-@keyframes button-press {
-    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0.7); }
-    50% { transform: scale(1.05); box-shadow: 0 0 20px 10px rgba(20, 184, 166, 0); }
-    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(20, 184, 166, 0); }
+@keyframes checkbox-press-and-check {
+    0%, 100% { transform: scale(1); }
+    10% { transform: scale(0.95); background: rgba(20, 184, 166, 0.4); } /* Press down */
+    20% { transform: scale(1); background: rgba(20, 184, 166, 0.2); } /* Release */
+    /* from 20% to 100% the checkmark is visible */
 }
 
 @keyframes checkmark-appear {
-    0% { opacity: 0; transform: scale(0.3) rotate(-45deg); }
-    100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
-.effect-step-4-button {
-    top: 85%; left: 8%; width: 84%; height: 9%;
-    border-radius: 9999px;
-    animation: button-press 2s ease-in-out infinite;
-    animation-delay: 0.5s;
+.effect-step-1-checkbox-press {
+    top: 30.5%; left: 8%; width: 84%; height: 6.5%; /* Posizione precisa del checkbox */
+    border-radius: 8px;
+    animation: checkbox-press-and-check 1s ease-in-out forwards;
+    animation-delay: 2.5s; /* Dopo le evidenziazioni */
 }
 
-.effect-step-4-checkmark {
-    top: 40%; left: 35%; width: 30%; height: auto;
-    animation: checkmark-appear 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
-    animation-delay: 2.5s; /* Appare dopo la pressione simulata */
+.checkmark-symbol {
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Posizionato a sinistra dentro il box */
+    width: 8px;
+    height: 15px;
+    border: solid #0f766e; /* Colore più scuro per visibilità */
+    border-width: 0 3px 3px 0;
+    transform: translate(0, -50%) rotate(45deg);
+    opacity: 0;
+    animation: checkmark-appear 0.2s forwards;
+    animation-delay: 2.7s; /* Appare subito dopo la pressione */
+}
+
+
+/* 2. Evidenziazione animata icone Fotocamera e Galleria */
+@keyframes icon-glow {
+    from {
+        background-color: rgba(20, 184, 166, 0.4);
+        box-shadow: 0 0 15px 5px rgba(20, 184, 166, 0.6);
+    }
+    to {
+        background-color: rgba(20, 184, 166, 0.2);
+        box-shadow: 0 0 25px 12px rgba(20, 184, 166, 0.3);
+    }
+}
+
+.effect-step-2-icon-highlight {
+    position: absolute;
+    border-radius: 50%; /* Le icone sono circolari */
+    animation: icon-glow 1.5s ease-in-out infinite alternate;
+    /* Valori precisi per sovrapporre le icone nell'immagine */
+    top: 48.5%;
+    width: 20%;
+    height: 11%;
+}
+
+.effect-step-2-camera-highlight {
+    left: 27.5%;
+}
+
+.effect-step-2-gallery-highlight {
+    left: 52.5%;
+}
+
+/* 3. Animazione selettore e testo nelle note */
+@keyframes wiggle {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    75% { transform: translateX(4px); }
+}
+
+.effect-step-3-selector-highlight {
+    top: 48.5%; left: 8%; width: 84%; height: 7%;
+    border: 3px solid #14b8a6;
+    border-radius: 8px;
+    animation: wiggle 1.5s ease-in-out infinite 0.5s;
+}
+
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #374151; }
+}
+
+.effect-step-3-notes-container {
+    position: absolute;
+    top: 58%; left: 8%; width: 84%; height: 15%;
+    opacity: 1;
+}
+
+.effect-step-3-notes-text {
+    position: absolute;
+    top: 15px;
+    left: 10px;
+    color: #374151;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: .12em solid #374151;
+    animation:
+        typing 2s steps(22, end) 1.5s forwards,
+        blink-caret .75s step-end infinite 1.5s;
+}
+
+
+/* 4. Illuminazione e pressione del pulsante "Invia" */
+@keyframes button-glow-press {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 8px 2px rgba(20, 184, 166, 0.3);
+    }
+    50% {
+        transform: scale(1.04);
+        box-shadow: 0 0 35px 12px rgba(20, 184, 166, 0.6); /* Glow più intenso */
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 8px 2px rgba(20, 184, 166, 0.3);
+    }
+}
+
+.effect-step-4-button-highlight {
+    top: 85.5%; left: 8%; width: 84%; height: 8%;
+    border-radius: 9999px; /* Forma a pillola */
+    animation: button-glow-press 2s ease-in-out infinite 0.5s;
+    opacity: 1; /* Assicuriamoci che sia visibile */
 }
 
 /* Stile per le icone emoji */
@@ -214,11 +297,21 @@
     text-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-/* --- ANIMAZIONE PER IL TESTO DEL FUMETTO --- */
+/* --- ANIMAZIONI GENERALI --- */
+
+/* Animazione di comparsa per il fumetto */
+@keyframes bubble-pop-in {
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Animazione per il testo che compare parola per parola */
 @keyframes fade-in-word {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(8px);
     }
     to {
         opacity: 1;
@@ -227,7 +320,7 @@
 }
 
 .animated-word {
-    display: inline-block; /* Necessario per far funzionare la trasformazione */
-    opacity: 0; /* Parte invisibile */
-    animation: fade-in-word 0.4s ease forwards;
+    display: inline-block;
+    opacity: 0;
+    animation: fade-in-word 0.3s ease-out forwards;
 }

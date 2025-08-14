@@ -7,14 +7,26 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "../assets/images/dati anagrafici.jpg",
             video: "../assets/videos/pt 1 di 4.mp4",
             effect: () => {
-                // Crea due elementi per l'effetto di evidenziazione
+                // Evidenziazione animata in sequenza dei campi
                 const highlight1 = document.createElement('div');
-                highlight1.className = 'effect-element effect-step-1';
+                highlight1.className = 'effect-element effect-step-1-highlight';
+                highlight1.style.top = '13.5%'; // Posizione del primo campo (es. Nome)
+                highlight1.style.animationDelay = '0.5s';
 
                 const highlight2 = document.createElement('div');
-                highlight2.className = 'effect-element effect-step-1-checkbox';
+                highlight2.className = 'effect-element effect-step-1-highlight';
+                highlight2.style.top = '22%'; // Posizione del secondo campo (es. Cognome)
+                highlight2.style.animationDelay = '1s';
 
-                return [highlight1, highlight2];
+                // Simulazione della pressione del checkbox
+                const checkboxPress = document.createElement('div');
+                checkboxPress.className = 'effect-element effect-step-1-checkbox-press';
+
+                const checkmarkSymbol = document.createElement('div');
+                checkmarkSymbol.className = 'checkmark-symbol';
+                checkboxPress.appendChild(checkmarkSymbol);
+
+                return [highlight1, highlight2, checkboxPress];
             }
         },
         {
@@ -22,16 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "../assets/images/dati ricette.jpg",
             video: "../assets/videos/pt 2 di 4.mp4",
             effect: () => {
-                // Crea due icone (emoji) per l'effetto pop-in
-                const cameraIcon = document.createElement('div');
-                cameraIcon.innerText = '📷';
-                cameraIcon.className = 'effect-element effect-step-2-camera emoji-icon';
+                // Evidenziazione per l'icona della fotocamera
+                const cameraHighlight = document.createElement('div');
+                cameraHighlight.className = 'effect-element effect-step-2-icon-highlight effect-step-2-camera-highlight';
+                cameraHighlight.style.animationDelay = '0.5s';
 
-                const galleryIcon = document.createElement('div');
-                galleryIcon.innerText = '🖼️';
-                galleryIcon.className = 'effect-element effect-step-2-gallery emoji-icon';
-                
-                return [cameraIcon, galleryIcon];
+                // Evidenziazione per l'icona della galleria
+                const galleryHighlight = document.createElement('div');
+                galleryHighlight.className = 'effect-element effect-step-2-icon-highlight effect-step-2-gallery-highlight';
+                galleryHighlight.style.animationDelay = '1s';
+
+                return [cameraHighlight, galleryHighlight];
             }
         },
         {
@@ -39,13 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "../assets/images/note e preferenze.jpg",
             video: "../assets/videos/pt 3 di 4.mp4",
             effect: () => {
-                const selector = document.createElement('div');
-                selector.className = 'effect-element effect-step-3-selector';
+                // Animazione per il selettore "Generici/Originali"
+                const selectorHighlight = document.createElement('div');
+                selectorHighlight.className = 'effect-element effect-step-3-selector-highlight';
 
-                const notes = document.createElement('div');
-                notes.className = 'effect-element effect-step-3-notes';
+                // Contenitore per l'animazione di testo
+                const notesContainer = document.createElement('div');
+                notesContainer.className = 'effect-element effect-step-3-notes-container';
 
-                return [selector, notes];
+                // Il testo che si animerà con l'effetto macchina da scrivere
+                const notesText = document.createElement('div');
+                notesText.className = 'effect-step-3-notes-text';
+                notesText.textContent = 'NOTE PER IL FARMACISTA';
+
+                notesContainer.appendChild(notesText);
+
+                return [selectorHighlight, notesContainer];
             }
         },
         {
@@ -53,14 +75,11 @@ document.addEventListener('DOMContentLoaded', () => {
             image: "../assets/images/riepilogo.jpg",
             video: "../assets/videos/pt 4 di 4.mp4",
             effect: () => {
-                const button = document.createElement('div');
-                button.className = 'effect-element effect-step-4-button';
+                // Evidenziazione animata per il pulsante finale
+                const buttonHighlight = document.createElement('div');
+                buttonHighlight.className = 'effect-element effect-step-4-button-highlight';
 
-                const checkmark = document.createElement('div');
-                checkmark.innerText = '✅';
-                checkmark.className = 'effect-element effect-step-4-checkmark emoji-icon';
-
-                return [button, checkmark];
+                return [buttonHighlight]; // Ritorna solo l'evidenziazione, senza emoji
             }
         }
     ];
@@ -91,10 +110,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const words = stepData.message.split(' ');
         words.forEach((word, index) => {
             const wordSpan = document.createElement('span');
-            wordSpan.innerText = word + ' ';
+            // Usiamo textContent e uno spazio non divisibile (\u00A0) per garantire la spaziatura
+            wordSpan.textContent = word + '\u00A0';
             wordSpan.className = 'animated-word';
-            // Applica un ritardo crescente a ogni parola per un effetto a cascata
-            wordSpan.style.animationDelay = `${index * 0.05}s`;
+            wordSpan.style.animationDelay = `${index * 0.04}s`;
             tutorialMessage.appendChild(wordSpan);
         });
 
