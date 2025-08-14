@@ -4,192 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Informativa Privacy - Pharmabot</title>
-    <link rel="icon" href="../assets/images/icona.png" type="image/png">
+    
+    <!-- Using a placeholder for the icon as local path is not accessible -->
+    <link rel="icon" href="https://placehold.co/32x32/14b8a6/ffffff?text=P" type="image/png">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* A little extra style for better readability of long text */
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
 </head>
-<body class="bg-gray-50">
+<body class="bg-gray-50 font-sans text-gray-700">
 
     <!-- Header -->
     <header class="bg-white/90 backdrop-blur-lg shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="/" class="flex items-center">
-                <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10 transition-transform duration-300 hover:scale-105">
+                <!-- Using a placeholder for the logo -->
+                <img src="https://placehold.co/160x40/ffffff/14b8a6?text=Pharmabot" alt="Logo Pharmabot" class="h-10 transition-transform duration-300 hover:scale-105">
             </a>
             <nav>
-                <a href="/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105">Torna alla Home</a>
+                <a href="/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105 shadow hover:shadow-lg">
+                    Torna alla Home
+                </a>
             </nav>
         </div>
     </header>
 
-    <!-- Privacy Content -->
-    <main class="section-padding">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informativa sulla Privacy Estesa – PHARMABOT</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 20px;
-            color: #333;
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        ul {
-            list-style-type: disc;
-            margin-left: 20px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
-</head>
-<body>
+    <!-- Privacy Content Main Section -->
+    <main class="container mx-auto px-6 py-12 md:py-20">
+        
+        <!-- Content Wrapper Card -->
+        <div class="bg-white p-8 md:p-12 rounded-2xl shadow-lg max-w-4xl mx-auto">
+            
+            <div class="space-y-8">
+                <!-- Main Title -->
+                <div class="text-center">
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-gray-900 tracking-tight">Informativa sulla Privacy</h1>
+                    <p class="mt-2 text-sm text-gray-500">Ultimo aggiornamento: 14 Agosto 2025</p>
+                </div>
 
-    <h1>Informativa sulla Privacy Estesa – PHARMABOT</h1>
+                <p class="text-base leading-relaxed">
+                    La presente Informativa sulla Privacy descrive le modalità con cui Alessandro Rosi ("PHARMABOT", "io", "mio/mia"), in <strong>Contitolarità del Trattamento</strong> con le farmacie aderenti al servizio ("le Farmacie Contitolari"), raccoglie, utilizza, conserva, divulga e protegge i tuoi dati personali, in conformità con il Regolamento (UE) 2016/679 (GDPR) e la normativa nazionale applicabile in materia di protezione dei dati personali.
+                </p>
 
-    <p><strong>Ultimo aggiornamento:</strong> 14 Agosto 2025</p>
+                <!-- Section 1 -->
+                <div class="space-y-4 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">1. Chi siamo – Contitolari del Trattamento</h2>
+                    <p>Alessandro Rosi e la specifica Farmacia Contitolare a cui l'utente invia una richiesta tramite l'applicazione PHARMABOT, agiscono come <strong>Contitolari del Trattamento</strong> ai sensi dell'Art. 26 del GDPR. Determiniamo congiuntamente le finalità e i mezzi essenziali del trattamento dei dati personali degli utenti per la fornitura del servizio PHARMABOT.</p>
+                    <ul class="list-disc list-inside space-y-3 pl-4">
+                        <li>
+                            <strong>Alessandro Rosi (PHARMABOT)</strong>
+                            <ul class="list-none pl-6 mt-2 space-y-1 text-sm text-gray-600">
+                                <li><strong>Sede legale:</strong> Via G. Leopardi 10, Grosseto, GR 58100, Italia</li>
+                                <li><strong>Codice Fiscale:</strong> RSOLSN89D01E202S</li>
+                                <li><strong>Email:</strong> <a href="mailto:alessandro.rosi@roskoltd.it" class="text-teal-600 hover:text-teal-800 hover:underline">alessandro.rosi@roskoltd.it</a></li>
+                                <li><strong>PEC:</strong> <a href="mailto:alessandro.rosi89@legalmail.it" class="text-teal-600 hover:text-teal-800 hover:underline">alessandro.rosi89@legalmail.it</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>La Farmacia Contitolare selezionata dall'utente</strong>
+                            <p class="pl-6 mt-1 text-sm text-gray-600">I dati di contatto della specifica farmacia (ragione sociale, indirizzo, telefono, P.IVA) sono disponibili nella sezione di selezione della farmacia all'interno dell'app PHARMABOT e sul sito web della farmacia.</p>
+                        </li>
+                    </ul>
+                    <p>Un accordo interno di contitolarità è in essere tra Alessandro Rosi e ciascuna Farmacia Contitolare, definendo le rispettive responsabilità nell'adempimento degli obblighi derivanti dal GDPR.</p>
+                </div>
 
-    <p>La presente Informativa sulla Privacy descrive le modalità con cui Alessandro Rosi ("PHARMABOT", "io", "mio/mia"), in <strong>Contitolarità del Trattamento</strong> con le farmacie aderenti al servizio ("le Farmacie Contitolari"), raccoglie, utilizza, conserva, divulga e protegge i tuoi dati personali, in conformità con il Regolamento (UE) 2016/679 (GDPR) e la normativa nazionale applicabile in materia di protezione dei dati personali.</p>
+                <!-- Section 2 -->
+                <div class="space-y-4 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">2. Categorie di Dati Personali Trattati</h2>
+                    <p>Trattiamo le seguenti categorie di dati personali:</p>
+                    <ul class="list-disc list-inside space-y-2 pl-4">
+                        <li><strong>Dati identificativi e anagrafici:</strong> Nome, cognome, Codice Fiscale, data e luogo di nascita, indirizzo, numero di telefono, indirizzo email.</li>
+                        <li><strong>Dati relativi alla salute:</strong> Codici delle Ricette Mediche Elettroniche (NRE), eventuali note relative a preferenze o condizioni sanitarie.</li>
+                        <li><strong>Dati di geolocalizzazione:</strong> Posizione attuale dell'utente (con consenso) per la ricerca della farmacia più vicina.</li>
+                        <li><strong>Dati di utilizzo del servizio:</strong> Storico delle richieste, stato di avanzamento, recensioni.</li>
+                        <li><strong>Dati tecnici del dispositivo:</strong> ID univoco del dispositivo, token per notifiche push.</li>
+                        <li><strong>Dati di navigazione:</strong> Dati raccolti automaticamente (es. indirizzo IP), anonimizzati per scopi statistici.</li>
+                    </ul>
+                </div>
 
-    <h2>1. Chi siamo – Contitolari del Trattamento</h2>
+                <!-- Section 3 -->
+                <div class="space-y-4 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">3. Finalità e Basi Giuridiche del Trattamento</h2>
+                    <p>Trattiamo i tuoi dati personali per le seguenti finalità e in base alle relative basi giuridiche:</p>
+                    <!-- Styled Table -->
+                    <div class="overflow-x-auto rounded-lg border border-gray-200">
+                        <table class="min-w-full divide-y divide-gray-200 text-sm">
+                            <thead class="bg-gray-100">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left font-semibold text-gray-600 uppercase tracking-wider">Finalità del Trattamento</th>
+                                    <th scope="col" class="px-6 py-3 text-left font-semibold text-gray-600 uppercase tracking-wider">Base Giuridica</th>
+                                    <th scope="col" class="px-6 py-3 text-left font-semibold text-gray-600 uppercase tracking-wider">Categorie di Dati</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">Fornitura del servizio PHARMABOT</td>
+                                    <td class="px-6 py-4">Esecuzione di un contratto e Consenso esplicito.</td>
+                                    <td class="px-6 py-4">Tutti i dati raccolti.</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">Invio di notifiche all'utente</td>
+                                    <td class="px-6 py-4">Consenso e Legittimo interesse.</td>
+                                    <td class="px-6 py-4">Dati di contatto, FCM Token, stato richiesta.</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">Gestione profili utente</td>
+                                    <td class="px-6 py-4">Esecuzione di un contratto e Consenso esplicito.</td>
+                                    <td class="px-6 py-4">Dati anagrafici, Codice Fiscale.</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">Raccolta di feedback e recensioni</td>
+                                    <td class="px-6 py-4">Legittimo interesse.</td>
+                                    <td class="px-6 py-4">Recensione, dati utente anonimi.</td>
+                                </tr>
+                                 <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">Miglioramento del servizio</td>
+                                    <td class="px-6 py-4">Legittimo interesse.</td>
+                                    <td class="px-6 py-4">Dati tecnici e di utilizzo anonimizzati.</td>
+                                </tr>
+                                <tr class="bg-gray-50">
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">Adempimento obblighi legali</td>
+                                    <td class="px-6 py-4">Adempimento di un obbligo legale.</td>
+                                    <td class="px-6 py-4">Tutti i dati rilevanti.</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-800">Prevenzione abusi</td>
+                                    <td class="px-6 py-4">Legittimo interesse.</td>
+                                    <td class="px-6 py-4">Dati di utilizzo, tecnici, log.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-    <p>Alessandro Rosi e la specifica Farmacia Contitolare a cui l'utente invia una richiesta tramite l'applicazione PHARMABOT, agiscono come <strong>Contitolari del Trattamento</strong> ai sensi dell'Art. 26 del GDPR. Determiniamo congiuntamente le finalità e i mezzi essenziali del trattamento dei dati personali degli utenti per la fornitura del servizio PHARMABOT.</p>
+                <!-- Other Sections -->
+                <div class="space-y-6 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">4. Modalità del Trattamento e Misure di Sicurezza</h2>
+                    <p>Il trattamento dei dati avviene mediante strumenti informatici e telematici, adottando <strong>misure tecniche e organizzative adeguate</strong> per garantire la sicurezza, l'integrità e la riservatezza dei dati. Queste misure includono crittografia, controllo degli accessi, Privacy by Design, audit trail e backup regolari.</p>
+                </div>
+                
+                <div class="space-y-6 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">5. Periodo di Conservazione dei Dati</h2>
+                    <p>I dati personali sono conservati per un periodo non superiore a quanto necessario. I dati delle richieste (CF e NRE) vengono conservati per <strong>6-12 mesi</strong> dalla data di completamento o annullamento, dopodiché saranno cancellati o anonimizzati in modo irreversibile.</p>
+                </div>
 
-    <ul>
-        <li>
-            <strong>Alessandro Rosi (PHARMABOT)</strong>
-            <ul>
-                <li><strong>Sede legale:</strong> Via G. Leopardi 10, Grosseto, GR 58100, Italia</li>
-                <li><strong>Codice Fiscale:</strong> RSOLSN89D01E202S</li>
-                <li><strong>Data di nascita:</strong> 1 aprile 1989</li>
-                <li><strong>Email:</strong> <a href="mailto:alessandro.rosi@roskoltd.it">alessandro.rosi@roskoltd.it</a></li>
-                <li><strong>PEC:</strong> <a href="mailto:alessandro.rosi89@legalmail.it">alessandro.rosi89@legalmail.it</a></li>
-            </ul>
-        </li>
-        <li>
-            <strong>La Farmacia Contitolare selezionata dall'utente</strong>
-            <ul>
-                <li>I dati di contatto della specifica farmacia (ragione sociale, indirizzo, telefono, P.IVA) sono disponibili nella sezione di selezione della farmacia all'interno dell'app PHARMABOT e sul sito web della farmacia.</li>
-            </ul>
-        </li>
-    </ul>
+                <div class="space-y-6 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">6. Destinatari dei Dati Personali</h2>
+                    <p>I tuoi dati potranno essere condivisi con fornitori di servizi tecnici (es. Google Cloud) e con le Autorità Giudiziarie, qualora richiesto dalla legge.</p>
+                </div>
 
-    <p>Un accordo interno di contitolarità è in essere tra Alessandro Rosi e ciascuna Farmacia Contitolare, definendo le rispettive responsabilità nell'adempimento degli obblighi derivanti dal GDPR.</p>
+                <div class="space-y-6 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">7. Trasferimenti Internazionali di Dati</h2>
+                    <p>I trasferimenti di dati verso paesi extra UE/SEE avvengono nel rispetto del GDPR, sulla base di garanzie adeguate come le <strong>Clausole Contrattuali Standard (SCC)</strong>.</p>
+                </div>
 
-    <h2>2. Categorie di Dati Personali Trattati</h2>
+                <div class="space-y-6 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">8. Diritti dell'Interessato</h2>
+                    <p>In qualità di interessato, hai diritto di accesso, rettifica, cancellazione, limitazione, portabilità, opposizione, revoca del consenso e di proporre reclamo all'Autorità Garante. Per esercitare i tuoi diritti, puoi contattare Alessandro Rosi all'indirizzo email <a href="mailto:alessandro.rosi@roskoltd.it" class="text-teal-600 hover:text-teal-800 hover:underline">alessandro.rosi@roskoltd.it</a>.</p>
+                </div>
 
-    <p>Trattiamo le seguenti categorie di dati personali:</p>
+                <div class="space-y-6 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">9. Gestione delle Violazioni dei Dati (Data Breach)</h2>
+                    <p>In caso di violazione dei dati, ci impegniamo a notificarla all'Autorità Garante <strong>entro 72 ore</strong> e a comunicarla agli interessati, se necessario, come previsto dal GDPR.</p>
+                </div>
 
-    <ul>
-        <li><strong>Dati identificativi e anagrafici:</strong> Nome, cognome, Codice Fiscale, data e luogo di nascita, indirizzo, numero di telefono, indirizzo email. Questi dati possono essere inseriti manualmente o estratti tramite OCR da tessera sanitaria.</li>
-        <li><strong>Dati relativi alla salute (categorie particolari di dati):</strong> Codici delle Ricette Mediche Elettroniche (NRE), eventuali note relative a preferenze farmaceutiche (es. generico/originale) o condizioni sanitarie rilevanti per la richiesta.</li>
-        <li><strong>Dati di geolocalizzazione:</strong> Posizione attuale dell'utente (se il consenso è concesso) per la ricerca della farmacia più vicina.</li>
-        <li><strong>Dati di utilizzo del servizio:</strong> Dati relativi alle richieste inviate, al loro stato di avanzamento, alle recensioni lasciate.</li>
-        <li><strong>Dati tecnici del dispositivo:</strong> ID univoco del dispositivo (User ID anonimo Firebase), FCM Token per le notifiche push.</li>
-        <li><strong>Dati di navigazione:</strong> Dati raccolti automaticamente dal sistema informatico durante l'uso dell'app o la navigazione del sito (es. indirizzo IP, tipo di browser), anonimizzati e aggregati per scopi statistici e di miglioramento del servizio.</li>
-    </ul>
-
-    <h2>3. Finalità e Basi Giuridiche del Trattamento</h2>
-
-    <p>Trattiamo i tuoi dati personali per le seguenti finalità e in base alle relative basi giuridiche:</p>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Finalità del Trattamento</th>
-                <th>Base Giuridica del Trattamento</th>
-                <th>Categorie di Dati</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Fornitura del servizio PHARMABOT:</strong> Gestione e inoltro delle richieste di ricetta alla farmacia selezionata, aggiornamento dello stato della richiesta, gestione delle preferenze (es. generico/originale, consegna a domicilio).</td>
-                <td><strong>Esecuzione di un contratto</strong> o di misure precontrattuali di cui l'interessato è parte (Art. 6 par. 1 lett. b GDPR) e <strong>Consenso esplicito dell'interessato</strong> per dati sanitari (Art. 9 par. 2 lett. a GDPR).</td>
-                <td>Tutti i dati raccolti.</td>
-            </tr>
-            <tr>
-                <td><strong>Invio di notifiche all'utente:</strong> Notifiche push sullo stato della richiesta (es. "Pronta per il ritiro").</td>
-                <td><strong>Consenso dell'interessato</strong> (Art. 6 par. 1 lett. a GDPR) e <strong>Legittimo interesse</strong> di PHARMABOT a fornire un servizio efficiente (Art. 6 par. 1 lett. f GDPR).</td>
-                <td>Dati di contatto, FCM Token, stato richiesta.</td>
-            </tr>
-            <tr>
-                <td><strong>Gestione dei profili utente e preferenze:</strong> Salvataggio dei dati anagrafici per sé e per i familiari (caregiver) per evitare ripetizioni di inserimento.</td>
-                <td><strong>Esecuzione di un contratto</strong> (Art. 6 par. 1 lett. b GDPR) e <strong>Consenso esplicito</strong> (Art. 9 par. 2 lett. a GDPR).</td>
-                <td>Dati anagrafici, Codice Fiscale.</td>
-            </tr>
-            <tr>
-                <td><strong>Raccolta e analisi di feedback e recensioni:</strong> Permettere all'utente di lasciare recensioni sulla farmacia e sul servizio.</td>
-                <td><strong>Legittimo interesse</strong> di PHARMABOT e della Farmacia Contitolare a migliorare il servizio (Art. 6 par. 1 lett. f GDPR).</td>
-                <td>Recensione (voto, testo), dati utente anonimi associati.</td>
-            </tr>
-            <tr>
-                <td><strong>Miglioramento e ottimizzazione dell'app e del servizio:</strong> Analisi statistiche aggregate sull'utilizzo dell'app e della dashboard, monitoraggio delle performance.</td>
-                <td><strong>Legittimo interesse</strong> di PHARMABOT a sviluppare e migliorare i propri servizi (Art. 6 par. 1 lett. f GDPR).</td>
-                <td>Dati tecnici e di utilizzo anonimizzati/aggregati.</td>
-            </tr>
-            <tr>
-                <td><strong>Adempimento di obblighi legali e normativi:</strong> Inclusi adempimenti fiscali, amministrativi e risposte a richieste dell'autorità giudiziaria.</td>
-                <td><strong>Adempimento di un obbligo legale</strong> (Art. 6 par. 1 lett. c GDPR).</td>
-                <td>Tutti i dati rilevanti.</td>
-            </tr>
-            <tr>
-                <td><strong>Prevenzione e gestione di illeciti o abusi:</strong> Protezione del servizio e degli utenti da frodi o usi impropri.</td>
-                <td><strong>Legittimo interesse</strong> di PHARMABOT alla sicurezza (Art. 6 par. 1 lett. f GDPR).</td>
-                <td>Dati di utilizzo, tecnici, log.</td>
-            </tr>
-        </tbody>
-    </table>
-    <h2>Modalità del Trattamento e Misure di Sicurezza</h2>
-    <p>Il trattamento dei dati avviene mediante strumenti informatici e telematici, adottando <strong>misure tecniche e organizzative adeguate</strong> a garantire la sicurezza, l'integrità, la riservatezza e la disponibilità dei dati personali. Queste misure includono:</p>
-    <ul>
-        <li><strong>Crittografia:</strong> Dati criptati a riposo e in transito.</li>
-        <li><strong>Controllo degli accessi:</strong> Accesso ai dati basato sui ruoli (RBAC) e autenticazione forte.</li>
-        <li><strong>Privacy by Design e by Default:</strong> La protezione dei dati è integrata in ogni fase dello sviluppo dell'app.</li>
-        <li><strong>Audit Trail:</strong> Cronologia completa delle operazioni sul database per tracciabilità e verifica.</li>
-        <li><strong>Backup regolari:</strong> Per prevenire la perdita di dati.</li>
-    </ul>
-    <h2>5. Periodo di Conservazione dei Dati</h2>
-    <p>I dati personali sono conservati per un periodo non superiore a quanto necessario. In particolare:</p>
-    <ul>
-        <li>I dati relativi alle richieste (inclusi CF e NRE) vengono conservati per un periodo esteso (si raccomanda <strong>6 mesi o 1 anno</strong>) a partire dalla data in cui la farmacia marca la richiesta come "completata" o "annullata".</li>
-        <li>I dati di navigazione e utilizzo anonimizzati possono essere conservati per periodi più lunghi per fini statistici.</li>
-    </ul>
-    <p>Al termine del periodo di conservazione, i dati saranno cancellati o anonimizzati in modo irreversibile.</p>
-    <h2>6. Destinatari dei Dati Personali</h2>
-    <p>I tuoi dati potranno essere condivisi, oltre che tra i Contitolari, con:</p>
-    <ul>
-        <li><strong>Fornitori di servizi tecnici e tecnologici (Responsabili del Trattamento):</strong> Soggetti terzi che supportano PHARMABOT (es. Google Cloud Firestore, Firebase Functions, SendGrid). Questi soggetti operano sulla base di specifici accordi (Data Processing Addendum - DPA).</li>
-        <li><strong>Autorità Giudiziarie o Amministrative:</strong> Qualora richiesto da legge.</li>
-    </ul>
-    <h2>7. Trasferimenti Internazionali di Dati</h2>
-    <p>I tuoi dati personali potrebbero essere trasferiti verso paesi non appartenenti all'UE/SEE (es. Stati Uniti) per l'utilizzo di servizi cloud. Tali trasferimenti avvengono nel rispetto del GDPR e sulla base di <strong>garanzie adeguate</strong>, quali <strong>Clausole Contrattuali Standard (SCC)</strong> e <strong>Transfer Impact Assessment (TIA)</strong>.</p>
-    <h2>8. Diritti dell'Interessato</h2>
-    <p>In qualità di interessato, hai i seguenti diritti:</p>
-    <ul>
-        <li><strong>Diritto di accesso, rettifica, cancellazione ("diritto all'oblio"), limitazione di trattamento, portabilità dei dati, opposizione e revoca del consenso.</strong></li>
-        <li><strong>Diritto di proporre reclamo all'Autorità Garante per la Protezione dei Dati Personali.</strong></li>
-    </ul>
-    <p>Per esercitare i tuoi diritti, puoi contattare Alessandro Rosi (PHARMABOT) all'indirizzo email <a href="mailto:alessandro.rosi@roskoltd.it">alessandro.rosi@roskoltd.it</a> o direttamente la Farmacia Contitolare.</p>
-    <h2>9. Gestione delle Violazioni dei Dati Personali (Data Breach)</h2>
-    <p>In caso di violazione dei dati personali, Alessandro Rosi (PHARMABOT) si impegna a notificare la violazione all'Autorità Garante <strong>entro 72 ore</strong> e, se del caso, a comunicarla anche agli interessati, in conformità con gli Artt. 33 e 34 del GDPR.</p>
-    <h2>10. Aggiornamenti dell'Informativa</h2>
-    <p>La presente Informativa sulla Privacy potrà essere soggetta a modifiche e aggiornamenti. Ti invitiamo a consultare regolarmente questa pagina.</p>
+                <div class="space-y-6 pt-6 border-t border-gray-200">
+                    <h2 class="text-2xl font-bold text-gray-800">10. Aggiornamenti dell'Informativa</h2>
+                    <p>La presente Informativa sulla Privacy potrà essere soggetta a modifiche. Ti invitiamo a consultare regolarmente questa pagina per rimanere aggiornato.</p>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -199,13 +208,14 @@
                 <!-- About -->
                 <div class="md:col-span-1">
                     <a href="/" class="flex items-center">
-                        <img src="../assets/images/logo.png" alt="Logo Pharmabot" class="h-10">
+                         <!-- Using a placeholder for the logo -->
+                        <img src="https://placehold.co/160x40/1f2937/ffffff?text=Pharmabot" alt="Logo Pharmabot" class="h-10">
                     </a>
                     <p class="mt-4 text-gray-400 text-sm">La tua farmacia, a casa tua, con un click.</p>
                 </div>
                 <!-- Links -->
                 <div>
-                    <h3 class="font-bold tracking-wide uppercase text-gray-500">Menu</h3>
+                    <h3 class="font-bold tracking-wide uppercase text-gray-500 text-sm">Menu</h3>
                     <ul class="mt-4 space-y-2 text-sm">
                         <li><a href="/tutorial" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
                         <li><a href="/#about" class="text-gray-400 hover:text-white transition-colors">La Storia</a></li>
@@ -215,7 +225,7 @@
                 </div>
                 <!-- Legal -->
                 <div>
-                    <h3 class="font-bold tracking-wide uppercase text-gray-500">Informazioni</h3>
+                    <h3 class="font-bold tracking-wide uppercase text-gray-500 text-sm">Informazioni</h3>
                     <ul class="mt-4 space-y-2 text-sm">
                         <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Informativa Privacy</a></li>
                     </ul>
@@ -228,4 +238,6 @@
     </footer>
 
 </body>
+</html>
+
 </html>
