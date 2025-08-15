@@ -13,22 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dati del Tutorial (Nuova versione più dinamica) ---
     const tutorialSteps = [
         {
-            message: "Ciao! Sono il tuo assistente Pharmabot.<strong> Ti mostro un trucco.</strong>.. Inserisci i tuoi dati <span class=\"highlight-green\">una sola volta</span>.. Mai più un modulo da ricompilare.. <em>Sicuro e veloce.</em>",
+            message: "Ciao! Sono PHARMABOT e questa è la mia app!<strong> Posso aiutarti ad inviare le tue ricette in farmacia...</strong> Così prepareranno i tuoi farmaci <span class=\"highlight-green\">e tu non avrai più il peso di attese e file stressanti.</span>sarò io ad avvisarti quando potrai andare in farmacia a ritirare i tuoi farmaci!<em>PREMI SU DI ME E TI MOSTRO COME FARE!</em>",
             video: "#mascot-video-1",
             effect: () => [] // Effetti rimossi come da richiesta
         },
         {
-            message: "Ora le ricette.<strong> Scrivi, incolla, o scatta una foto.</strong>.. È questione di un attimo.. Pochi tap e sono già pronte per la <span class=\"highlight-green\">tua farmacia</span>.",
+            message: "Per prima cosa inserisci i tuoi dati anagrafici, posso calcolare io il codice fiscale se non lo ricordi!<strong> Se vuoi puoi salvare il tuo profilo come sto facendo io, così la prossima volta sarà ancora più veloce inserire queste informazioni!</strong> Poi seleziona la tua farmacia preferita tra quelle nell'elenco...<span class=\"highlight-green\">SEMPLICE, NON TROVI?</span>.",
             video: "#mascot-video-2",
             effect: () => [] // Effetti rimossi come da richiesta
         },
         {
-            message: "Quale farmacia preferisci?.<strong> Sceglila dalla mappa.</strong>.. Hai delle richieste?. Scrivi una <span class=\"highlight-green\">nota per il farmacista</span>.. <em>Chiedi un generico, se vuoi.</em>",
+            message: "Adesso è il momento di inserire i codici delle ricette...<strong> Niente paura, puoi copiare ed incollare quelle ricevute via SMS, oppure scatta una foto al codice della ricetta o scegli un immagine in cui è ben visibile, ad inserirlo ci penserò io!</strong>Poi dimmi se preferisci farmaci originali o generici,<span class=\"highlight-green\">se hai una nota per il farmacista</span>.. <em> e se desideri una consegna a domicilio!</em>",
             video: "#mascot-video-3",
             effect: () => [] // Effetti rimossi come da richiesta
         },
         {
-            message: "Ci siamo quasi!.<strong> Controlla il riepilogo.</strong>.. Se è tutto ok, <span class=\"highlight-green\">invia</span>.. La farmacia riceve l'ordine all'istante.. E io? Ti avviso quando i farmaci sono pronti. <em>Semplice, no?</em>",
+            message: "Ci siamo quasi!.<strong> Controlla il riepilogo dei dati che hai inserito.</strong>.. Se è tutto ok, <span class=\"highlight-green\">Invia la tua richiesta!</span> La farmacia ricevera subito il tuo ordine... E io ti avviserò quando i farmaci sono pronti per il ritiro. <em>Semplice, no? SARICA SUBITO PHARMABOT! SCORDA PER SEMPRE LO STRESS DELL'ATTESA E DELLA FILA!</em>",
             video: "#mascot-video-4",
             effect: () => [] // Effetti rimossi come da richiesta
         }
