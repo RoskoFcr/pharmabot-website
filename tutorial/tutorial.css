@@ -40,7 +40,7 @@ body {
     position: relative;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
     width: 100%; /* Responsive all'interno della colonna */
-    height: 240px; /* Altezza fissa come richiesto */
+    height: 280px; /* Altezza aumentata come richiesto */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -125,99 +125,11 @@ body {
     cursor: not-allowed; transform: none; box-shadow: none;
 }
 
-/* --- NUOVE ANIMAZIONI PER EFFETTI SULLO SMARTPHONE (v6) --- */
-.effect-element {
-    position: absolute;
-    pointer-events: none;
-    opacity: 0; /* Inizia nascosto, poi appare con animazione */
-    transform: scale(0.9);
-}
-
-/* --- Keyframes Nuovi --- */
-@keyframes drop-in-bounce {
-    0% { transform: translateY(-100px) scale(0.8); opacity: 0; }
-    60% { transform: translateY(5px) scale(1.05); opacity: 1; }
-    80% { transform: translateY(-2px) scale(0.98); }
-    100% { transform: translateY(0) scale(1); opacity: 1; }
-}
-
-@keyframes pop-in {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes draw-line {
-    from { stroke-dashoffset: 1000; }
-    to { stroke-dashoffset: 0; }
-}
-
-@keyframes slide-up-fade-out {
-    from { opacity: 1; transform: translateY(0) scale(1); }
-    to { opacity: 0; transform: translateY(-80px) scale(0.8); }
-}
-
-@keyframes pulse-glow {
-    from { box-shadow: 0 0 10px 0px rgba(20, 184, 166, 0.7); }
-    to { box-shadow: 0 0 25px 10px rgba(20, 184, 166, 0.4); }
-}
+/* --- Stili per Step (Rimossi effetti visivi) --- */
 
 @keyframes breathing-border {
     0%, 100% { border-color: #e2e8f0; }
     50% { border-color: #14b8a6; }
-}
-
-
-/* --- Stili per Step --- */
-
-/* Step 1: Dati Anagrafici (Checkmark) */
-.effect-checkmark-icon {
-    width: 80px; height: 80px;
-    top: 30%; left: 50%;
-    transform: translateX(-50%);
-    animation: pop-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-    animation-delay: 3.5s; /* Ritardo aumentato per dar tempo al testo */
-}
-.effect-checkmark-icon path {
-    stroke-dasharray: 1000;
-    stroke-dashoffset: 1000;
-    animation: draw-line 1s ease-out forwards;
-    animation-delay: 3.9s; /* Ritardo aumentato */
-}
-
-/* Step 2: Invio Ricette (Icone Pop-in) */
-.effect-recipe-icon {
-    width: 60px; height: 60px;
-    background: rgba(255, 255, 255, 0.9);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    animation: pop-in 0.4s ease-out forwards;
-}
-
-/* Step 3: Farmacia (Pin sulla mappa) */
-.effect-map-pin {
-    width: 60px; height: 60px;
-    top: 38%; left: 45%;
-    animation: drop-in-bounce 0.8s ease-out forwards;
-    animation-delay: 2.5s; /* Ritardo aumentato */
-}
-
-/* Step 4: Riepilogo (Pulsante e "Swoosh") */
-.effect-send-button-glow {
-    top: 88%; left: 8.5%; width: 83%; height: 9.5%;
-    border-radius: 9999px;
-    border: 2px solid #14b8a6;
-    animation: pulse-glow 1.5s infinite alternate;
-    animation-delay: 2s; /* Ritardo aumentato */
-    opacity: 1; /* Override opacità di default */
-    transform: scale(1); /* Override trasformazione di default */
-}
-.effect-send-swoosh {
-    width: 50px; height: 50px;
-    top: 89%; left: 50%;
-    transform: translateX(-50%);
-    animation: slide-up-fade-out 1s ease-in forwards;
-    animation-delay: 4s; /* Ritardo aumentato */
 }
 
 /* Stile per il testo evidenziato in verde */
@@ -235,6 +147,6 @@ body {
 
     .speech-bubble {
         padding: 1.5rem; /* Riduci il padding per dare più spazio al testo */
-        height: 220px; /* Riduci l'altezza della vignetta */
+        height: 260px; /* Riduci e adatta l'altezza della vignetta per mobile */
     }
 }

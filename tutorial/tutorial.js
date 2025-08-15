@@ -15,58 +15,22 @@ document.addEventListener('DOMContentLoaded', () => {
         {
             message: "Ciao! Sono il tuo assistente Pharmabot.<strong> Ti mostro un trucco.</strong>.. Inserisci i tuoi dati <span class=\"highlight-green\">una sola volta</span>.. Mai più un modulo da ricompilare.. <em>Sicuro e veloce.</em>",
             video: "#mascot-video-1",
-            effect: () => {
-                const checkmark = document.createElement('div');
-                checkmark.className = 'effect-element effect-checkmark-icon';
-                checkmark.innerHTML = `<svg viewBox="0 0 52 52"><path fill="none" stroke="#14b8a6" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" d="M14 27l5.917 4.917L38 18"/></svg>`;
-                return [checkmark];
-            }
+            effect: () => [] // Effetti rimossi come da richiesta
         },
         {
             message: "Ora le ricette.<strong> Scrivi, incolla, o scatta una foto.</strong>.. È questione di un attimo.. Pochi tap e sono già pronte per la <span class=\"highlight-green\">tua farmacia</span>.",
             video: "#mascot-video-2",
-            effect: () => {
-                const icon1 = document.createElement('div');
-                icon1.className = 'effect-element effect-recipe-icon';
-                icon1.style.cssText = 'top: 65%; left: 15%; animation-delay: 1.5s;';
-                icon1.innerHTML = `<svg width="32" height="32" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>`; // Pen
-
-                const icon2 = document.createElement('div');
-                icon2.className = 'effect-element effect-recipe-icon';
-                icon2.style.cssText = 'top: 65%; left: 50%; transform: translateX(-50%); animation-delay: 1.7s;';
-                icon2.innerHTML = `<svg width="32" height="32" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>`; // Paste
-
-                const icon3 = document.createElement('div');
-                icon3.className = 'effect-element effect-recipe-icon';
-                icon3.style.cssText = 'top: 65%; right: 15%; animation-delay: 1.9s;';
-                icon3.innerHTML = `<svg width="32" height="32" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>`; // Camera
-
-                return [icon1, icon2, icon3];
-            }
+            effect: () => [] // Effetti rimossi come da richiesta
         },
         {
             message: "Quale farmacia preferisci?.<strong> Sceglila dalla mappa.</strong>.. Hai delle richieste?. Scrivi una <span class=\"highlight-green\">nota per il farmacista</span>.. <em>Chiedi un generico, se vuoi.</em>",
             video: "#mascot-video-3",
-            effect: () => {
-                const pin = document.createElement('div');
-                pin.className = 'effect-element effect-map-pin';
-                pin.innerHTML = `<svg width="60" height="60" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`;
-                return [pin];
-            }
+            effect: () => [] // Effetti rimossi come da richiesta
         },
         {
             message: "Ci siamo quasi!.<strong> Controlla il riepilogo.</strong>.. Se è tutto ok, <span class=\"highlight-green\">invia</span>.. La farmacia riceve l'ordine all'istante.. E io? Ti avviso quando i farmaci sono pronti. <em>Semplice, no?</em>",
             video: "#mascot-video-4",
-            effect: () => {
-                const glow = document.createElement('div');
-                glow.className = 'effect-element effect-send-button-glow';
-
-                const swoosh = document.createElement('div');
-                swoosh.className = 'effect-element effect-send-swoosh';
-                swoosh.innerHTML = `<svg width="50" height="50" fill="none" stroke="#14b8a6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-6z"/></svg>`; // Paper plane
-
-                return [glow, swoosh];
-            }
+            effect: () => [] // Effetti rimossi come da richiesta
         }
     ];
 
@@ -115,8 +79,9 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 element.innerHTML += char;
                 if (char !== ' ' && canPlaySound) {
+                    // console.log(`Typing sound for character: ${char}`); // Decommenta per un debug molto verboso
                     typingSound.currentTime = 0;
-                    typingSound.play().catch(() => {});
+                    typingSound.play().catch((e) => console.error("Typing sound failed to play:", e));
                 }
             }
 
@@ -141,8 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const oldStepData = tutorialSteps[oldStepIndex] || tutorialSteps[0];
 
         if (canPlaySound) {
+            console.log("Attempting to play bionic sound...");
             bionicSound.currentTime = 0;
-            bionicSound.play().catch(() => {});
+            bionicSound.play().catch((e) => console.error("Bionic sound failed to play:", e));
         }
 
         // Gestione video (transizione fluida)
