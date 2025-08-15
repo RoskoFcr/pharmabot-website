@@ -39,13 +39,15 @@ body {
     padding: 2rem 2.5rem;
     position: relative;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
-    min-height: 220px;
-    width: 100%;
+    width: 100%; /* Responsive all'interno della colonna */
+    height: 240px; /* Altezza fissa come richiesto */
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px; /* Spazio tra fumetto e robot */
     z-index: 10;
+    animation: breathing-border 4s ease-in-out infinite; /* Applica l'animazione al bordo */
+    overflow: hidden; /* Nasconde il contenuto che potrebbe eccedere */
 }
 .speech-bubble::after {
     content: '';
@@ -159,6 +161,11 @@ body {
     to { box-shadow: 0 0 25px 10px rgba(20, 184, 166, 0.4); }
 }
 
+@keyframes breathing-border {
+    0%, 100% { border-color: #e2e8f0; }
+    50% { border-color: #14b8a6; }
+}
+
 
 /* --- Stili per Step --- */
 
@@ -211,4 +218,23 @@ body {
     transform: translateX(-50%);
     animation: slide-up-fade-out 1s ease-in forwards;
     animation-delay: 4s; /* Ritardo aumentato */
+}
+
+/* Stile per il testo evidenziato in verde */
+.highlight-green {
+    color: #0d9488; /* Verde acqua scuro, come i link */
+    font-weight: bold;
+}
+
+/* Media Query per schermi piccoli (mobile) */
+@media (max-width: 768px) {
+    #tutorial-message {
+        font-size: 1rem; /* Riduci la dimensione del font */
+        line-height: 1.5;
+    }
+
+    .speech-bubble {
+        padding: 1.5rem; /* Riduci il padding per dare più spazio al testo */
+        height: 220px; /* Riduci l'altezza della vignetta */
+    }
 }

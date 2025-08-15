@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dati del Tutorial (Nuova versione più dinamica) ---
     const tutorialSteps = [
         {
-            message: "Ciao! Sono il tuo assistente Pharmabot.<strong> Ti mostro un trucco.</strong>.. Inserisci i tuoi dati una sola volta.. Mai più un modulo da ricompilare.. Sicuro e veloce.",
+            message: "Ciao! Sono il tuo assistente Pharmabot.<strong> Ti mostro un trucco.</strong>.. Inserisci i tuoi dati <span class=\"highlight-green\">una sola volta</span>.. Mai più un modulo da ricompilare.. <em>Sicuro e veloce.</em>",
             video: "#mascot-video-1",
             effect: () => {
                 const checkmark = document.createElement('div');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         {
-            message: "Ora le ricette.<strong> Scrivi, incolla, o scatta una foto.</strong>.. È questione di un attimo.. Pochi tap e sono già pronte per la farmacia.",
+            message: "Ora le ricette.<strong> Scrivi, incolla, o scatta una foto.</strong>.. È questione di un attimo.. Pochi tap e sono già pronte per la <span class=\"highlight-green\">tua farmacia</span>.",
             video: "#mascot-video-2",
             effect: () => {
                 const icon1 = document.createElement('div');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         {
-            message: "Quale farmacia preferisci?.<strong> Sceglila dalla mappa.</strong>.. Hai delle richieste?. Scrivi una nota per il farmacista.. Chiedi un generico, se vuoi.",
+            message: "Quale farmacia preferisci?.<strong> Sceglila dalla mappa.</strong>.. Hai delle richieste?. Scrivi una <span class=\"highlight-green\">nota per il farmacista</span>.. <em>Chiedi un generico, se vuoi.</em>",
             video: "#mascot-video-3",
             effect: () => {
                 const pin = document.createElement('div');
@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         {
-            message: "Ci siamo quasi!.<strong> Controlla il riepilogo.</strong>.. Se è tutto ok, invia.. La farmacia riceve l'ordine all'istante.. E io? Ti avviso quando i farmaci sono pronti. Semplice, no?",
+            message: "Ci siamo quasi!.<strong> Controlla il riepilogo.</strong>.. Se è tutto ok, <span class=\"highlight-green\">invia</span>.. La farmacia riceve l'ordine all'istante.. E io? Ti avviso quando i farmaci sono pronti. <em>Semplice, no?</em>",
             video: "#mascot-video-4",
             effect: () => {
                 const glow = document.createElement('div');
@@ -83,14 +83,16 @@ document.addEventListener('DOMContentLoaded', () => {
     let isTyping = false;
 
     // --- Funzione Typewriter ---
-    function typewriter(element, text, callback) {
+    function typewriter(element, text, duration, callback) {
         isTyping = true;
         element.innerHTML = '';
         text = text.replace(/\.\./g, '.<br>'); // Interpreta .. come punto, pausa e a capo
 
-        let i = 0;
-        const charSpeed = 40; // ms
+        const visibleTextLength = text.replace(/<[^>]*>/g, '').length;
+        const charSpeed = duration / visibleTextLength; // Calcola la velocità dinamicamente
         const sentencePause = 500; // ms
+
+        let i = 0;
 
         function type() {
             if (i >= text.length) {
@@ -164,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Gestione messaggio con typewriter
         tutorialMessage.style.opacity = 1; // Assicura che sia visibile
-        typewriter(tutorialMessage, stepData.message, null);
+        typewriter(tutorialMessage, stepData.message, 3000, null); // 3000ms = 3 secondi
 
         // Gestione immagine telefono
         const imageMap = { 1: 'dati anagrafici', 2: 'dati ricette', 3: 'note e preferenze', 4: 'riepilogo' };
