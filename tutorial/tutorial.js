@@ -5,32 +5,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingSound = new Audio('../assets/audio/typing-sound.mp3');
     bionicSound.volume = 0.3;
     typingSound.volume = 0.4;
-    // Flag per prevenire la riproduzione audio prima dell'interazione dell'utente, come richiesto dai browser
     let canPlaySound = false;
-    document.body.addEventListener('click', () => { canPlaySound = true; }, { once: true });
 
+    // Funzione per abilitare l'audio al primo tocco/click
+    function enableAudio() {
+        canPlaySound = true;
+        document.body.removeEventListener('click', enableAudio);
+        document.body.removeEventListener('touchstart', enableAudio);
+    }
+    document.body.addEventListener('click', enableAudio, { once: true });
+    document.body.addEventListener('touchstart', enableAudio, { once: true });
 
-    // --- Dati del Tutorial (Nuova versione più dinamica) ---
+    // --- Dati del Tutorial (Testi aggiornati e formattati) ---
     const tutorialSteps = [
         {
-            message: "Ciao! Sono PHARMABOT e questa è la mia app! <strong>Posso aiutarti ad inviare le tue ricette in farmacia. </strong>Così prepareranno i tuoi farmaci e tu non avrai più il peso di attese e file stressanti. </span>Sarò io ad avvisarti quando potrai andare in farmacia a ritirare i tuoi farmaci!<em>PREMI SU DI ME E TI MOSTRO COME FARE!</em>",
+            message: "Ciao, sono <strong>PHARMABOT</strong>!<br><br>Ti aiuto a inviare le tue <strong>ricette in farmacia</strong>, così non dovrai più attendere in lunghe file.<br><br>Sarò io ad avvisarti quando potrai ritirare i tuoi farmaci!<br><br><em>Premi su di me per iniziare!</em>",
             video: "#mascot-video-1",
-            effect: () => [] // Effetti rimossi come da richiesta
+            effect: () => []
         },
         {
-            message: "Per prima cosa inserisci i tuoi dati anagrafici, posso calcolare io il codice fiscale se non lo ricordi! <strong>Se vuoi puoi salvare il tuo profilo come sto facendo io, così la prossima volta sarà ancora più veloce inserire queste informazioni! </strong>Poi seleziona la tua farmacia preferita tra quelle nell'elenco. <span class=\"highlight-green\">SEMPLICE, NON TROVI?</span>.",
+            message: "Inserisci i tuoi <strong>dati anagrafici</strong>.<br><br>Se vuoi, puoi <strong>salvare il profilo</strong> per la prossima volta.<br><br>Poi, seleziona la tua <strong>farmacia preferita</strong>.<br><br><span class='highlight-green'>Semplice, no?</span>",
             video: "#mascot-video-2",
-            effect: () => [] // Effetti rimossi come da richiesta
+            effect: () => []
         },
         {
-            message: "Adesso è il momento di inserire i codici delle ricette. <strong>Niente paura, puoi copiare ed incollare quelle ricevute via SMS, oppure scatta una foto al codice della ricetta o scegli un immagine in cui è ben visibile, ad inserirlo ci penserò io! </strong>Poi dimmi se preferisci farmaci originali o generici, <span class=\"highlight-green\">se hai una nota per il farmacista </span> <em> e se desideri una consegna a domicilio!</em>",
+            message: "Ora inserisci i <strong>codici delle ricette</strong>.<br><br>Puoi <strong>copiare e incollare</strong>, oppure <strong>scattare una foto</strong> al codice.<br><br>Scegli se preferisci farmaci <strong>originali o generici</strong> e se desideri la <strong>consegna a domicilio</strong>.",
             video: "#mascot-video-3",
-            effect: () => [] // Effetti rimossi come da richiesta
+            effect: () => []
         },
         {
-            message: "Ci siamo quasi! <strong>Controlla il riepilogo dei dati che hai inserito. </strong>Sono tutti corretti? <span class=\"highlight-green\"> Perfetto, invia la tua richiesta! </span> La farmacia ricevera subito il tuo ordine.Io ti avviserò quando i farmaci saranno pronti per il ritiro. <em>Facile, No? SARICA SUBITO PHARMABOT! SCORDA PER SEMPRE LO STRESS DELL'ATTESA E DELLA FILE INTERMINABILI!</em>",
+            message: "Ci siamo quasi!<br><br><strong>Controlla il riepilogo</strong> dei dati e, se è tutto corretto, <strong>invia la richiesta</strong>.<br><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando sarà pronto.<br><br><em>Scarica subito PHARMABOT!</em>",
             video: "#mascot-video-4",
-            effect: () => [] // Effetti rimossi come da richiesta
+            effect: () => []
         }
     ];
 
@@ -50,11 +56,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function typewriter(element, text, duration, callback) {
         isTyping = true;
         element.innerHTML = '';
-        text = text.replace(/\.\./g, '.<br>'); // Interpreta .. come punto, pausa e a capo
 
         const visibleTextLength = text.replace(/<[^>]*>/g, '').length;
-        const charSpeed = duration / visibleTextLength; // Calcola la velocità dinamicamente
-        const sentencePause = 500; // ms
+        const charSpeed = duration / visibleTextLength;
+        const sentencePause = 400; // Pausa ridotta per un flusso migliore
 
         let i = 0;
 
@@ -75,13 +80,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 tag += '>';
                 element.innerHTML += tag;
-                timeout = 0; // Nessun ritardo per i tag
+                timeout = 0;
             } else {
                 element.innerHTML += char;
                 if (char !== ' ' && canPlaySound) {
-                    // console.log(`Typing sound for character: ${char}`); // Decommenta per un debug molto verboso
                     typingSound.currentTime = 0;
-                    typingSound.play().catch((e) => console.error("Typing sound failed to play:", e));
+                    typingSound.play().catch(() => {}); // Ignora errori se l'audio non può partire
                 }
             }
 
@@ -97,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Funzione Principale di Aggiornamento ---
     function updateTutorialStep(stepIndex) {
-        if (isTyping) return; // Non cambiare step mentre sta scrivendo
+        if (isTyping) return;
 
         const oldStepIndex = currentStep;
         currentStep = stepIndex;
@@ -106,17 +110,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const oldStepData = tutorialSteps[oldStepIndex] || tutorialSteps[0];
 
         if (canPlaySound) {
-            console.log("Attempting to play bionic sound...");
             bionicSound.currentTime = 0;
-            bionicSound.play().catch((e) => console.error("Bionic sound failed to play:", e));
+            bionicSound.play().catch(() => {}); // Ignora errori se l'audio non può partire
         }
 
-        // Gestione video (transizione fluida)
+        // Gestione video
         const currentVideo = document.querySelector(stepData.video);
         const oldVideo = document.querySelector(oldStepData.video);
         if (currentVideo !== oldVideo) {
             oldVideo.classList.remove('active');
-            // Ritarda la pausa per una transizione migliore
             setTimeout(() => {
                 oldVideo.pause(); oldVideo.currentTime = 0;
             }, 400);
@@ -124,15 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
         currentVideo.classList.add('active');
         currentVideo.play().catch(() => {});
 
-        // Gestione effetti (saranno rivisti nel prossimo step)
+        // Gestione effetti (rimossi)
         const oldEffects = phoneScreenContainer.querySelectorAll('.effect-element');
         oldEffects.forEach(el => el.remove());
-        const newEffects = stepData.effect();
-        newEffects.forEach(el => phoneScreenContainer.appendChild(el));
 
         // Gestione messaggio con typewriter
-        tutorialMessage.style.opacity = 1; // Assicura che sia visibile
-        typewriter(tutorialMessage, stepData.message, 3000, null); // 3000ms = 3 secondi
+        tutorialMessage.style.opacity = 1;
+        typewriter(tutorialMessage, stepData.message, 3000, null);
 
         // Gestione immagine telefono
         const imageMap = { 1: 'dati anagrafici', 2: 'dati ricette', 3: 'note e preferenze', 4: 'riepilogo' };

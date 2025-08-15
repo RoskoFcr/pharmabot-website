@@ -47,33 +47,34 @@ body {
     margin-bottom: 20px; /* Spazio tra fumetto e robot */
     z-index: 10;
     animation: breathing-border 4s ease-in-out infinite; /* Applica l'animazione al bordo */
-    overflow: hidden; /* Nasconde il contenuto che potrebbe eccedere */
+    overflow: visible; /* Per rendere visibile la freccia */
 }
 .speech-bubble::after {
     content: '';
     position: absolute;
-    top: 100%; /* Posiziona la coda in basso */
-    left: 30%; /* Angolazione verso sinistra */
-    transform: translateX(-20%);
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-top: 20px solid #ffffff; /* Punta verso il basso */
-    filter: drop-shadow(0 3px 1px rgba(0,0,0,0.05));
-}
-.speech-bubble::before {
-    content: '';
-    position: absolute;
-    top: 100%;
+    bottom: -18px; /* Posiziona la coda in basso, fuori dal box */
     left: 30%;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border-left: 17px solid transparent; /* Leggermente più grande per il bordo */
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid #ffffff;
+    filter: drop-shadow(0 3px 1px rgba(0,0,0,0.05));
+    z-index: 1; /* Davanti al bordo */
+}
+.speech-bubble::before {
+    content: '';
+    position: absolute;
+    bottom: -22px; /* Leggermente più in basso per creare il bordo */
+    left: 30%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 17px solid transparent;
     border-right: 17px solid transparent;
     border-top: 22px solid #e2e8f0; /* Colore del bordo */
-    z-index: -1; /* Dietro la coda principale */
+    z-index: 0; /* Dietro la coda principale */
 }
 
 /* Stili per i video della mascotte */
@@ -92,11 +93,11 @@ body {
 
 /* Stili per il testo nel fumetto (Fade-in) */
 #tutorial-message {
-    font-family: 'Special Elite', monospace; /* Nuovo font macchina da scrivere */
-    font-size: 1rem; /* Leggermente più grande per leggibilità */
-    line-height: 1.6;
+    font-family: 'Special Elite', monospace;
+    font-size: 1.1rem; /* Aumentato per leggibilità desktop */
+    line-height: 1.7;
     color: #374151;
-    text-align: center; /* Tipico della macchina da scrivere */
+    text-align: center; /* Centrato come richiesto */
     width: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
@@ -140,13 +141,60 @@ body {
 
 /* Media Query per schermi piccoli (mobile) */
 @media (max-width: 768px) {
-    #tutorial-message {
-        font-size: 1rem; /* Riduci la dimensione del font */
-        line-height: 1.5;
+    /* Riduci dimensioni titoli e testi */
+    .hero-tutorial h1 {
+        font-size: 2.5rem; /* Riduci dimensione titolo principale */
+    }
+    .hero-tutorial p {
+        font-size: 1rem; /* Riduci dimensione sottotitolo */
+    }
+    .cta-finale h2 {
+        font-size: 2rem; /* Riduci dimensione titolo CTA */
+    }
+    .cta-finale p {
+        font-size: 0.9rem; /* Riduci testo CTA */
+    }
+
+    #interactive-tutorial-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #mascot-column, #phone-column {
+        width: 100%;
+        max-width: 320px; /* Limita larghezza su mobile */
+        margin: 0 auto;
+    }
+
+    #mascot-container {
+        max-width: 100%;
+    }
+
+    .phone-mockup {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 9 / 18.5; /* Mantiene proporzioni telefono */
+        border-width: 8px;
+        border-radius: 30px;
     }
 
     .speech-bubble {
-        padding: 1.5rem; /* Riduci il padding per dare più spazio al testo */
-        height: 260px; /* Riduci e adatta l'altezza della vignetta per mobile */
+        width: 100%; /* Occupa tutta la larghezza disponibile */
+        height: auto; /* Altezza automatica basata sul contenuto */
+        min-height: 200px; /* Altezza minima per coerenza */
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    #tutorial-message {
+        font-size: 0.9rem; /* Riduci dimensione del font nel fumetto */
+        line-height: 1.6;
+    }
+
+    .speech-bubble::after {
+        bottom: -16px; /* Adegua posizione freccia */
+    }
+    .speech-bubble::before {
+        bottom: -19px; /* Adegua posizione bordo freccia */
     }
 }
