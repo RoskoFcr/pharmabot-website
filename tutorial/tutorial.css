@@ -1,4 +1,4 @@
-/* Stili specifici per la pagina tutorial interattiva di Pharmabot */
+/* Stili specifici per la pagina tutorial interattiva di Pharmabot (v4 - Final) */
 
 body {
     background-image: linear-gradient(to bottom, #ffffff, #f7fafc);
@@ -14,13 +14,11 @@ body {
     height: 650px;
     overflow: hidden;
     transition: box-shadow 0.3s ease;
-    margin: 0 auto; /* Centra il telefono nella sua colonna */
+    margin: 0 auto;
 }
-
 .phone-mockup:hover {
      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
 }
-
 #phone-screen {
     width: 100%;
     height: 100%;
@@ -28,55 +26,48 @@ body {
     transition: opacity 0.3s ease-in-out;
 }
 
-
 /* Stili per la mascotte e il fumetto (Riprogettati e Ingranditi) */
 #mascot-column .relative {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-end;
-    max-width: 380px; /* Aumentato per dare più spazio */
+    max-width: 380px;
     margin: 0 auto;
 }
-
 #mascot-video {
     order: 2;
-    width: 260px; /* Mascotte più grande */
+    width: 260px;
     height: auto;
     position: relative;
     z-index: 5;
     transition: transform 0.3s ease;
 }
 #mascot-video:hover {
-    transform: scale(1.05); /* Leggero effetto al passaggio del mouse */
+    transform: scale(1.05);
 }
-
 .speech-bubble {
     order: 1;
     background-color: #ffffff;
     border: 2px solid #e2e8f0;
-    border-radius: 35px; /* Arrotondamento più accentuato */
-    padding: 2rem 2.5rem; /* Più padding per un fumetto più grande */
+    border-radius: 35px;
+    padding: 2rem 2.5rem;
     position: relative;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
-    min-height: 200px; /* Altezza minima aumentata */
+    min-height: 200px;
     width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: -40px; /* Sovrapposizione più decisa */
+    margin-bottom: -40px;
     z-index: 10;
 }
-
-/* Freccia del fumetto che punta in basso */
 .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -14px;
-    left: 50%;
+    bottom: -14px; left: 50%;
     transform: translateX(-50%);
-    width: 0;
-    height: 0;
+    width: 0; height: 0;
     border-left: 18px solid transparent;
     border-right: 18px solid transparent;
     border-top: 18px solid #ffffff;
@@ -85,23 +76,33 @@ body {
 .speech-bubble::before {
     content: '';
     position: absolute;
-    bottom: -17px;
-    left: 50%;
+    bottom: -17px; left: 50%;
     transform: translateX(-50%);
-    width: 0;
-    height: 0;
+    width: 0; height: 0;
     border-left: 19px solid transparent;
     border-right: 19px solid transparent;
     border-top: 19px solid #e2e8f0;
 }
 
+/* Stili per il testo nel fumetto */
 #tutorial-message {
     font-family: 'Inter', sans-serif;
     font-size: 1.1rem;
     line-height: 1.6;
-    color: #374151; /* Grigio scuro per leggibilità */
+    color: #374151;
+    text-align: center;
+    opacity: 0; /* Inizia invisibile per l'animazione */
 }
-
+#tutorial-message.fade-in {
+    animation: fade-in 0.6s ease-out forwards;
+}
+@keyframes fade-in {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+#tutorial-message strong {
+    color: #0d9488; /* Teal-600 */
+}
 
 /* Stili per i controlli di navigazione */
 .nav-button {
@@ -111,31 +112,26 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     padding: 0.75rem 1.5rem;
-    border-radius: 9999px; /* Pill shape */
-    background-color: #14b8a6; /* Verde acqua Pharmabot */
+    border-radius: 9999px;
+    background-color: #14b8a6;
     color: white;
     transition: all 0.3s ease;
     border: 2px solid transparent;
 }
-
 .nav-button:hover {
-    background-color: #0f766e; /* Tonalità più scura */
+    background-color: #0f766e;
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(20, 184, 166, 0.3);
 }
-
-/* Stile per il bottone "Indietro" quando è disabilitato */
 .nav-button:disabled {
-    background-color: #9ca3af; /* Grigio */
+    background-color: #9ca3af;
     color: #e5e7eb;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
-
 /* --- ANIMAZIONI PER GLI EFFETTI SULLO SMARTPHONE (v4 - Final) --- */
-
 .effect-element {
     position: absolute;
     opacity: 1;
@@ -143,7 +139,7 @@ body {
     transition: all 0.3s ease;
 }
 
-/* --- Keyframes Comuni --- */
+/* Keyframes Comuni */
 @keyframes pulse-highlight {
     from { background-color: rgba(20, 184, 166, 0.4); }
     to { background-color: rgba(20, 184, 166, 0.2); }
@@ -166,7 +162,7 @@ body {
     50% { border-color: #374151; }
 }
 
-/* --- Passo 1: Dati Anagrafici --- */
+/* Passo 1: Dati Anagrafici */
 .effect-step-1-highlight {
     left: 8.5%; width: 83%; height: 8.5%;
     background: rgba(20, 184, 166, 0.3);
@@ -174,34 +170,21 @@ body {
     border-radius: 12px;
     animation: pulse-highlight 1.8s ease-in-out infinite alternate;
 }
-.effect-step-1-checkbox-press {
-    animation: pulse-highlight 1s ease-in-out 1;
-}
-.checkmark-symbol {
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 10px; height: 20px;
-    border: solid #0f766e;
-    border-width: 0 4px 4px 0;
-    transform: translate(-50%, -60%) rotate(45deg);
-    opacity: 0;
-    animation: checkmark-draw 0.3s forwards;
-}
-@keyframes checkmark-draw { to { opacity: 1; } }
 
-/* --- Passo 2: Invio Ricette --- */
+/* Passo 2: Invio Ricette */
 .effect-step-2-icon-highlight {
     border-radius: 25px;
     animation: icon-glow 1.5s ease-in-out infinite alternate;
 }
 
-/* --- Passo 3: Preferenze Farmacia --- */
+/* Passo 3: Preferenze Farmacia */
 .effect-step-3-selector-highlight {
     border: 2px solid #14b8a6;
     border-radius: 25px;
     animation: wiggle 1.8s ease-in-out infinite;
 }
 .effect-step-3-notes-text {
+    position: absolute;
     color: #374151;
     font-family: 'Courier New', Courier, monospace;
     font-size: 1rem;
@@ -212,8 +195,8 @@ body {
     animation: typing 2s steps(22, end) forwards, blink-caret .75s step-end infinite 2s;
 }
 
-/* --- Passo 4: Riepilogo Finale --- */
+/* Passo 4: Riepilogo Finale */
 .effect-step-4-button-highlight {
     border-radius: 9999px;
-    animation: icon-glow 1.8s ease-in-out infinite alternate 0.5s; /* Added delay for rhythm */
+    animation: icon-glow 1.8s ease-in-out infinite alternate;
 }

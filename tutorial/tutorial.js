@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. DEFINIZIONE DATI DEL TUTORIAL (v3 - Final) ---
+    // --- 1. DEFINIZIONE DATI DEL TUTORIAL (v4) ---
     const tutorialSteps = [
         {
             message: "<strong>Salva i dati una volta, usali per sempre.</strong> Dimentica di dover ridigitare tutto ogni volta. Inserisci i tuoi dati anagrafici una sola volta. Pharmabot li ricorderà per te, <em>in totale sicurezza.</em>",
@@ -95,17 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
         // Prende i dati dello step corrente
         const stepData = tutorialSteps[stepIndex];
 
-        // Aggiorna il messaggio del fumetto con un'animazione parola per parola
-        tutorialMessage.innerHTML = ''; // Svuota il contenitore
-        const words = stepData.message.split(' ');
-        words.forEach((word, index) => {
-            const wordSpan = document.createElement('span');
-            // Usiamo innerHTML per renderizzare i tag <strong>, <em>, etc.
-            wordSpan.innerHTML = word + '\u00A0'; // Aggiungiamo uno spazio non divisibile
-            wordSpan.className = 'animated-word';
-            wordSpan.style.animationDelay = `${index * 0.04}s`;
-            tutorialMessage.appendChild(wordSpan);
-        });
+        // Aggiorna il messaggio del fumetto con una semplice animazione di fade-in
+        tutorialMessage.classList.remove('fade-in');
+        // Forza il reflow per riavviare l'animazione
+        void tutorialMessage.offsetWidth;
+
+        tutorialMessage.innerHTML = stepData.message;
+        tutorialMessage.classList.add('fade-in');
+
 
         // Aggiorna l'immagine dello smartphone
         phoneScreen.src = stepData.image;
