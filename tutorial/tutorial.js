@@ -13,22 +13,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dati del Tutorial (Nuova versione più dinamica) ---
     const tutorialSteps = [
         {
-            message: "Ciao! Sono PHARMABOT e questa è la mia app!<strong> Posso aiutarti ad inviare le tue ricette in farmacia...</strong> Così prepareranno i tuoi farmaci <span class=\"highlight-green\">e tu non avrai più il peso di attese e file stressanti.</span>sarò io ad avvisarti quando potrai andare in farmacia a ritirare i tuoi farmaci!<em>PREMI SU DI ME E TI MOSTRO COME FARE!</em>",
+            message: "Ciao! Sono PHARMABOT e questa è la mia app! <strong>Posso aiutarti ad inviare le tue ricette in farmacia. </strong>Così prepareranno i tuoi farmaci e tu non avrai più il peso di attese e file stressanti. </span>Sarò io ad avvisarti quando potrai andare in farmacia a ritirare i tuoi farmaci!<em>PREMI SU DI ME E TI MOSTRO COME FARE!</em>",
             video: "#mascot-video-1",
             effect: () => [] // Effetti rimossi come da richiesta
         },
         {
-            message: "Per prima cosa inserisci i tuoi dati anagrafici, posso calcolare io il codice fiscale se non lo ricordi!<strong> Se vuoi puoi salvare il tuo profilo come sto facendo io, così la prossima volta sarà ancora più veloce inserire queste informazioni!</strong> Poi seleziona la tua farmacia preferita tra quelle nell'elenco...<span class=\"highlight-green\">SEMPLICE, NON TROVI?</span>.",
+            message: "Per prima cosa inserisci i tuoi dati anagrafici, posso calcolare io il codice fiscale se non lo ricordi! <strong>Se vuoi puoi salvare il tuo profilo come sto facendo io, così la prossima volta sarà ancora più veloce inserire queste informazioni! </strong>Poi seleziona la tua farmacia preferita tra quelle nell'elenco. <span class=\"highlight-green\">SEMPLICE, NON TROVI?</span>.",
             video: "#mascot-video-2",
             effect: () => [] // Effetti rimossi come da richiesta
         },
         {
-            message: "Adesso è il momento di inserire i codici delle ricette...<strong> Niente paura, puoi copiare ed incollare quelle ricevute via SMS, oppure scatta una foto al codice della ricetta o scegli un immagine in cui è ben visibile, ad inserirlo ci penserò io!</strong>Poi dimmi se preferisci farmaci originali o generici,<span class=\"highlight-green\">se hai una nota per il farmacista</span>.. <em> e se desideri una consegna a domicilio!</em>",
+            message: "Adesso è il momento di inserire i codici delle ricette. <strong>Niente paura, puoi copiare ed incollare quelle ricevute via SMS, oppure scatta una foto al codice della ricetta o scegli un immagine in cui è ben visibile, ad inserirlo ci penserò io! </strong>Poi dimmi se preferisci farmaci originali o generici, <span class=\"highlight-green\">se hai una nota per il farmacista </span> <em> e se desideri una consegna a domicilio!</em>",
             video: "#mascot-video-3",
             effect: () => [] // Effetti rimossi come da richiesta
         },
         {
-            message: "Ci siamo quasi!.<strong> Controlla il riepilogo dei dati che hai inserito.</strong>.. Se è tutto ok, <span class=\"highlight-green\">Invia la tua richiesta!</span> La farmacia ricevera subito il tuo ordine... E io ti avviserò quando i farmaci sono pronti per il ritiro. <em>Semplice, no? SARICA SUBITO PHARMABOT! SCORDA PER SEMPRE LO STRESS DELL'ATTESA E DELLA FILA!</em>",
+            message: "Ci siamo quasi! <strong>Controlla il riepilogo dei dati che hai inserito. </strong>Sono tutti corretti? <span class=\"highlight-green\"> Perfetto, invia la tua richiesta! </span> La farmacia ricevera subito il tuo ordine.Io ti avviserò quando i farmaci saranno pronti per il ritiro. <em>Facile, No? SARICA SUBITO PHARMABOT! SCORDA PER SEMPRE LO STRESS DELL'ATTESA E DELLA FILE INTERMINABILI!</em>",
             video: "#mascot-video-4",
             effect: () => [] // Effetti rimossi come da richiesta
         }
