@@ -1,144 +1,123 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- 1. DEFINIZIONE DATI DEL TUTORIAL (v4) ---
+    // --- Dati del Tutorial (v5 - Final Logic) ---
     const tutorialSteps = [
         {
-            message: "<strong>Salva i dati una volta, usali per sempre.</strong> Dimentica di dover ridigitare tutto ogni volta. Inserisci i tuoi dati anagrafici una sola volta. Pharmabot li ricorderà per te, <em>in totale sicurezza.</em>",
-            image: "../assets/images/dati anagrafici.jpg",
-            video: "../assets/videos/pt 1 di 4.mp4",
+            message: "<strong>Salva i dati una volta, usali per sempre.</strong><br><br>Dimentica di dover ridigitare tutto ogni volta. Inserisci i tuoi dati anagrafici una sola volta. Pharmabot li ricorderà per te, <em>in totale sicurezza.</em>",
+            video: "#mascot-video-1",
             effect: () => {
-                const highlightNome = document.createElement('div');
-                highlightNome.className = 'effect-element effect-step-1-highlight';
-                highlightNome.style.top = '22.5%';
-                highlightNome.style.animationDelay = '0.5s';
-
-                const highlightCognome = document.createElement('div');
-                highlightCognome.className = 'effect-element effect-step-1-highlight';
-                highlightCognome.style.top = '33.5%';
-                highlightCognome.style.animationDelay = '1.0s';
-
-                // Checkbox animation removed as it was problematic.
-                return [highlightNome, highlightCognome];
+                const h1 = document.createElement('div'); h1.className = 'effect-element effect-step-1-highlight';
+                h1.style.cssText = 'top: 22.5%; animation-delay: 0.5s;';
+                const h2 = document.createElement('div'); h2.className = 'effect-element effect-step-1-highlight';
+                h2.style.cssText = 'top: 33.5%; animation-delay: 1.0s;';
+                return [h1, h2];
             }
         },
         {
-            message: "Invia le ricette, <strong>come vuoi tu.</strong> Digita, incolla o <em>scatta una foto.</em> Bastano pochi secondi per aggiungere i codici delle tue ricette elettroniche. L'errore di trascrizione è solo un lontano ricordo.",
-            image: "../assets/images/dati ricette.jpg",
-            video: "../assets/videos/pt 2 di 4.mp4",
+            message: "Invia le ricette, <strong>come vuoi tu.</strong><br><br>Digita, incolla o <em>scatta una foto.</em> Bastano pochi secondi per aggiungere i codici delle tue ricette elettroniche.",
+            video: "#mascot-video-2",
             effect: () => {
-                const cameraHighlight = document.createElement('div');
-                cameraHighlight.className = 'effect-element effect-step-2-icon-highlight';
-                cameraHighlight.style.cssText = 'top: 65%; left: 9%; width: 40%; height: 8%; animation-delay: 0.5s;';
-
-                const galleryHighlight = document.createElement('div');
-                galleryHighlight.className = 'effect-element effect-step-2-icon-highlight';
-                galleryHighlight.style.cssText = 'top: 65%; left: 51%; width: 40%; height: 8%; animation-delay: 1.0s;';
-
-                return [cameraHighlight, galleryHighlight];
+                const h1 = document.createElement('div'); h1.className = 'effect-element effect-step-2-icon-highlight';
+                h1.style.cssText = 'top: 65%; left: 9%; width: 40%; height: 8%; animation-delay: 0.5s;';
+                const h2 = document.createElement('div'); h2.className = 'effect-element effect-step-2-icon-highlight';
+                h2.style.cssText = 'top: 65%; left: 51%; width: 40%; height: 8%; animation-delay: 1.0s;';
+                return [h1, h2];
             }
         },
         {
-            message: "<strong>Scegli la tua farmacia</strong> e personalizza. Seleziona la tua farmacia di fiducia dall'elenco. Hai bisogno di un <em>farmaco generico</em> o hai altre preferenze? Aggiungi una nota. Hai il pieno controllo.",
-            image: "../assets/images/note e preferenze.jpg",
-            video: "../assets/videos/pt 3 di 4.mp4",
+            message: "<strong>Scegli la tua farmacia</strong> e personalizza.<br><br>Seleziona la tua farmacia di fiducia dall'elenco. Hai bisogno di un <em>farmaco generico</em> o hai altre preferenze? Aggiungi una nota.",
+            video: "#mascot-video-3",
             effect: () => {
-                const selectorHighlight = document.createElement('div');
-                selectorHighlight.className = 'effect-element effect-step-3-selector-highlight';
-                selectorHighlight.style.cssText = 'top: 36.5%; left: 8.5%; width: 83%; height: 8.5%; animation-delay: 0.5s;';
-
-                const notesContainer = document.createElement('div');
-                notesContainer.className = 'effect-element';
-                notesContainer.style.cssText = 'top: 50.5%; left: 8.5%; width: 83%; height: 15%;';
-
-                const notesText = document.createElement('div');
-                notesText.className = 'effect-step-3-notes-text';
-                notesText.textContent = 'NOTE PER IL FARMACISTA';
-                notesText.style.animationDelay = '1.5s';
-
-                notesContainer.appendChild(notesText);
-
-                return [selectorHighlight, notesContainer];
+                const h1 = document.createElement('div'); h1.className = 'effect-element effect-step-3-selector-highlight';
+                h1.style.cssText = 'top: 36.5%; left: 8.5%; width: 83%; height: 8.5%; animation-delay: 0.5s;';
+                const h2 = document.createElement('div'); h2.className = 'effect-element';
+                h2.style.cssText = 'top: 50.5%; left: 8.5%; width: 83%; height: 15%;';
+                const text = document.createElement('div'); text.className = 'effect-step-3-notes-text';
+                text.textContent = 'NOTE PER IL FARMACISTA'; text.style.animationDelay = '1.5s';
+                h2.appendChild(text);
+                return [h1, h2];
             }
         },
         {
-            message: "<strong>Un ultimo controllo e via!</strong> Rivedi il riepilogo della tua richiesta. È tutto corretto? Con un semplice tocco, la tua farmacia riceverà l'ordine. Ti avviseremo noi <em>quando sarà tutto pronto.</em>",
-            image: "../assets/images/riepilogo.jpg",
-            video: "../assets/videos/pt 4 di 4.mp4",
+            message: "<strong>Un ultimo controllo e via!</strong><br><br>Rivedi il riepilogo della tua richiesta. È tutto corretto? Con un semplice tocco, la tua farmacia riceverà l'ordine. Ti avviseremo noi <em>quando sarà tutto pronto.</em>",
+            video: "#mascot-video-4",
             effect: () => {
-                const buttonHighlight = document.createElement('div');
-                buttonHighlight.className = 'effect-element effect-step-4-button-highlight';
-                buttonHighlight.style.cssText = 'top: 88%; left: 8.5%; width: 83%; height: 9.5%;';
-
-                return [buttonHighlight];
+                const h1 = document.createElement('div'); h1.className = 'effect-element effect-step-4-button-highlight';
+                h1.style.cssText = 'top: 88%; left: 8.5%; width: 83%; height: 9.5%;';
+                return [h1];
             }
         }
     ];
 
-    // --- 2. SELEZIONE ELEMENTI DEL DOM ---
-    const mascotVideo = document.getElementById('mascot-video');
+    // --- Selezione Elementi DOM ---
+    const mascotContainer = document.getElementById('mascot-container');
     const tutorialMessage = document.getElementById('tutorial-message');
     const phoneScreen = document.getElementById('phone-screen');
     const phoneScreenContainer = document.getElementById('phone-screen-container');
-
     const prevButton = document.getElementById('prev-step');
     const nextButton = document.getElementById('next-step');
     const currentStepNumber = document.getElementById('current-step-number');
 
     let currentStep = 0;
 
-    // --- 3. FUNZIONE PRINCIPALE PER AGGIORNARE LA VISTA ---
+    // --- Funzione Principale di Aggiornamento ---
     function updateTutorialStep(stepIndex) {
-        // Pulisce gli effetti precedenti
+        const oldStepIndex = currentStep;
+        currentStep = stepIndex;
+
+        const stepData = tutorialSteps[stepIndex];
+        const oldStepData = tutorialSteps[oldStepIndex] || tutorialSteps[0];
+
+        // Gestione video
+        const currentVideo = document.querySelector(stepData.video);
+        const oldVideo = document.querySelector(oldStepData.video);
+        if (currentVideo !== oldVideo) {
+            oldVideo.classList.remove('active');
+            oldVideo.pause(); oldVideo.currentTime = 0;
+        }
+        currentVideo.classList.add('active');
+        currentVideo.play().catch(() => {});
+
+        // Gestione effetti
         const oldEffects = phoneScreenContainer.querySelectorAll('.effect-element');
         oldEffects.forEach(el => el.remove());
-
-        // Prende i dati dello step corrente
-        const stepData = tutorialSteps[stepIndex];
-
-        // Aggiorna il messaggio del fumetto con una semplice animazione di fade-in
-        tutorialMessage.classList.remove('fade-in');
-        // Forza il reflow per riavviare l'animazione
-        void tutorialMessage.offsetWidth;
-
-        tutorialMessage.innerHTML = stepData.message;
-        tutorialMessage.classList.add('fade-in');
-
-
-        // Aggiorna l'immagine dello smartphone
-        phoneScreen.src = stepData.image;
-
-        // Aggiorna e riproduce il video della mascotte
-        mascotVideo.src = stepData.video;
-        mascotVideo.play();
-
-        // Applica i nuovi effetti
         const newEffects = stepData.effect();
         newEffects.forEach(el => phoneScreenContainer.appendChild(el));
 
-        // Aggiorna l'indicatore di passo
-        currentStepNumber.innerText = stepIndex + 1;
+        // Gestione messaggio con fade-in
+        tutorialMessage.classList.remove('active');
+        void tutorialMessage.offsetWidth;
+        tutorialMessage.innerHTML = stepData.message;
+        tutorialMessage.classList.add('active');
 
-        // Aggiorna lo stato dei bottoni di navigazione
+        // Gestione immagine telefono
+        const imageMap = { 1: 'dati anagrafici', 2: 'dati ricette', 3: 'note e preferenze', 4: 'riepilogo' };
+        const imageIndex = stepData.video.charAt(stepData.video.length - 1);
+        phoneScreen.src = `../assets/images/${imageMap[imageIndex]}.jpg`;
+
+        // Gestione UI navigazione
+        currentStepNumber.innerText = stepIndex + 1;
         prevButton.disabled = stepIndex === 0;
         nextButton.disabled = stepIndex === tutorialSteps.length - 1;
     }
 
-    // --- 4. GESTIONE EVENTI ---
-    nextButton.addEventListener('click', () => {
+    function goToNextStep() {
         if (currentStep < tutorialSteps.length - 1) {
-            currentStep++;
-            updateTutorialStep(currentStep);
+            updateTutorialStep(currentStep + 1);
         }
-    });
+    }
 
-    prevButton.addEventListener('click', () => {
+    function goToPrevStep() {
         if (currentStep > 0) {
-            currentStep--;
-            updateTutorialStep(currentStep);
+            updateTutorialStep(currentStep - 1);
         }
-    });
+    }
 
-    // --- 5. INIZIALIZZAZIONE ---
-    // Carica il primo step al caricamento della pagina
+    // --- Event Listeners ---
+    nextButton.addEventListener('click', goToNextStep);
+    prevButton.addEventListener('click', goToPrevStep);
+    mascotContainer.addEventListener('click', goToNextStep);
+
+    // --- Inizializzazione ---
     updateTutorialStep(0);
 });

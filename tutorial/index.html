@@ -8,12 +8,19 @@
     
     <link rel="icon" href="../assets/images/icona.png" type="image/png">
 
+    <!-- Preload dei video per transizioni più fluide -->
+    <link rel="preload" as="video" href="../assets/videos/pt 1 di 4.mp4">
+    <link rel="preload" as="video" href="../assets/videos/pt 2 di 4.mp4">
+    <link rel="preload" as="video" href="../assets/videos/pt 3 di 4.mp4">
+    <link rel="preload" as="video" href="../assets/videos/pt 4 di 4.mp4">
+
     <!-- Stili -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
     
     <!-- Link ai fogli di stile: quello generale e quello specifico per il tutorial -->
     <link rel="stylesheet" href="../assets/css/style.css">
@@ -60,23 +67,27 @@
         </section>
 
         <!-- 2. Sezione Tutorial Interattivo -->
-        <section id="interactive-tutorial-container" class="container mx-auto px-6 py-12">
-            <div class="grid md:grid-cols-2 gap-16 items-center">
+        <section id="interactive-tutorial-container" class="container mx-auto px-4 sm:px-6 py-12">
+            <div class="flex flex-row items-center justify-center gap-4 md:gap-8">
 
                 <!-- Colonna sinistra: Mascotte e Fumetto -->
-                <div id="mascot-column" class="flex flex-col items-center justify-center text-center">
-                    <div class="relative">
-                        <video id="mascot-video" class="w-64 h-auto" autoplay muted playsinline>
-                            <!-- Il src del video verrà impostato da JS -->
-                        </video>
+                <div id="mascot-column" class="w-5/12 md:w-2/5 flex flex-col items-center justify-center text-center">
+                    <div id="mascot-container" class="relative cursor-pointer">
                         <div id="speech-bubble" class="speech-bubble">
                             <p id="tutorial-message" class="text-gray-800"></p>
+                        </div>
+                        <!-- Contenitore per i video impilati -->
+                        <div class="relative w-full" style="aspect-ratio: 1/1;">
+                            <video id="mascot-video-1" class="mascot-video-step active" src="../assets/videos/pt 1 di 4.mp4" autoplay muted playsinline></video>
+                            <video id="mascot-video-2" class="mascot-video-step" src="../assets/videos/pt 2 di 4.mp4" muted playsinline></video>
+                            <video id="mascot-video-3" class="mascot-video-step" src="../assets/videos/pt 3 di 4.mp4" muted playsinline></video>
+                            <video id="mascot-video-4" class="mascot-video-step" src="../assets/videos/pt 4 di 4.mp4" muted playsinline></video>
                         </div>
                     </div>
                 </div>
 
                 <!-- Colonna destra: Mockup del Telefono -->
-                <div id="phone-column" class="flex justify-center">
+                <div id="phone-column" class="w-7/12 md:w-3/5 flex justify-start">
                     <div class="phone-mockup">
                         <div id="phone-screen-container" class="relative w-full h-full">
                             <img id="phone-screen" src="" alt="Schermata dell'app Pharmabot in azione">
