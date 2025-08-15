@@ -32,10 +32,10 @@ body {
     max-width: 380px;
 }
 .speech-bubble {
-    order: 1;
+    order: -1; /* Mette il fumetto prima del video */
     background-color: #ffffff;
     border: 2px solid #e2e8f0;
-    border-radius: 35px;
+    border-radius: 25px;
     padding: 2rem 2.5rem;
     position: relative;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
@@ -44,20 +44,34 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: -40px;
+    margin-bottom: 20px; /* Spazio tra fumetto e robot */
     z-index: 10;
 }
 .speech-bubble::after {
-    content: ''; position: absolute; bottom: -14px; left: 50%;
-    transform: translateX(-50%); width: 0; height: 0;
-    border-left: 18px solid transparent; border-right: 18px solid transparent;
-    border-top: 18px solid #ffffff; filter: drop-shadow(0 2px 1px rgba(0,0,0,0.05));
+    content: '';
+    position: absolute;
+    top: 100%; /* Posiziona la coda in basso */
+    left: 30%; /* Angolazione verso sinistra */
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid #ffffff; /* Punta verso il basso */
+    filter: drop-shadow(0 3px 1px rgba(0,0,0,0.05));
 }
 .speech-bubble::before {
-    content: ''; position: absolute; bottom: -17px; left: 50%;
-    transform: translateX(-50%); width: 0; height: 0;
-    border-left: 19px solid transparent; border-right: 19px solid transparent;
-    border-top: 19px solid #e2e8f0;
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 30%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 17px solid transparent; /* Leggermente più grande per il bordo */
+    border-right: 17px solid transparent;
+    border-top: 22px solid #e2e8f0; /* Colore del bordo */
+    z-index: -1; /* Dietro la coda principale */
 }
 
 /* Stili per i video della mascotte */
@@ -76,11 +90,11 @@ body {
 
 /* Stili per il testo nel fumetto (Fade-in) */
 #tutorial-message {
-    font-family: 'Inter', sans-serif;
-    font-size: 1.1rem;
-    line-height: 1.7;
+    font-family: 'Special Elite', monospace; /* Nuovo font macchina da scrivere */
+    font-size: 1.2rem; /* Leggermente più grande per leggibilità */
+    line-height: 1.6;
     color: #374151;
-    text-align: center;
+    text-align: left; /* Tipico della macchina da scrivere */
     width: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
@@ -109,66 +123,92 @@ body {
     cursor: not-allowed; transform: none; box-shadow: none;
 }
 
-/* --- ANIMAZIONI PER GLI EFFETTI SULLO SMARTPHONE --- */
+/* --- NUOVE ANIMAZIONI PER EFFETTI SULLO SMARTPHONE (v6) --- */
 .effect-element {
     position: absolute;
-    opacity: 1;
     pointer-events: none;
-    transition: all 0.3s ease;
+    opacity: 0; /* Inizia nascosto, poi appare con animazione */
+    transform: scale(0.9);
 }
 
-/* Keyframes Comuni */
-@keyframes pulse-highlight {
-    from { background-color: rgba(20, 184, 166, 0.4); }
-    to { background-color: rgba(20, 184, 166, 0.2); }
-}
-@keyframes icon-glow {
-    from { box-shadow: 0 0 15px 5px rgba(20, 184, 166, 0.2); }
-    to { box-shadow: 0 0 25px 12px rgba(20, 184, 166, 0.5); }
-}
-@keyframes wiggle {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-4px); }
-    75% { transform: translateX(4px); }
+/* --- Keyframes Nuovi --- */
+@keyframes drop-in-bounce {
+    0% { transform: translateY(-100px) scale(0.8); opacity: 0; }
+    60% { transform: translateY(5px) scale(1.05); opacity: 1; }
+    80% { transform: translateY(-2px) scale(0.98); }
+    100% { transform: translateY(0) scale(1); opacity: 1; }
 }
 
-/* Passo 1: Dati Anagrafici */
-.effect-step-1-highlight {
-    left: 8.5%; width: 83%; height: 8.5%;
-    background: rgba(20, 184, 166, 0.3);
-    border: 1px solid #14b8a6;
-    border-radius: 12px;
-    animation: pulse-highlight 1.8s ease-in-out infinite alternate;
+@keyframes pop-in {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-/* Passo 2: Invio Ricette */
-.effect-step-2-icon-highlight {
-    border-radius: 25px;
-    animation: icon-glow 1.5s ease-in-out infinite alternate;
+@keyframes draw-line {
+    from { stroke-dashoffset: 1000; }
+    to { stroke-dashoffset: 0; }
 }
 
-/* Passo 3: Preferenze Farmacia */
-.effect-step-3-selector-highlight {
-    border: 2px solid #14b8a6;
-    border-radius: 25px;
-    animation: wiggle 1.8s ease-in-out infinite;
+@keyframes slide-up-fade-out {
+    from { opacity: 1; transform: translateY(0) scale(1); }
+    to { opacity: 0; transform: translateY(-80px) scale(0.8); }
 }
-.effect-step-3-notes-text {
-    position: absolute;
-    color: #374151;
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1rem;
-    font-weight: bold;
-    overflow: hidden;
-    white-space: nowrap;
-    border-right: .12em solid #374151;
-    animation: typing 2s steps(22, end) forwards, blink-caret .75s step-end infinite 2s;
-}
-@keyframes typing { from { width: 0; } to { width: 100%; } }
-@keyframes blink-caret { from, to { border-color: transparent; } 50% { border-color: #374151; } }
 
-/* Passo 4: Riepilogo Finale */
-.effect-step-4-button-highlight {
+@keyframes pulse-glow {
+    from { box-shadow: 0 0 10px 0px rgba(20, 184, 166, 0.7); }
+    to { box-shadow: 0 0 25px 10px rgba(20, 184, 166, 0.4); }
+}
+
+
+/* --- Stili per Step --- */
+
+/* Step 1: Dati Anagrafici (Checkmark) */
+.effect-checkmark-icon {
+    width: 80px; height: 80px;
+    top: 30%; left: 50%;
+    transform: translateX(-50%);
+    animation: pop-in 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    animation-delay: 3.5s; /* Ritardo aumentato per dar tempo al testo */
+}
+.effect-checkmark-icon path {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: draw-line 1s ease-out forwards;
+    animation-delay: 3.9s; /* Ritardo aumentato */
+}
+
+/* Step 2: Invio Ricette (Icone Pop-in) */
+.effect-recipe-icon {
+    width: 60px; height: 60px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: pop-in 0.4s ease-out forwards;
+}
+
+/* Step 3: Farmacia (Pin sulla mappa) */
+.effect-map-pin {
+    width: 60px; height: 60px;
+    top: 38%; left: 45%;
+    animation: drop-in-bounce 0.8s ease-out forwards;
+    animation-delay: 2.5s; /* Ritardo aumentato */
+}
+
+/* Step 4: Riepilogo (Pulsante e "Swoosh") */
+.effect-send-button-glow {
+    top: 88%; left: 8.5%; width: 83%; height: 9.5%;
     border-radius: 9999px;
-    animation: icon-glow 1.8s ease-in-out infinite alternate;
+    border: 2px solid #14b8a6;
+    animation: pulse-glow 1.5s infinite alternate;
+    animation-delay: 2s; /* Ritardo aumentato */
+    opacity: 1; /* Override opacità di default */
+    transform: scale(1); /* Override trasformazione di default */
+}
+.effect-send-swoosh {
+    width: 50px; height: 50px;
+    top: 89%; left: 50%;
+    transform: translateX(-50%);
+    animation: slide-up-fade-out 1s ease-in forwards;
+    animation-delay: 4s; /* Ritardo aumentato */
 }

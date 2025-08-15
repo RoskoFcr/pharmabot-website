@@ -1,50 +1,71 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- Dati del Tutorial (v5 - Final Logic) ---
+    // --- Audio Elements ---
+    const bionicSound = new Audio('../assets/audio/bionic-transition.mp3');
+    const typingSound = new Audio('../assets/audio/typing-sound.mp3');
+    bionicSound.volume = 0.3;
+    typingSound.volume = 0.4;
+    // Flag per prevenire la riproduzione audio prima dell'interazione dell'utente, come richiesto dai browser
+    let canPlaySound = false;
+    document.body.addEventListener('click', () => { canPlaySound = true; }, { once: true });
+
+
+    // --- Dati del Tutorial (Nuova versione più dinamica) ---
     const tutorialSteps = [
         {
-            message: "<strong>Salva i dati una volta, usali per sempre.</strong><br><br>Dimentica di dover ridigitare tutto ogni volta. Inserisci i tuoi dati anagrafici una sola volta. Pharmabot li ricorderà per te, <em>in totale sicurezza.</em>",
+            message: "Ciao! Sono il tuo assistente Pharmabot.<strong> Ti mostro un trucco.</strong>.. Inserisci i tuoi dati una sola volta.. Mai più un modulo da ricompilare.. Sicuro e veloce.",
             video: "#mascot-video-1",
             effect: () => {
-                const h1 = document.createElement('div'); h1.className = 'effect-element effect-step-1-highlight';
-                h1.style.cssText = 'top: 22.5%; animation-delay: 0.5s;';
-                const h2 = document.createElement('div'); h2.className = 'effect-element effect-step-1-highlight';
-                h2.style.cssText = 'top: 33.5%; animation-delay: 1.0s;';
-                return [h1, h2];
+                const checkmark = document.createElement('div');
+                checkmark.className = 'effect-element effect-checkmark-icon';
+                checkmark.innerHTML = `<svg viewBox="0 0 52 52"><path fill="none" stroke="#14b8a6" stroke-width="6" stroke-linecap="round" stroke-miterlimit="10" d="M14 27l5.917 4.917L38 18"/></svg>`;
+                return [checkmark];
             }
         },
         {
-            message: "Invia le ricette, <strong>come vuoi tu.</strong><br><br>Digita, incolla o <em>scatta una foto.</em> Bastano pochi secondi per aggiungere i codici delle tue ricette elettroniche.",
+            message: "Ora le ricette.<strong> Scrivi, incolla, o scatta una foto.</strong>.. È questione di un attimo.. Pochi tap e sono già pronte per la farmacia.",
             video: "#mascot-video-2",
             effect: () => {
-                const h1 = document.createElement('div'); h1.className = 'effect-element effect-step-2-icon-highlight';
-                h1.style.cssText = 'top: 65%; left: 9%; width: 40%; height: 8%; animation-delay: 0.5s;';
-                const h2 = document.createElement('div'); h2.className = 'effect-element effect-step-2-icon-highlight';
-                h2.style.cssText = 'top: 65%; left: 51%; width: 40%; height: 8%; animation-delay: 1.0s;';
-                return [h1, h2];
+                const icon1 = document.createElement('div');
+                icon1.className = 'effect-element effect-recipe-icon';
+                icon1.style.cssText = 'top: 65%; left: 15%; animation-delay: 1.5s;';
+                icon1.innerHTML = `<svg width="32" height="32" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 3a2.828 2.828 0 114 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>`; // Pen
+
+                const icon2 = document.createElement('div');
+                icon2.className = 'effect-element effect-recipe-icon';
+                icon2.style.cssText = 'top: 65%; left: 50%; transform: translateX(-50%); animation-delay: 1.7s;';
+                icon2.innerHTML = `<svg width="32" height="32" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 012 2v14a2 2 0 01-2 2H6a2 2 0 01-2-2V6a2 2 0 012-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg>`; // Paste
+
+                const icon3 = document.createElement('div');
+                icon3.className = 'effect-element effect-recipe-icon';
+                icon3.style.cssText = 'top: 65%; right: 15%; animation-delay: 1.9s;';
+                icon3.innerHTML = `<svg width="32" height="32" fill="none" stroke="#0d9488" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>`; // Camera
+
+                return [icon1, icon2, icon3];
             }
         },
         {
-            message: "<strong>Scegli la tua farmacia</strong> e personalizza.<br><br>Seleziona la tua farmacia di fiducia dall'elenco. Hai bisogno di un <em>farmaco generico</em> o hai altre preferenze? Aggiungi una nota.",
+            message: "Quale farmacia preferisci?.<strong> Sceglila dalla mappa.</strong>.. Hai delle richieste?. Scrivi una nota per il farmacista.. Chiedi un generico, se vuoi.",
             video: "#mascot-video-3",
             effect: () => {
-                const h1 = document.createElement('div'); h1.className = 'effect-element effect-step-3-selector-highlight';
-                h1.style.cssText = 'top: 36.5%; left: 8.5%; width: 83%; height: 8.5%; animation-delay: 0.5s;';
-                const h2 = document.createElement('div'); h2.className = 'effect-element';
-                h2.style.cssText = 'top: 50.5%; left: 8.5%; width: 83%; height: 15%;';
-                const text = document.createElement('div'); text.className = 'effect-step-3-notes-text';
-                text.textContent = 'NOTE PER IL FARMACISTA'; text.style.animationDelay = '1.5s';
-                h2.appendChild(text);
-                return [h1, h2];
+                const pin = document.createElement('div');
+                pin.className = 'effect-element effect-map-pin';
+                pin.innerHTML = `<svg width="60" height="60" viewBox="0 0 24 24" fill="#ef4444"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>`;
+                return [pin];
             }
         },
         {
-            message: "<strong>Un ultimo controllo e via!</strong><br><br>Rivedi il riepilogo della tua richiesta. È tutto corretto? Con un semplice tocco, la tua farmacia riceverà l'ordine. Ti avviseremo noi <em>quando sarà tutto pronto.</em>",
+            message: "Ci siamo quasi!.<strong> Controlla il riepilogo.</strong>.. Se è tutto ok, invia.. La farmacia riceve l'ordine all'istante.. E io? Ti avviso quando i farmaci sono pronti. Semplice, no?",
             video: "#mascot-video-4",
             effect: () => {
-                const h1 = document.createElement('div'); h1.className = 'effect-element effect-step-4-button-highlight';
-                h1.style.cssText = 'top: 88%; left: 8.5%; width: 83%; height: 9.5%;';
-                return [h1];
+                const glow = document.createElement('div');
+                glow.className = 'effect-element effect-send-button-glow';
+
+                const swoosh = document.createElement('div');
+                swoosh.className = 'effect-element effect-send-swoosh';
+                swoosh.innerHTML = `<svg width="50" height="50" fill="none" stroke="#14b8a6" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-6z"/></svg>`; // Paper plane
+
+                return [glow, swoosh];
             }
         }
     ];
@@ -59,36 +80,91 @@ document.addEventListener('DOMContentLoaded', () => {
     const currentStepNumber = document.getElementById('current-step-number');
 
     let currentStep = 0;
+    let isTyping = false;
+
+    // --- Funzione Typewriter ---
+    function typewriter(element, text, callback) {
+        isTyping = true;
+        element.innerHTML = '';
+        text = text.replace(/\.\./g, '.<br>'); // Interpreta .. come punto, pausa e a capo
+
+        let i = 0;
+        const charSpeed = 40; // ms
+        const sentencePause = 500; // ms
+
+        function type() {
+            if (i >= text.length) {
+                isTyping = false;
+                if (callback) callback();
+                return;
+            }
+
+            let char = text.charAt(i);
+            let timeout = charSpeed;
+
+            if (char === '<') {
+                let tag = '';
+                while (i < text.length && text.charAt(i) !== '>') {
+                    tag += text.charAt(i++);
+                }
+                tag += '>';
+                element.innerHTML += tag;
+                timeout = 0; // Nessun ritardo per i tag
+            } else {
+                element.innerHTML += char;
+                if (char !== ' ' && canPlaySound) {
+                    typingSound.currentTime = 0;
+                    typingSound.play().catch(() => {});
+                }
+            }
+
+            if (char === '.' || char === '?' || char === '!') {
+                 timeout = sentencePause;
+            }
+
+            i++;
+            setTimeout(type, timeout);
+        }
+        type();
+    }
 
     // --- Funzione Principale di Aggiornamento ---
     function updateTutorialStep(stepIndex) {
+        if (isTyping) return; // Non cambiare step mentre sta scrivendo
+
         const oldStepIndex = currentStep;
         currentStep = stepIndex;
 
         const stepData = tutorialSteps[stepIndex];
         const oldStepData = tutorialSteps[oldStepIndex] || tutorialSteps[0];
 
-        // Gestione video
+        if (canPlaySound) {
+            bionicSound.currentTime = 0;
+            bionicSound.play().catch(() => {});
+        }
+
+        // Gestione video (transizione fluida)
         const currentVideo = document.querySelector(stepData.video);
         const oldVideo = document.querySelector(oldStepData.video);
         if (currentVideo !== oldVideo) {
             oldVideo.classList.remove('active');
-            oldVideo.pause(); oldVideo.currentTime = 0;
+            // Ritarda la pausa per una transizione migliore
+            setTimeout(() => {
+                oldVideo.pause(); oldVideo.currentTime = 0;
+            }, 400);
         }
         currentVideo.classList.add('active');
         currentVideo.play().catch(() => {});
 
-        // Gestione effetti
+        // Gestione effetti (saranno rivisti nel prossimo step)
         const oldEffects = phoneScreenContainer.querySelectorAll('.effect-element');
         oldEffects.forEach(el => el.remove());
         const newEffects = stepData.effect();
         newEffects.forEach(el => phoneScreenContainer.appendChild(el));
 
-        // Gestione messaggio con fade-in
-        tutorialMessage.classList.remove('active');
-        void tutorialMessage.offsetWidth;
-        tutorialMessage.innerHTML = stepData.message;
-        tutorialMessage.classList.add('active');
+        // Gestione messaggio con typewriter
+        tutorialMessage.style.opacity = 1; // Assicura che sia visibile
+        typewriter(tutorialMessage, stepData.message, null);
 
         // Gestione immagine telefono
         const imageMap = { 1: 'dati anagrafici', 2: 'dati ricette', 3: 'note e preferenze', 4: 'riepilogo' };
