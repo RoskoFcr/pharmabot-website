@@ -39,8 +39,8 @@ body {
     padding: 2rem 2.5rem;
     position: relative;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
-    width: 200%; /* Responsive all'interno della colonna */
-    height: 280px; /* Altezza aumentata come richiesto */
+    width: 180%; /* Responsive all'interno della colonna */
+    height: 300px; /* Altezza aumentata come richiesto */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -54,7 +54,7 @@ body {
     position: absolute;
     top: 100%; /* Posiziona la coda in basso */
     left: 30%; /* Angolazione verso sinistra */
-    transform: translateX(-50%);
+    transform: translateX(100%);
     width: 0;
     height: 0;
     border-left: 15px solid transparent;
@@ -93,10 +93,10 @@ body {
 /* Stili per il testo nel fumetto (Fade-in) */
 #tutorial-message {
     font-family: 'Special Elite', monospace; /* Nuovo font macchina da scrivere */
-    font-size: 1.2rem; /* Leggermente più grande per leggibilità */
+    font-size: 1rem; /* Leggermente più grande per leggibilità */
     line-height: 1.6;
     color: #374151;
-    text-align: left; /* Tipico della macchina da scrivere */
+    text-align: center; /* Tipico della macchina da scrivere */
     width: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
