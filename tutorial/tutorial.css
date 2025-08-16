@@ -1,7 +1,8 @@
-/* Stili specifici per la pagina tutorial interattiva di Pharmabot (v5 - Final) */
+/* Stili specifici per la pagina tutorial interattiva di Pharmabot (v6 - Responsive) */
 
 body {
-    background-image: linear-gradient(to bottom, #ffffff, #f7fafc);
+    /* Sfondo uniforme per evitare contrasti e centrare la scena */
+    background-color: #f0f2f5;
 }
 
 /* Stili per il mockup del telefono */
@@ -29,31 +30,33 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    max-width: 380px;
+    max-width: 420px; /* Aumentata per dare più spazio al fumetto */
 }
 .speech-bubble {
-    order: -1; /* Mette il fumetto prima del video */
+    order: -1;
     background-color: #ffffff;
     border: 2px solid #e2e8f0;
     border-radius: 25px;
-    padding: 2rem 2.5rem;
+    padding: 2rem; /* Padding uniforme */
     position: relative;
     box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
-    width: 150%; /* Responsive all'interno della colonna */
-    height: 300px; /* Altezza aumentata come richiesto */
+    width: 100%; /* Occupa tutta la larghezza del suo contenitore */
+    height: auto; /* Altezza automatica basata sul contenuto */
+    min-height: 280px; /* Altezza minima per mantenere la proporzione */
     display: flex;
+    flex-direction: column; /* Per centrare il testo */
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px; /* Spazio tra fumetto e robot */
+    margin-bottom: 20px;
     z-index: 10;
-    animation: breathing-border 4s ease-in-out infinite; /* Applica l'animazione al bordo */
-    overflow: visible; /* Per rendere visibile la freccia */
+    animation: breathing-border 4s ease-in-out infinite;
+    overflow: visible;
 }
 .speech-bubble::after {
     content: '';
     position: absolute;
-    bottom: -18px; /* Posiziona la coda in basso, fuori dal box */
-    left: 30%;
+    bottom: -18px;
+    left: 50%; /* Centrato rispetto al fumetto */
     transform: translateX(-50%);
     width: 0;
     height: 0;
@@ -61,20 +64,20 @@ body {
     border-right: 15px solid transparent;
     border-top: 20px solid #ffffff;
     filter: drop-shadow(0 3px 1px rgba(0,0,0,0.05));
-    z-index: 1; /* Davanti al bordo */
+    z-index: 1;
 }
 .speech-bubble::before {
     content: '';
     position: absolute;
-    bottom: -22px; /* Leggermente più in basso per creare il bordo */
-    left: 30%;
+    bottom: -22px;
+    left: 50%; /* Centrato rispetto al fumetto */
     transform: translateX(-50%);
     width: 0;
     height: 0;
     border-left: 17px solid transparent;
     border-right: 17px solid transparent;
     border-top: 22px solid #e2e8f0; /* Colore del bordo */
-    z-index: 0; /* Dietro la coda principale */
+    z-index: 0;
 }
 
 /* Stili per i video della mascotte */
@@ -93,11 +96,12 @@ body {
 
 /* Stili per il testo nel fumetto (Fade-in) */
 #tutorial-message {
-    font-family: 'Space Mono';
-    font-size: 1.2rem; /* Aumentato per leggibilità desktop */
-    line-height: 1.7;
+    font-family: 'Inter', sans-serif; /* Nuovo font, più leggibile */
+    /* Font size responsive: min 14px, cresce con il 2vw, max 18px */
+    font-size: clamp(0.875rem, 1.5vw, 1.125rem);
+    line-height: 1.6;
     color: #374151;
-    text-align: center; /* Centrato come richiesto */
+    text-align: center;
     width: 100%;
     opacity: 0;
     transition: opacity 0.5s ease-out, transform 0.5s ease-out;
@@ -107,7 +111,8 @@ body {
     opacity: 1;
     transform: translateY(0);
 }
-#tutorial-message strong { color: #0d9488; }
+#tutorial-message strong { color: #0d9488; font-weight: 600; }
+#tutorial-message em { font-style: italic; }
 
 /* Stili per i controlli di navigazione */
 .nav-button {
