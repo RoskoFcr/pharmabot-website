@@ -186,13 +186,16 @@ body {
     .speech-bubble {
         width: 100%; /* Occupa tutta la larghezza disponibile */
         height: auto; /* Altezza automatica basata sul contenuto */
-        min-height: 200px; /* Altezza minima per coerenza */
-        padding: 1.5rem;
+        min-height: 240px; /* Altezza minima più stabile per coerenza tra step */
+        padding: 1.25rem; /* Padding leggermente ridotto per più spazio al testo */
         margin-bottom: 1rem;
+        display: flex; /* Assicura il centraggio verticale */
+        align-items: center;
+        justify-content: center;
     }
 
     #tutorial-message {
-        font-size: 0.9rem; /* Riduci dimensione del font nel fumetto */
+        font-size: 0.875rem; /* Font leggermente più piccolo per adattarsi meglio */
         line-height: 1.6;
     }
 

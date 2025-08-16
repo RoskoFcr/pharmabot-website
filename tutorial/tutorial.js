@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    document.body.setAttribute('data-typing-status', 'idle');
 
     // --- Audio Elements ---
     const bionicSound = new Audio('../assets/audio/bionic-transition.mp3');
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Funzione Typewriter ---
     function typewriter(element, text, duration, callback) {
         isTyping = true;
+        document.body.setAttribute('data-typing-status', 'typing');
         element.innerHTML = '';
 
         const visibleTextLength = text.replace(/<[^>]*>/g, '').length;
@@ -66,6 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
         function type() {
             if (i >= text.length) {
                 isTyping = false;
+                document.body.setAttribute('data-typing-status', 'idle');
                 if (callback) callback();
                 return;
             }
@@ -143,6 +146,15 @@ document.addEventListener('DOMContentLoaded', () => {
         currentStepNumber.innerText = stepIndex + 1;
         prevButton.disabled = stepIndex === 0;
         nextButton.disabled = stepIndex === tutorialSteps.length - 1;
+
+        // --- NUOVA LOGICA: Cambia testo e funzione del tasto "Indietro" ---
+        const prevButtonText = prevButton.querySelector('span');
+        if (stepIndex === tutorialSteps.length - 1) {
+            prevButtonText.innerText = 'Rivedi il tutorial';
+            prevButton.disabled = false; // Assicura che sia cliccabile all'ultimo step
+        } else {
+            prevButtonText.innerText = 'Indietro';
+        }
     }
 
     function goToNextStep() {
@@ -152,7 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function goToPrevStep() {
-        if (currentStep > 0) {
+        // Se siamo all'ultimo step, il pulsante "Indietro" ora riavvia il tutorial
+        if (currentStep === tutorialSteps.length - 1) {
+            updateTutorialStep(0);
+        } else if (currentStep > 0) {
             updateTutorialStep(currentStep - 1);
         }
     }
