@@ -93,8 +93,8 @@ body {
 
 /* Stili per il testo nel fumetto (Fade-in) */
 #tutorial-message {
-    font-family: 'Quantico';
-    font-size: 1.1rem; /* Aumentato per leggibilità desktop */
+    font-family: 'Space Mono';
+    font-size: 1.2rem; /* Aumentato per leggibilità desktop */
     line-height: 1.7;
     color: #374151;
     text-align: center; /* Centrato come richiesto */
