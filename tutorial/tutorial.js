@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dati del Tutorial (Testi aggiornati e formattati) ---
     const tutorialSteps = [
         {
-            message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> Con me puoi inviare le tue <strong>ricette in farmacia</strong>, direttamente dal tuo smartphone!<strong><br>Non dovrai più attendere e fare lunghe file.</strong><br>Sarò io ad avvisarti per andare a ritirare i tuoi farmaci!<br><em>PREMI SU DI ME e scopriamo l'app insieme!</em><br> ",
+            message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> Con me puoi inviare le tue <strong>ricette in farmacia</strong>, direttamente dal tuo smartphone!<strong><br>Non dovrai più attendere e fare lunghe file.</strong><br>Sarò io ad avvisarti di andare a ritirare i tuoi farmaci!<br><em>PREMI SU DI ME e scopriamo l'app insieme!</em><br> ",
             video: "#mascot-video-1",
             effect: () => []
         },
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             effect: () => []
         },
         {
-            message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevito dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Puoi dirmi se preferisci farmaci <strong>originali o generici</strong> e se desideri la <strong>consegna a domicilio!</strong><br> ",
+            message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevito dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici,</strong>eventuali note per il farmacista e se desideri la <strong>consegna a domicilio!</strong><br> ",
             video: "#mascot-video-3",
             effect: () => []
         },
