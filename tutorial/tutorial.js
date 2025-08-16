@@ -19,12 +19,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dati del Tutorial (Testi aggiornati e formattati) ---
     const tutorialSteps = [
         {
-            message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> con me puoi inviare le tue <strong>ricette in farmacia</strong>, direttamente dal tuo smartphone!<strong><br> non dovrai più attendere e fare lunghe file.</strong><br>Sarò io ad avvisarti quando potrai andare a ritirare i tuoi farmaci!<br><em>Premi su di me e ti mostro come fare!</em>",
+            message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> Con me puoi inviare le tue <strong>ricette in farmacia</strong>, direttamente dal tuo smartphone!<strong><br>Non dovrai più attendere e fare lunghe file.</strong><br>Sarò io ad avvisarti quando potrai andare a ritirare i tuoi farmaci!<br><em>Premi su di me e ti mostro come fare!</em>",
             video: "#mascot-video-1",
             effect: () => []
         },
         {
-            message: "Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Poi, seleziona la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'>Semplice, no?</span>",
+            message: "Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Scegli la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'>Semplice, no?</span>",
             video: "#mascot-video-2",
             effect: () => []
         },
