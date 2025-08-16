@@ -186,7 +186,7 @@ body {
     .speech-bubble {
         width: 110%; /* Occupa tutta la larghezza disponibile */
         height: auto; /* Altezza automatica basata sul contenuto */
-        min-height: 280px; /* Aumentata ulteriormente per i testi più lunghi */
+        min-height: 240px; /* Aumentata ulteriormente per i testi più lunghi */
         padding: 1.5rem 1rem; /* Padding verticale maggiore per più respiro */
         margin-bottom: 1rem;
         display: flex; /* Assicura il centraggio verticale */
