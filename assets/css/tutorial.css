@@ -14,7 +14,7 @@
 #interactive-tutorial-container {
     display: flex;
     flex-direction: row;
-    align-items: center; /* Allinea verticalmente al centro */
+    align-items: flex-end; /* Allinea alla base come richiesto */
     justify-content: center; /* Allinea orizzontalmente al centro */
     gap: 2rem;
     width: 100%;
@@ -60,11 +60,11 @@
     background-color: #ffffff;
     border: 2px solid #e2e8f0;
     border-radius: 25px;
-    padding: 1.5rem 2rem; /* Padding ottimizzato */
+    padding: 2rem; /* Padding aumentato per respiro */
     position: relative;
     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
-    width: 130%; /* Leggermente più stretto per un look più pulito */
-    min-height: 250px; /* Altezza minima per coerenza */
+    width: 100%; /* Larghezza adattata al contenitore */
+    max-width: 500px; /* Limite per leggibilità */
     height: auto; /* Altezza automatica basata sul contenuto */
     display: flex;
     align-items: center;
@@ -112,9 +112,9 @@
 
 /* Stili per il testo nel fumetto */
 #tutorial-message {
-    font-family: 'Inter', sans-serif; /* Font cambiato come richiesto */
-    font-size: clamp(0.9rem, 1.8vw, 1.1rem); /* Font fluido e responsivo */
-    line-height: 1.6;
+    font-family: 'Poppins', sans-serif; /* Font cambiato come richiesto */
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Font fluido e più grande */
+    line-height: 1.7; /* Aumentata interlinea per leggibilità */
     color: #374151;
     text-align: center;
     width: 100%;
