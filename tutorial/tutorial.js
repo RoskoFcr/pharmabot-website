@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const typingSound = new Audio('../assets/audio/typing-sound.mp3');
     bionicSound.volume = 0.3;
     typingSound.volume = 0.4;
-    let canPlaySound = false;
+    let canPlaySound = true;
 
     // Funzione per abilitare l'audio al primo tocco/click
     function enableAudio() {
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             effect: () => []
         },
         {
-            message: "Ci siamo quasi!<br><br><strong>Controlla il riepilogo dei dati,</strong> se è tutto corretto, <strong>invia la richiesta!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando sarà pronto.<br><em>Scarica subito PHARMABOT!</em>",
+            message: "Ci siamo quasi!<br><strong>Controlla il riepilogo dei dati,</strong> se è tutto corretto, <strong>invia la richiesta!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando sarà pronto.<br><em>Scarica subito PHARMABOT!</em>",
             video: "#mascot-video-4",
             effect: () => []
         }
