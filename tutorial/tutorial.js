@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
             effect: () => []
         },
         {
-            message: "INIZIAMO SUBITO!<br>Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Scegli la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'><br>Semplice, no?</span><br> ",
+            message: "INIZIAMO SUBITO!<br>Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Scegli la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'>Semplice, no?</span><br> ",
             video: "#mascot-video-2",
             effect: () => []
         },
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             effect: () => []
         },
         {
-            message: "Ci siamo quasi!<br><strong>Controlla i dati che hai inserito,</strong> se è tutto corretto, <strong>invia la richiesta!<br>ECCO FATTO!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai andare a ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
+            message: "Ci siamo quasi!<br><strong>Controlla i dati inseriti,</strong> se è tutto corretto, <strong>invia la richiesta!<br>ECCO FATTO!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai andare a ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
             video: "#mascot-video-4",
             effect: () => []
         }
