@@ -19,22 +19,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Dati del Tutorial (Testi aggiornati e formattati) ---
     const tutorialSteps = [
         {
-            message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> Con me puoi inviare le tue <strong>ricette in farmacia</strong>, direttamente dal tuo smartphone!<strong><br>Non dovrai più attendere e fare lunghe file.</strong><br>Sarò io ad avvisarti quando potrai andare a ritirare i tuoi farmaci!<br><em>Premi su di me e ti mostro come fare!</em><br>",
+            message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> Con me puoi inviare le tue <strong>ricette in farmacia</strong>, direttamente dal tuo smartphone!<strong><br>Non dovrai più attendere e fare lunghe file.</strong><br>Sarò io ad avvisarti quando potrai andare a ritirare i tuoi farmaci!<br><em>Premi su di me e ti mostro come fare!</em><br> ",
             video: "#mascot-video-1",
             effect: () => []
         },
         {
-            message: "Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Scegli la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'>Semplice, no?</span><br>",
+            message: "Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Scegli la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'>Semplice, no?</span><br> ",
             video: "#mascot-video-2",
             effect: () => []
         },
         {
-            message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevito dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Puoi dirmi se preferisci farmaci <strong>originali o generici</strong> e se desideri la <strong>consegna a domicilio!</strong><br>",
+            message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevito dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Puoi dirmi se preferisci farmaci <strong>originali o generici</strong> e se desideri la <strong>consegna a domicilio!</strong><br> ",
             video: "#mascot-video-3",
             effect: () => []
         },
         {
-            message: "Ci siamo quasi!<br><strong>Controlla il riepilogo dei dati,</strong> se è tutto corretto, <strong>invia la richiesta!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando sarà pronto.<br><em>Scarica subito PHARMABOT!</em><br>",
+            message: "Ci siamo quasi!<br><strong>Controlla il riepilogo dei dati,</strong> se è tutto corretto, <strong>invia la richiesta!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai andare a ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
             video: "#mascot-video-4",
             effect: () => []
         }
