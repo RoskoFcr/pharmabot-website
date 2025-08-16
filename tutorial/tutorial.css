@@ -184,7 +184,7 @@ body {
     }
 
     .speech-bubble {
-        width: 100%; /* Occupa tutta la larghezza disponibile */
+        width: 110%; /* Occupa tutta la larghezza disponibile */
         height: auto; /* Altezza automatica basata sul contenuto */
         min-height: 280px; /* Aumentata ulteriormente per i testi più lunghi */
         padding: 1.5rem 1rem; /* Padding verticale maggiore per più respiro */
@@ -195,7 +195,7 @@ body {
     }
 
     #tutorial-message {
-        font-size: 0.875rem; /* Font leggermente più piccolo per adattarsi meglio */
+        font-size: 0.6rem; /* Font leggermente più piccolo per adattarsi meglio */
         line-height: 1.6;
     }
 
