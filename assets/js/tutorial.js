@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- Audio Elements ---
-    const bionicSound = new Audio('../assets/audio/bionic-transition.mp3');
-    const typingSound = new Audio('../assets/audio/typing-sound.mp3');
+    const bionicSound = new Audio('assets/audio/bionic-transition.mp3');
+    const typingSound = new Audio('assets/audio/typing-sound.mp3');
     bionicSound.volume = 0.3;
     typingSound.volume = 0.4;
     let canPlaySound = true;
@@ -74,13 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
             let timeout = charSpeed;
 
             if (char === '<') {
-                let tag = '';
-                while (i < text.length && text.charAt(i) !== '>') {
-                    tag += text.charAt(i++);
+                const tagEnd = text.indexOf('>', i);
+                if (tagEnd !== -1) {
+                    const tag = text.substring(i, tagEnd + 1);
+                    element.innerHTML += tag;
+                    i = tagEnd; // L'incremento finale sposterà l'indice al carattere successivo
+                    timeout = 0;
                 }
-                tag += '>';
-                element.innerHTML += tag;
-                timeout = 0;
             } else {
                 element.innerHTML += char;
                 if (char !== ' ' && canPlaySound) {
@@ -137,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Gestione immagine telefono
         const imageMap = { 1: 'dati anagrafici', 2: 'dati ricette', 3: 'note e preferenze', 4: 'riepilogo' };
         const imageIndex = stepData.video.charAt(stepData.video.length - 1);
-        phoneScreen.src = `../assets/images/${imageMap[imageIndex]}.jpg`;
+        phoneScreen.src = `assets/images/${imageMap[imageIndex]}.jpg`;
 
         // Gestione UI navigazione
         currentStepNumber.innerText = stepIndex + 1;

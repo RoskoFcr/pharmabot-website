@@ -32,6 +32,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/tutorial.css">
 
     <style>
         /* Stili specifici per la nuova homepage, se necessari */
@@ -93,7 +94,7 @@
             </a>
             <!-- Desktop Menu -->
             <nav class="hidden md:flex items-center space-x-8">
-                <a href="/tutorial/" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">Guida</a>
+                <a href="#interactive-tutorial" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">Guida</a>
                 <a href="#about" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">La Storia</a>
                 <a href="#pharmacies" class="text-gray-600 hover:text-teal-600 font-semibold transition-colors">Per le Farmacie</a>
                 <a href="/contact/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-2 px-5 rounded-full transition-all duration-300 transform hover:scale-105">Contattaci</a>
@@ -107,7 +108,7 @@
         </div>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white/20 backdrop-blur-md">
-            <a href="/tutorial/" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Guida all'Uso</a>
+            <a href="#interactive-tutorial" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Guida all'Uso</a>
             <a href="#about" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">La Storia</a>
             <a href="#pharmacies" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Per le Farmacie</a>
             <a href="/contact/" class="block py-3 px-6 text-gray-700 hover:bg-teal-50 transition-colors">Contattaci</a>
@@ -126,7 +127,7 @@
                 Invia le tue ricette in un attimo, senza attese e senza stress.
             </p>
             <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <a href="/tutorial/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto">
+                <a href="#interactive-tutorial" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-8 rounded-full text-base transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto">
                     Come Funziona
                 </a>
                 <a href="#pharmacies" class="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-full text-base transition-colors w-full sm:w-auto">
@@ -156,7 +157,7 @@
                     Invia le tue ricette elettroniche in un attimo, senza attese e senza stress. PHARMABOT si prende cura della tua salute e del tuo tempo.
                 </h2>
                 <div class="mt-10 flex flex-col sm:flex-row items-center gap-4">
-                    <a href="/tutorial/" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+                    <a href="#interactive-tutorial" class="bg-teal-600 hover:bg-teal-700 text-white font-bold py-4 px-8 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                         Come Funziona
                     </a>
                     <a href="#pharmacies" class="bg-white/20 backdrop-blur-sm hover:bg-white/30 text-#303030 font-bold py-4 px-8 rounded-full text-lg transition-colors flex items-center gap-2">
@@ -170,50 +171,55 @@
 
     <div class="md:hidden h-16 bg-gradient-to-b from-gray-50 to-white"></div>
     
-    <!-- How it Works Section -->
-    <section id="tutorial" class="bg-white section-padding">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16 md:mb-20">
-                <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900">Tutto in <span class="text-teal-600">3 semplici passi</span></h2>
-                <p class="mt-4 text-base md:text-lg text-gray-600 max-w-2xl mx-auto">Abbiamo eliminato ogni complessità per offrirti un'esperienza che ti farà risparmiare tempo e fatica.</p>
-            </div>
+    <!-- Sezione Tutorial Interattivo -->
+    <section id="interactive-tutorial">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-gray-900">SCOPRI COME FUNZIONA!</h2>
+            <p class="mt-4 text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+                Segui le indicazioni del robottino e clicca su di lui o sul tasto "Avanti" per proseguire. Ti guiderà attraverso le funzioni principali di Pharmabot in modo semplice e veloce.
+            </p>
+        </div>
 
-            <div class="relative">
-                <!-- Connector Line for Desktop -->
-                <div class="hidden md:block absolute top-12 left-0 w-full h-0.5 border-t-2 border-gray-200 step-connector"></div>
-                <div class="grid md:grid-cols-3 gap-12 md:gap-16 relative">
-                    <!-- Step 1 -->
-                    <div class="text-center">
-                        <div class="relative inline-block bg-white p-2">
-                            <div class="bg-teal-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold shadow-lg border-4 border-white">1</div>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mt-6">Prepara la Richiesta</h3>
-                        <p class="mt-2 text-gray-600">Inserisci i tuoi dati (solo la prima volta) e i codici delle ricette. Puoi anche scattare una foto.</p>
+        <div id="interactive-tutorial-container">
+            <!-- Colonna sinistra: Mascotte e Fumetto -->
+            <div id="mascot-column">
+                <div id="mascot-container" class="relative cursor-pointer">
+                    <div id="speech-bubble" class="speech-bubble">
+                        <p id="tutorial-message"></p>
                     </div>
-                    <!-- Step 2 -->
-                    <div class="text-center">
-                        <div class="relative inline-block bg-white p-2">
-                            <div class="bg-teal-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold shadow-lg border-4 border-white">2</div>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mt-6">Scegli e Personalizza</h3>
-                        <p class="mt-2 text-gray-600">Seleziona la tua farmacia di fiducia e aggiungi note, come la preferenza per farmaci generici.</p>
-                    </div>
-                    <!-- Step 3 -->
-                    <div class="text-center">
-                        <div class="relative inline-block bg-white p-2">
-                            <div class="bg-teal-600 text-white w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold shadow-lg border-4 border-white">3</div>
-                        </div>
-                        <h3 class="text-xl md:text-2xl font-bold text-gray-800 mt-6">Invia e Attendi la Notifica</h3>
-                        <p class="mt-2 text-gray-600">Controlla il riepilogo e invia. Ti avvisiamo noi quando i farmaci sono pronti per il ritiro.</p>
+                    <!-- Contenitore per i video impilati -->
+                    <div class="relative w-full" style="aspect-ratio: 1/1;">
+                        <video id="mascot-video-1" class="mascot-video-step active" src="assets/videos/pt 1 di 4.mp4" autoplay muted playsinline loop></video>
+                        <video id="mascot-video-2" class="mascot-video-step" src="assets/videos/pt 2 di 4.mp4" muted playsinline loop></video>
+                        <video id="mascot-video-3" class="mascot-video-step" src="assets/videos/pt 3 di 4.mp4" muted playsinline loop></video>
+                        <video id="mascot-video-4" class="mascot-video-step" src="assets/videos/pt 4 di 4.mp4" muted playsinline loop></video>
                     </div>
                 </div>
             </div>
 
-            <div class="mt-16 md:mt-20 text-center">
-                <a href="/tutorial/" class="bg-gray-800 hover:bg-black text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-base md:text-lg transition-all duration-300 transform hover:scale-105 shadow-lg inline-block">
-                    Vedi la Guida Dettagliata
-                </a>
+            <!-- Colonna destra: Mockup del Telefono -->
+            <div id="phone-column">
+                <div class="phone-mockup">
+                    <div id="phone-screen-container" class="relative w-full h-full">
+                        <img id="phone-screen" src="assets/images/home.jpg" alt="Schermata dell'app Pharmabot in azione">
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Controlli di Navigazione -->
+        <div id="navigation-controls" class="flex justify-between items-center mt-8 max-w-lg mx-auto">
+            <button id="prev-step" class="nav-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                <span>Indietro</span>
+            </button>
+            <div id="step-indicator" class="text-sm font-semibold text-gray-600">
+                Passo <span id="current-step-number">1</span> di 4
+            </div>
+            <button id="next-step" class="nav-button">
+                <span>Avanti</span>
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+            </button>
         </div>
     </section>
 
@@ -368,7 +374,7 @@
                 <div>
                     <h3 class="font-bold tracking-wide uppercase text-gray-500">Menu</h3>
                     <ul class="mt-4 space-y-2 text-sm">
-                        <li><a href="/tutorial/" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
+                        <li><a href="#interactive-tutorial" class="text-gray-400 hover:text-white transition-colors">Guida</a></li>
                         <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">La Storia</a></li>
                         <li><a href="#pharmacies" class="text-gray-400 hover:text-white transition-colors">Per le Farmacie</a></li>
                         <li><a href="/contact/" class="text-gray-400 hover:text-white transition-colors">Contatti</a></li>
@@ -402,6 +408,7 @@
     </div>
 
     <script src="assets/js/cookie-banner.js"></script>
+    <script src="assets/js/tutorial.js"></script>
     
     <script>
         // Mobile Menu Logic
