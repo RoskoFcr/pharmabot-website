@@ -677,56 +677,58 @@
                 type();
             }
 
-            // --- Funzione per Effetto Boomerang (Versione Corretta) ---
+            // --- Funzione per Effetto Boomerang (v3, approccio dinamico) ---
             function playBoomerangEffect(videoElement, onCompleteCallback) {
-                let hasRewound = false;
+                let state = 'forward1'; // Stati: forward1, backward, forward2, done
 
-                const onVideoEnd = () => {
-                    if (!hasRewound) {
-                        // Prima fine: avvia il rewind
-                        hasRewound = true;
+                // Rimuovi i vecchi listener se esistono, per evitare conflitti
+                if (videoElement.__boomerang) {
+                    videoElement.removeEventListener('timeupdate', videoElement.__boomerang.timeUpdateHandler);
+                    videoElement.removeEventListener('ended', videoElement.__boomerang.onEnded);
+                }
 
-                        // A volte 'ended' blocca currentTime, un piccolo passo indietro lo sblocca
-                        if (videoElement.currentTime > videoElement.duration - 0.1) {
-                            videoElement.currentTime = videoElement.duration - 0.1;
-                        }
-                        requestAnimationFrame(rewindFrame);
-                    } else {
-                        // Seconda fine: boomerang completato
-                        videoElement.removeEventListener('ended', onVideoEnd);
+                const timeUpdateHandler = () => {
+                    // Se il video non ha una durata (non ancora caricato), non fare nulla
+                    if (videoElement.duration === undefined || isNaN(videoElement.duration)) return;
+
+                    if (state === 'forward1' && videoElement.currentTime >= videoElement.duration - 0.1) {
+                        state = 'backward';
+                        videoElement.playbackRate = -1.5; // Inverti la direzione
+                    }
+                    if (state === 'backward' && videoElement.currentTime <= 0.1) {
+                        state = 'forward2';
+                        videoElement.playbackRate = 1; // Riporta in avanti
+                    }
+                };
+
+                const onEnded = () => {
+                    if (state === 'forward2') {
+                        state = 'done';
+                        // Pulizia finale
+                        videoElement.removeEventListener('timeupdate', timeUpdateHandler);
+                        videoElement.removeEventListener('ended', onEnded);
                         if (onCompleteCallback) {
                             onCompleteCallback();
                         }
                     }
                 };
 
-                const rewindFrame = () => {
-                    if (videoElement.currentTime <= 0) {
-                        // Rewind finito, riproduci di nuovo
-                        videoElement.currentTime = 0;
-                        videoElement.play().catch(e => console.error("Boomerang: Play forward (2nd) failed", e));
-                    } else {
-                        videoElement.currentTime -= 0.05; // Velocità di rewind
-                        requestAnimationFrame(rewindFrame);
-                    }
-                };
+                // Associa i nuovi handler e salvali per una futura pulizia
+                videoElement.addEventListener('timeupdate', timeUpdateHandler);
+                videoElement.addEventListener('ended', onEnded);
+                videoElement.__boomerang = { timeUpdateHandler, onEnded };
 
-                // Pulisci listener precedenti per sicurezza e avvia
-                videoElement.removeEventListener('ended', onCompleteCallback);
-                // Rimuovi la versione precedente di questo stesso listener se esiste
-                const existingListeners = videoElement.__boomerangListeners;
-                if (existingListeners) {
-                    videoElement.removeEventListener('ended', existingListeners.onVideoEnd);
-                }
-
-                videoElement.addEventListener('ended', onVideoEnd);
-
-                // Salva un riferimento al listener per poterlo rimuovere in futuro se necessario
-                videoElement.__boomerangListeners = { onVideoEnd };
-
+                // Avvia il processo
+                state = 'forward1';
+                videoElement.playbackRate = 1;
                 videoElement.currentTime = 0;
-                hasRewound = false; // Resetta lo stato per questa esecuzione
-                videoElement.play().catch(e => console.error("Boomerang: Play forward (1st) failed", e));
+                videoElement.play().catch(e => {
+                    console.error("Boomerang: Play failed", e);
+                    // Se il play fallisce, pulisci tutto
+                    state = 'done';
+                    videoElement.removeEventListener('timeupdate', timeUpdateHandler);
+                    videoElement.removeEventListener('ended', onEnded);
+                });
             }
 
             // --- Funzione per Resettare il Tutorial ---
