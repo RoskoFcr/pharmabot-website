@@ -381,14 +381,14 @@
         <div class="container mx-auto px-6">
             <!-- 1. Sezione introduttiva (Hero) -->
             <section class="hero-tutorial text-center py-16 px-6">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 font-montserrat">SCOPRI COME FUNZIONA!</h1>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 font-montserrat">Un'esperienza guidata, <span class="text-teal-600">pensata per te.</span></h1>
                 <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                    Segui le indicazioni del robottino e clicca su di lui o sul tasto avanti per proseguire con il tutorial. <br>Lui guiderà attraverso le funzioni principali di Pharmabot in modo semplice e veloce.
+                    Il nostro robottino ti mostrerà quanto è semplice usare Pharmabot. Premi 'AVVIA' e segui le sue indicazioni!
                 </p>
             </section>
 
             <!-- 2. Sezione Tutorial Interattivo -->
-            <section id="interactive-tutorial-container" class="container mx-auto px-4 sm:px-6 py-12">
+            <section id="interactive-tutorial-container" class="container mx-auto px-4 sm:px-6 pt-12 pb-4">
                 <div class="flex flex-row items-end justify-center gap-4 md:gap-8">
 
                     <!-- Colonna sinistra: Mascotte e Fumetto -->
@@ -422,6 +422,18 @@
                 <div id="navigation-controls" class="text-center mt-12 max-w-lg mx-auto">
                     <button id="btn-tutorial" class="nav-button">AVVIA TUTORIAL</button>
                     <p class="mt-4 text-sm text-gray-500">Puoi anche premere sul robottino per andare avanti</p>
+                </div>
+            </section>
+
+            <!-- 3. Sezione CTA Post-Tutorial -->
+            <section class="cta-post-tutorial text-center pb-16 px-6">
+                <div class="animate-fade-in-up">
+                    <a href="#download" class="inline-block bg-gradient-to-r from-teal-500 to-cyan-600 text-white font-bold text-lg py-4 px-10 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 animate-pulse">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2 -mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                        </svg>
+                        Scarica l'App e dì addio alle code!
+                    </a>
                 </div>
             </section>
         </div>
@@ -614,13 +626,13 @@
                     image: "assets/images/dati anagrafici.jpg"
                 },
                 {
-                    message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevuto dal tuo dottore</strong>, oppure <strong>inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici</strong> e se desideri la <strong>consegna a domicilio!</strong><br> ",
+                    message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevuto dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici,</strong>eventuali note per il farmacista e se desideri la <strong>consegna a domicilio!</strong><br> ",
                     video: "#mascot-video-3",
                     audio: "assets/audio/Audio 3 di 4.wav",
                     image: "assets/images/dati ricette.jpg"
                 },
                 {
-                    message: "<strong>Controlla i dati inseriti poi invia la richiesta!<br>ECCO FATTO!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
+                    message: "<strong>Controlla i dati inseriti poi invia la richiesta!<br>ECCO FATTO!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai andare a ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
                     video: "#mascot-video-4",
                     audio: "assets/audio/Audio 4 di 4.wav",
                     image: "assets/images/riepilogo.jpg"
@@ -639,15 +651,6 @@
             const tutorialAudio = new Audio();
             const typingSound = new Audio('assets/audio/typing-sound.mp3');
             typingSound.volume = 0.4;
-
-            function enableAudio() {
-                tutorialAudio.play().then(() => tutorialAudio.pause()).catch(() => {});
-                typingSound.play().then(() => typingSound.pause()).catch(() => {});
-                document.body.removeEventListener('click', enableAudio);
-                document.body.removeEventListener('touchstart', enableAudio);
-            }
-            document.body.addEventListener('click', enableAudio, { once: true });
-            document.body.addEventListener('touchstart', enableAudio, { once: true });
 
             // --- Funzione Typewriter (invariata) ---
             function typewriter(element, text, callback) {
@@ -702,6 +705,7 @@
 
                     if (videoElement.currentTime <= 0) {
                         state = 'playing_forward_second';
+                        videoElement.playbackRate = 0.8; // Rallenta il video
                         videoElement.play();
                     } else {
                         // Richiedi il prossimo frame di rewind solo dopo che il seek corrente è completato
@@ -711,7 +715,7 @@
 
                 const rewindFrame = () => {
                     state = 'rewinding_inprogress';
-                    videoElement.currentTime = Math.max(0, videoElement.currentTime - 0.05);
+                    videoElement.currentTime = Math.max(0, videoElement.currentTime - 0.04);
                 };
 
                 const onEnded = () => {
@@ -733,6 +737,7 @@
                 videoElement.addEventListener('seeked', onSeeked);
 
                 state = 'playing_forward_first';
+                videoElement.playbackRate = 0.8; // Rallenta il video
                 videoElement.currentTime = 0;
                 videoElement.play().catch(e => {
                     console.error("Boomerang: Play failed", e);
@@ -748,7 +753,6 @@
                 isAnimating = false;
                 tutorialState = 'stopped';
                 currentStep = 0;
-                tutorialButton.disabled = false;
 
                 // Nascondi fumetto
                 speechBubble.style.opacity = '0';
@@ -813,12 +817,14 @@
                 // Avvia l'effetto boomerang
                 playBoomerangEffect(currentVideo, () => {
                     // Chiamato al completamento del boomerang
-                    isAnimating = false;
-                    tutorialButton.disabled = false;
-
                     if (currentStep === tutorialSteps.length - 1) {
-                         // Resetta dopo l'ultimo step
-                        setTimeout(resetTutorial();, 3000);
+                        // Pausa finale prima di resettare
+                        setTimeout(() => {
+                            resetTutorial();
+                        }, 2000); // 2 secondi di pausa
+                    } else {
+                        isAnimating = false;
+                        tutorialButton.disabled = false;
                     }
                 });
             }
@@ -829,6 +835,11 @@
 
                 if (tutorialState === 'stopped') {
                     // --- AVVIO / RIAVVIO TUTORIAL ---
+
+                    // FIX: Unlock audio context directly on user gesture to prevent autoplay block.
+                    // A silent play/pause on a known-to-exist audio element is a safe way to do this.
+                    typingSound.play().then(() => typingSound.pause()).catch(() => {});
+
                     tutorialState = 'running';
                     speechBubble.style.opacity = '1';
                     speechBubble.style.pointerEvents = 'auto';
