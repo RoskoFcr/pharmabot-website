@@ -677,65 +677,61 @@
                 type();
             }
 
-            // --- Funzione per Effetto Boomerang (v4, approccio stabile e definitivo) ---
+            // --- Funzione per Effetto Boomerang (v5, approccio con 'seeked' event) ---
             function playBoomerangEffect(videoElement, onCompleteCallback) {
                 let state = 'idle';
-                let animationFrameId = null;
 
-                // Pulisci i vecchi listener e animazioni per evitare conflitti
+                // Pulisci i vecchi listener per evitare conflitti
                 if (videoElement.__boomerang) {
                     videoElement.removeEventListener('timeupdate', videoElement.__boomerang.timeUpdateHandler);
                     videoElement.removeEventListener('ended', videoElement.__boomerang.onEnded);
-                    if (videoElement.__boomerang.animationFrameId) {
-                        cancelAnimationFrame(videoElement.__boomerang.animationFrameId);
-                    }
+                    videoElement.removeEventListener('seeked', videoElement.__boomerang.onSeeked);
                 }
 
                 const timeUpdateHandler = () => {
-                    // Se il video non ha una durata, non fare nulla.
                     if (!videoElement.duration || isNaN(videoElement.duration)) return;
-
-                    // Quando il video sta per finire la prima volta, prendi il controllo.
                     if (state === 'playing_forward_first' && videoElement.currentTime >= videoElement.duration - 0.1) {
-                        state = 'rewinding';
-                        videoElement.pause(); // Pausa per il controllo manuale
-                        animationFrameId = requestAnimationFrame(rewindFrame);
+                        state = 'rewinding_setup';
+                        videoElement.pause();
+                        rewindFrame(); // Avvia il primo frame del rewind
+                    }
+                };
+
+                const onSeeked = () => {
+                    if (state !== 'rewinding_inprogress') return;
+
+                    if (videoElement.currentTime <= 0) {
+                        state = 'playing_forward_second';
+                        videoElement.play();
+                    } else {
+                        // Richiedi il prossimo frame di rewind solo dopo che il seek corrente è completato
+                        requestAnimationFrame(rewindFrame);
                     }
                 };
 
                 const rewindFrame = () => {
-                    if (videoElement.currentTime <= 0) {
-                        // Fine del rewind, avvia la seconda riproduzione.
-                        state = 'playing_forward_second';
-                        videoElement.currentTime = 0;
-                        videoElement.play();
-                    } else {
-                        videoElement.currentTime = Math.max(0, videoElement.currentTime - 0.025); // Velocità di rewind DIMEZZATA per renderla più visibile
-                        animationFrameId = requestAnimationFrame(rewindFrame);
-                    }
+                    state = 'rewinding_inprogress';
+                    videoElement.currentTime = Math.max(0, videoElement.currentTime - 0.04);
                 };
 
                 const onEnded = () => {
-                    // L'evento 'ended' è usato solo per la fine della seconda riproduzione.
                     if (state === 'playing_forward_second') {
                         state = 'done';
-                        // Pulisci tutto
                         videoElement.removeEventListener('timeupdate', timeUpdateHandler);
                         videoElement.removeEventListener('ended', onEnded);
+                        videoElement.removeEventListener('seeked', onSeeked);
                         if (onCompleteCallback) {
                             onCompleteCallback();
                         }
                     }
                 };
 
-                // Salva i riferimenti per la pulizia
-                videoElement.__boomerang = { timeUpdateHandler, onEnded, animationFrameId };
+                videoElement.__boomerang = { timeUpdateHandler, onEnded, onSeeked };
 
-                // Associa i nuovi handler
                 videoElement.addEventListener('timeupdate', timeUpdateHandler);
                 videoElement.addEventListener('ended', onEnded);
+                videoElement.addEventListener('seeked', onSeeked);
 
-                // Avvia il processo
                 state = 'playing_forward_first';
                 videoElement.currentTime = 0;
                 videoElement.play().catch(e => {
@@ -743,6 +739,7 @@
                     state = 'done';
                     videoElement.removeEventListener('timeupdate', timeUpdateHandler);
                     videoElement.removeEventListener('ended', onEnded);
+                    videoElement.removeEventListener('seeked', onSeeked);
                 });
             }
 
