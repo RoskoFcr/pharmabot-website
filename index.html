@@ -595,17 +595,17 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             // --- Stato del Tutorial ---
-            let tutorialState = 'stopped'; // stati possibili: 'stopped', 'running', 'finished'
+            let tutorialState = 'stopped'; // stati possibili: 'stopped', 'running'
             let currentStep = 0;
-            let isTyping = false;
+            let isAnimating = false; // Flag per prevenire click durante le animazioni
 
-            // --- Dati del Tutorial con Audio e Immagini ---
+            // --- Dati del Tutorial (invariati) ---
             const tutorialSteps = [
                 {
                     message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> Con me puoi inviare le tue <strong>ricette in farmacia</strong>, dal tuo smartphone!<strong><br>Di addio alle inutili e lunghe file.</strong><br>Sarò io ad avvisarti di andare a ritirare i tuoi farmaci!<br>",
                     video: "#mascot-video-1",
                     audio: "assets/audio/Audio 1 di 4.wav",
-                    image: "assets/images/home.jpg" // Schermata iniziale
+                    image: "assets/images/home.jpg"
                 },
                 {
                     message: "INIZIAMO SUBITO!<br>Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Scegli la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'>",
@@ -614,7 +614,7 @@
                     image: "assets/images/dati anagrafici.jpg"
                 },
                 {
-                    message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevito dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici,</strong>eventuali note per il farmacista e se desideri la <strong>consegna a domicilio!</strong><br> ",
+                    message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevuto dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici,</strong>eventuali note per il farmacista e se desideri la <strong>consegna a domicilio!</strong><br> ",
                     video: "#mascot-video-3",
                     audio: "assets/audio/Audio 3 di 4.wav",
                     image: "assets/images/dati ricette.jpg"
@@ -627,7 +627,7 @@
                 }
             ];
 
-            // --- Selezione Elementi DOM ---
+            // --- Selezione Elementi DOM (invariata) ---
             const mascotContainer = document.getElementById('mascot-container');
             const speechBubble = document.getElementById('speech-bubble');
             const tutorialMessage = document.getElementById('tutorial-message');
@@ -635,12 +635,11 @@
             const tutorialButton = document.getElementById('btn-tutorial');
             const allVideos = document.querySelectorAll('.mascot-video-step');
 
-            // --- Elemento Audio ---
+            // --- Elementi Audio (invariati) ---
             const tutorialAudio = new Audio();
             const typingSound = new Audio('assets/audio/typing-sound.mp3');
             typingSound.volume = 0.4;
 
-            // Funzione per abilitare l'audio al primo tocco/click (necessario per browser mobile)
             function enableAudio() {
                 tutorialAudio.play().then(() => tutorialAudio.pause()).catch(() => {});
                 typingSound.play().then(() => typingSound.pause()).catch(() => {});
@@ -650,15 +649,12 @@
             document.body.addEventListener('click', enableAudio, { once: true });
             document.body.addEventListener('touchstart', enableAudio, { once: true });
 
-
-            // --- Funzione Typewriter (rimane quasi invariata) ---
-            function typewriter(element, text, duration, callback) {
-                isTyping = true;
+            // --- Funzione Typewriter (invariata) ---
+            function typewriter(element, text, callback) {
                 element.innerHTML = '';
                 let i = 0;
                 function type() {
                     if (i >= text.length) {
-                        isTyping = false;
                         if (callback) callback();
                         return;
                     }
@@ -676,78 +672,153 @@
                         }
                     }
                     i++;
-                    setTimeout(type, 30); // Velocità fissa per la digitazione
+                    setTimeout(type, 30);
                 }
                 type();
             }
 
-            // --- Funzione per Visualizzare una Scena Specifica ---
-            function displayScene(stepIndex) {
-                if (isTyping) return;
+            // --- Funzione per Effetto Boomerang ---
+            function playBoomerangEffect(videoElement, onCompleteCallback) {
+                // Assicura che l'evento 'ended' precedente sia rimosso per evitare duplicati
+                // (anche se 'once' dovrebbe già gestirlo, questa è una sicurezza aggiuntiva)
+                videoElement.removeEventListener('ended', onCompleteCallback);
+
+                // 1. Funzione per la seconda riproduzione in avanti
+                const playForwardSecondTime = () => {
+                    videoElement.currentTime = 0;
+                    videoElement.play().catch(e => console.error("Boomerang: Play forward (2nd) failed", e));
+                    // 5. Al termine della seconda riproduzione, esegui il callback finale
+                    videoElement.addEventListener('ended', onCompleteCallback, { once: true });
+                };
+
+                // 2. Funzione per il riavvolgimento (rewind)
+                const rewind = () => {
+                    // La velocità di rewind può essere aggiustata qui (es. 0.04 per più veloce)
+                    videoElement.currentTime -= 0.05;
+                    if (videoElement.currentTime > 0) {
+                        requestAnimationFrame(rewind);
+                    } else {
+                        // 4. Una volta terminato il rewind, avvia la seconda riproduzione
+                        playForwardSecondTime();
+                    }
+                };
+
+                // 3. Funzione chiamata al termine della prima riproduzione
+                const onFirstPlayEnd = () => {
+                    // Avvia l'animazione di rewind
+                    requestAnimationFrame(rewind);
+                };
+
+                // Inizia il processo: riproduci il video la prima volta
+                videoElement.currentTime = 0;
+                videoElement.play().catch(e => console.error("Boomerang: Play forward (1st) failed", e));
+                videoElement.addEventListener('ended', onFirstPlayEnd, { once: true });
+            }
+
+            // --- Funzione per Resettare il Tutorial ---
+            function resetTutorial() {
+                isAnimating = false;
+                tutorialState = 'stopped';
+                currentStep = 0;
+
+                // Nascondi fumetto
+                speechBubble.style.opacity = '0';
+                speechBubble.style.pointerEvents = 'none';
+
+                // Ferma tutti i video e l'audio
+                tutorialAudio.pause();
+                allVideos.forEach(v => {
+                    v.classList.remove('active');
+                    v.pause();
+                    v.currentTime = 0;
+                });
+
+                // Mostra il primo video (statico) e la prima immagine del telefono
+                const firstVideo = document.querySelector(tutorialSteps[0].video);
+                firstVideo.classList.add('active');
+                phoneScreen.src = tutorialSteps[0].image;
+
+                // Aggiorna il pulsante
+                tutorialButton.innerText = 'RIAVVIA IL TUTORIAL';
+                tutorialButton.disabled = false;
+            }
+
+            // --- NUOVA Funzione per Eseguire uno Step ---
+            function runStep(stepIndex) {
+                if (stepIndex >= tutorialSteps.length) {
+                    resetTutorial(); // Resetta alla fine
+                    return;
+                }
+
+                isAnimating = true;
+                tutorialButton.disabled = true;
                 currentStep = stepIndex;
                 const stepData = tutorialSteps[stepIndex];
 
                 // Stop audio e video precedenti
                 tutorialAudio.pause();
-                allVideos.forEach(video => {
-                    video.classList.remove('active');
-                    video.pause();
-                    video.currentTime = 0;
+                allVideos.forEach(v => {
+                    v.classList.remove('active');
+                    v.pause();
+                    v.currentTime = 0;
                 });
 
-                // Avvia audio e video correnti
+                // Mostra il video corrente
                 const currentVideo = document.querySelector(stepData.video);
                 currentVideo.classList.add('active');
-                currentVideo.play().catch(() => {});
 
+                // Aggiorna immagine telefono
+                phoneScreen.style.opacity = '0';
+                setTimeout(() => {
+                    phoneScreen.src = stepData.image;
+                    phoneScreen.style.opacity = '1';
+                }, 300);
+
+                // Avvia audio e testo (solo una volta per step)
                 tutorialAudio.src = stepData.audio;
                 tutorialAudio.play().catch(() => {});
+                typewriter(tutorialMessage, stepData.message, () => {
+                    // Il callback del typewriter non è più necessario per la logica principale
+                });
 
-                // Aggiorna testo e immagine
-                typewriter(tutorialMessage, stepData.message, 2000, null);
-                phoneScreen.src = stepData.image;
+                // Avvia l'effetto boomerang
+                playBoomerangEffect(currentVideo, () => {
+                    // Chiamato al completamento del boomerang
+                    isAnimating = false;
+                    tutorialButton.disabled = false;
+
+                    if (currentStep === tutorialSteps.length - 1) {
+                         resetTutorial(); // Resetta dopo l'ultimo step
+                    }
+                });
             }
 
-            // --- Funzione Principale di Gestione del Tutorial ---
+            // --- Funzione Principale di Gestione REFACTORIZZATA ---
             function handleTutorialClick() {
-                if (isTyping) return;
+                if (isAnimating) return;
 
                 if (tutorialState === 'stopped') {
-                    // --- AVVIO TUTORIAL ---
+                    // --- AVVIO / RIAVVIO TUTORIAL ---
                     tutorialState = 'running';
                     speechBubble.style.opacity = '1';
                     speechBubble.style.pointerEvents = 'auto';
-                    tutorialButton.innerText = 'PROSEGUI IL TUTORIAL';
-                    displayScene(0);
-
+                    tutorialButton.innerText = 'PROCEDI';
+                    runStep(0);
                 } else if (tutorialState === 'running') {
                     // --- AVANZAMENTO ---
                     const nextStep = currentStep + 1;
                     if (nextStep < tutorialSteps.length) {
-                        displayScene(nextStep);
-                    } else {
-                        // --- FINE TUTORIAL ---
-                        tutorialState = 'finished';
-                        tutorialButton.innerText = 'RIVEDI IL TUTORIAL';
+                        runStep(nextStep);
                     }
-                } else if (tutorialState === 'finished') {
-                    // --- RIAVVIO ---
-                    tutorialState = 'running';
-                    tutorialButton.innerText = 'PROSEGUI IL TUTORIAL';
-                    displayScene(0);
+                    // La logica di fine è gestita dal callback di `runStep`
                 }
             }
 
-            // --- Event Listeners ---
+            // --- Event Listeners (invariati) ---
             tutorialButton.addEventListener('click', handleTutorialClick);
             mascotContainer.addEventListener('click', handleTutorialClick);
 
-            // --- Inizializzazione ---
-            // La pagina parte con lo stato iniziale definito in HTML/CSS
-            // L'autoplay del video 1 è stato rimosso, quindi rimane fermo
-            // Il fumetto è invisibile via CSS
-            // L'immagine del telefono è home.jpg via HTML
-            // Nessuna funzione viene chiamata al caricamento, si attende l'input dell'utente.
+            // --- Inizializzazione (invariata) ---
             const firstVideo = document.querySelector(tutorialSteps[0].video);
             firstVideo.classList.add('active'); // Mostra il primo video, ma non lo avvia
         });
