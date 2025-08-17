@@ -399,10 +399,10 @@
                             </div>
                             <!-- Contenitore per i video impilati -->
                             <div class="relative w-full" style="aspect-ratio: 1/1;">
-                                <video id="mascot-video-1" class="mascot-video-step" src="assets/videos/pt 1 di 4.mp4" muted playsinline></video>
-                                <video id="mascot-video-2" class="mascot-video-step" src="assets/videos/pt 2 di 4.mp4" muted playsinline></video>
-                                <video id="mascot-video-3" class="mascot-video-step" src="assets/videos/pt 3 di 4.mp4" muted playsinline></video>
-                                <video id="mascot-video-4" class="mascot-video-step" src="assets/videos/pt 4 di 4.mp4" muted playsinline></video>
+                                <video id="mascot-video-1" class="mascot-video-step" src="assets/videos/pt 1 di 4.mp4" muted playsinline video.playbackRate = 0.9></video>
+                                <video id="mascot-video-2" class="mascot-video-step" src="assets/videos/pt 2 di 4.mp4" muted playsinline video.playbackRate = 0.8></video>
+                                <video id="mascot-video-3" class="mascot-video-step" src="assets/videos/pt 3 di 4.mp4" muted playsinline video.playbackRate = 0.7></video>
+                                <video id="mascot-video-4" class="mascot-video-step" src="assets/videos/pt 4 di 4.mp4" muted playsinline video.playbackRate = 0.6></video>
                             </div>
                         </div>
                     </div>
@@ -614,13 +614,13 @@
                     image: "assets/images/dati anagrafici.jpg"
                 },
                 {
-                    message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevuto dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici,</strong>eventuali note per il farmacista e se desideri la <strong>consegna a domicilio!</strong><br> ",
+                    message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevuto dal tuo dottore</strong>, oppure <strong>inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici</strong> e se desideri la <strong>consegna a domicilio!</strong><br> ",
                     video: "#mascot-video-3",
                     audio: "assets/audio/Audio 3 di 4.wav",
                     image: "assets/images/dati ricette.jpg"
                 },
                 {
-                    message: "<strong>Controlla i dati inseriti poi invia la richiesta!<br>ECCO FATTO!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai andare a ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
+                    message: "<strong>Controlla i dati inseriti poi invia la richiesta!<br>ECCO FATTO!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
                     video: "#mascot-video-4",
                     audio: "assets/audio/Audio 4 di 4.wav",
                     image: "assets/images/riepilogo.jpg"
@@ -817,7 +817,8 @@
                     tutorialButton.disabled = false;
 
                     if (currentStep === tutorialSteps.length - 1) {
-                         resetTutorial(); // Resetta dopo l'ultimo step
+                         // Resetta dopo l'ultimo step
+                        setTimeout(resetTutorial();, 3000);
                     }
                 });
             }
