@@ -135,6 +135,9 @@
             z-index: 10;
             animation: breathing-border 4s ease-in-out infinite;
             overflow: visible;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
         }
         .speech-bubble::after {
             content: '';
@@ -403,7 +406,7 @@
                             </div>
                             <!-- Contenitore per i video impilati -->
                             <div class="relative w-full" style="aspect-ratio: 1/1;">
-                                <video id="mascot-video-1" class="mascot-video-step active" src="assets/videos/pt 1 di 4.mp4" autoplay muted playsinline></video>
+                                <video id="mascot-video-1" class="mascot-video-step" src="assets/videos/pt 1 di 4.mp4" muted playsinline></video>
                                 <video id="mascot-video-2" class="mascot-video-step" src="assets/videos/pt 2 di 4.mp4" muted playsinline></video>
                                 <video id="mascot-video-3" class="mascot-video-step" src="assets/videos/pt 3 di 4.mp4" muted playsinline></video>
                                 <video id="mascot-video-4" class="mascot-video-step" src="assets/videos/pt 4 di 4.mp4" muted playsinline></video>
@@ -415,7 +418,7 @@
                     <div id="phone-column" class="w-7/12 md:w-3/5 flex justify-start">
                         <div class="phone-mockup">
                             <div id="phone-screen-container" class="relative w-full h-full">
-                                <img id="phone-screen" src="" alt="Schermata dell'app Pharmabot in azione">
+                                <img id="phone-screen" src="assets/images/home.jpg" alt="Schermata dell'app Pharmabot in azione">
                                 <!-- Qui verranno aggiunti gli elementi per gli effetti speciali -->
                             </div>
                         </div>
@@ -423,18 +426,9 @@
                 </div>
 
                 <!-- Controlli di Navigazione -->
-                <div id="navigation-controls" class="flex justify-between items-center mt-12 max-w-lg mx-auto">
-                    <button id="prev-step" class="nav-button">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                        <span>Indietro</span>
-                    </button>
-                    <div id="step-indicator" class="text-sm font-semibold text-gray-600">
-                        Passo <span id="current-step-number">1</span> di 4
-                    </div>
-                    <button id="next-step" class="nav-button">
-                        <span>Avanti</span>
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                    </button>
+                <div id="navigation-controls" class="text-center mt-12 max-w-lg mx-auto">
+                    <button id="btn-tutorial" class="nav-button">AVVIA TUTORIAL</button>
+                    <p class="mt-4 text-sm text-gray-500">Puoi anche premere sul robottino per andare avanti</p>
                 </div>
             </section>
         </div>
@@ -607,186 +601,162 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
-            document.body.setAttribute('data-typing-status', 'idle');
+            // --- Stato del Tutorial ---
+            let tutorialState = 'stopped'; // stati possibili: 'stopped', 'running', 'finished'
+            let currentStep = 0;
+            let isTyping = false;
 
-            // --- Audio Elements ---
-            const bionicSound = new Audio('assets/audio/bionic-transition.mp3');
+            // --- Dati del Tutorial con Audio e Immagini ---
+            const tutorialSteps = [
+                {
+                    message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> Con me puoi inviare le tue <strong>ricette in farmacia</strong>, dal tuo smartphone!<strong><br>Di addio alle inutili e lunghe file.</strong><br>Sarò io ad avvisarti di andare a ritirare i tuoi farmaci!<br><em>PREMI SU DI ME e scopriamo l'app insieme!</em><br> ",
+                    video: "#mascot-video-1",
+                    audio: "assets/audio/Audio 1 di 4.wav",
+                    image: "assets/images/home.jpg" // Schermata iniziale
+                },
+                {
+                    message: "INIZIAMO SUBITO!<br>Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Scegli la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'>Semplice, no?</span><br> ",
+                    video: "#mascot-video-2",
+                    audio: "assets/audio/Audio 2 di 4.wav",
+                    image: "assets/images/dati anagrafici.jpg"
+                },
+                {
+                    message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevito dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici,</strong>eventuali note per il farmacista e se desideri la <strong>consegna a domicilio!</strong><br> ",
+                    video: "#mascot-video-3",
+                    audio: "assets/audio/Audio 3 di 4.wav",
+                    image: "assets/images/dati ricette.jpg"
+                },
+                {
+                    message: "Ci siamo quasi!<br><strong>Controlla i dati inseriti,</strong> se è tutto corretto, <strong>invia la richiesta!<br>ECCO FATTO!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai andare a ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
+                    video: "#mascot-video-4",
+                    audio: "assets/audio/Audio 4 di 4.wav",
+                    image: "assets/images/riepilogo.jpg"
+                }
+            ];
+
+            // --- Selezione Elementi DOM ---
+            const mascotContainer = document.getElementById('mascot-container');
+            const speechBubble = document.getElementById('speech-bubble');
+            const tutorialMessage = document.getElementById('tutorial-message');
+            const phoneScreen = document.getElementById('phone-screen');
+            const tutorialButton = document.getElementById('btn-tutorial');
+            const allVideos = document.querySelectorAll('.mascot-video-step');
+
+            // --- Elemento Audio ---
+            const tutorialAudio = new Audio();
             const typingSound = new Audio('assets/audio/typing-sound.mp3');
-            bionicSound.volume = 0.3;
             typingSound.volume = 0.4;
-            let canPlaySound = true;
 
-            // Funzione per abilitare l'audio al primo tocco/click
+            // Funzione per abilitare l'audio al primo tocco/click (necessario per browser mobile)
             function enableAudio() {
-                canPlaySound = true;
+                tutorialAudio.play().then(() => tutorialAudio.pause()).catch(() => {});
+                typingSound.play().then(() => typingSound.pause()).catch(() => {});
                 document.body.removeEventListener('click', enableAudio);
                 document.body.removeEventListener('touchstart', enableAudio);
             }
             document.body.addEventListener('click', enableAudio, { once: true });
             document.body.addEventListener('touchstart', enableAudio, { once: true });
 
-            // --- Dati del Tutorial (Testi aggiornati e formattati) ---
-            const tutorialSteps = [
-                {
-                    message: "Ciao, sono <strong>l'app PHARMABOT!</strong><br> Con me puoi inviare le tue <strong>ricette in farmacia</strong>, dal tuo smartphone!<strong><br>Di addio alle inutili e lunghe file.</strong><br>Sarò io ad avvisarti di andare a ritirare i tuoi farmaci!<br><em>PREMI SU DI ME e scopriamo l'app insieme!</em><br> ",
-                    video: "#mascot-video-1",
-                    effect: () => []
-                },
-                {
-                    message: "INIZIAMO SUBITO!<br>Inserisci i tuoi <strong>dati anagrafici.</strong><br>Se non ricordi il codice fiscale posso calcolarlo io per te!<br><strong>Puoi anche salvare il profilo per usarlo la prossima volta.</strong><br>Scegli la tua <strong>farmacia preferita.</strong><br><span class='highlight-green'>Semplice, no?</span><br> ",
-                    video: "#mascot-video-2",
-                    effect: () => []
-                },
-                {
-                    message: "Ora inserisci i <strong>codici delle ricette.</strong><br><strong>Puoi copiare l'SMS ricevito dal tuo dottore</strong>, oppure <strong>scattare una foto o inviarmi un immagine</strong> del codice.<br>Dimmi se preferisci farmaci <strong>originali o generici,</strong>eventuali note per il farmacista e se desideri la <strong>consegna a domicilio!</strong><br> ",
-                    video: "#mascot-video-3",
-                    effect: () => []
-                },
-                {
-                    message: "Ci siamo quasi!<br><strong>Controlla i dati inseriti,</strong> se è tutto corretto, <strong>invia la richiesta!<br>ECCO FATTO!</strong><br>La farmacia riceverà subito il tuo ordine e io ti avviserò quando potrai andare a ritirare i tuoi farmaci.<br><em>Scarica subito PHARMABOT!</em><br> ",
-                    video: "#mascot-video-4",
-                    effect: () => []
-                }
-            ];
 
-            // --- Selezione Elementi DOM ---
-            const mascotContainer = document.getElementById('mascot-container');
-            const tutorialMessage = document.getElementById('tutorial-message');
-            const phoneScreen = document.getElementById('phone-screen');
-            const phoneScreenContainer = document.getElementById('phone-screen-container');
-            const prevButton = document.getElementById('prev-step');
-            const nextButton = document.getElementById('next-step');
-            const currentStepNumber = document.getElementById('current-step-number');
-
-            let currentStep = 0;
-            let isTyping = false;
-
-            // --- Funzione Typewriter ---
+            // --- Funzione Typewriter (rimane quasi invariata) ---
             function typewriter(element, text, duration, callback) {
                 isTyping = true;
-                document.body.setAttribute('data-typing-status', 'typing');
                 element.innerHTML = '';
-
-                const visibleTextLength = text.replace(/<[^>]*>/g, '').length;
-                const charSpeed = duration / visibleTextLength;
-                const sentencePause = 400; // Pausa ridotta per un flusso migliore
-
                 let i = 0;
-
                 function type() {
                     if (i >= text.length) {
                         isTyping = false;
-                        document.body.setAttribute('data-typing-status', 'idle');
                         if (callback) callback();
                         return;
                     }
-
                     let char = text.charAt(i);
-                    let timeout = charSpeed;
-
                     if (char === '<') {
                         let tag = '';
-                        while (i < text.length && text.charAt(i) !== '>') {
-                            tag += text.charAt(i++);
-                        }
+                        while (i < text.length && text.charAt(i) !== '>') tag += text.charAt(i++);
                         tag += '>';
                         element.innerHTML += tag;
-                        timeout = 0;
                     } else {
                         element.innerHTML += char;
-                        if (char !== ' ' && canPlaySound) {
+                        if (char !== ' ') {
                             typingSound.currentTime = 0;
-                            typingSound.play().catch(() => {}); // Ignora errori se l'audio non può partire
+                            typingSound.play().catch(() => {});
                         }
                     }
-
-                    if (char === '.' || char === '?' || char === '!') {
-                         timeout = sentencePause;
-                    }
-
                     i++;
-                    setTimeout(type, timeout);
+                    setTimeout(type, 30); // Velocità fissa per la digitazione
                 }
                 type();
             }
 
-            // --- Funzione Principale di Aggiornamento ---
-            function updateTutorialStep(stepIndex) {
+            // --- Funzione per Visualizzare una Scena Specifica ---
+            function displayScene(stepIndex) {
                 if (isTyping) return;
-
-                const oldStepIndex = currentStep;
                 currentStep = stepIndex;
-
                 const stepData = tutorialSteps[stepIndex];
-                const oldStepData = tutorialSteps[oldStepIndex] || tutorialSteps[0];
 
-                if (canPlaySound) {
-                    bionicSound.currentTime = 0;
-                    bionicSound.play().catch(() => {}); // Ignora errori se l'audio non può partire
-                }
+                // Stop audio e video precedenti
+                tutorialAudio.pause();
+                allVideos.forEach(video => {
+                    video.classList.remove('active');
+                    video.pause();
+                    video.currentTime = 0;
+                });
 
-                // Gestione video
+                // Avvia audio e video correnti
                 const currentVideo = document.querySelector(stepData.video);
-                const oldVideo = document.querySelector(oldStepData.video);
-                if (currentVideo !== oldVideo) {
-                    oldVideo.classList.remove('active');
-                    setTimeout(() => {
-                        oldVideo.pause(); oldVideo.currentTime = 0;
-                    }, 400);
-                }
                 currentVideo.classList.add('active');
                 currentVideo.play().catch(() => {});
 
-                // Gestione effetti (rimossi)
-                const oldEffects = phoneScreenContainer.querySelectorAll('.effect-element');
-                oldEffects.forEach(el => el.remove());
+                tutorialAudio.src = stepData.audio;
+                tutorialAudio.play().catch(() => {});
 
-                // Gestione messaggio con typewriter
-                tutorialMessage.style.opacity = 1;
-                typewriter(tutorialMessage, stepData.message, 3000, null);
-
-                // Gestione immagine telefono
-                const imageMap = { 1: 'dati anagrafici', 2: 'dati ricette', 3: 'note e preferenze', 4: 'riepilogo' };
-                const imageIndex = stepData.video.charAt(stepData.video.length - 1);
-                phoneScreen.src = `assets/images/${imageMap[imageIndex]}.jpg`;
-
-                // Gestione UI navigazione
-                currentStepNumber.innerText = stepIndex + 1;
-                prevButton.disabled = stepIndex === 0;
-                nextButton.disabled = stepIndex === tutorialSteps.length - 1;
-
-                // --- NUOVA LOGICA: Cambia testo e funzione del tasto "Indietro" ---
-                const prevButtonText = prevButton.querySelector('span');
-                if (stepIndex === tutorialSteps.length - 1) {
-                    prevButtonText.innerText = 'Rivedi il tutorial';
-                    prevButton.disabled = false; // Assicura che sia cliccabile all'ultimo step
-                } else {
-                    prevButtonText.innerText = 'Indietro';
-                }
+                // Aggiorna testo e immagine
+                typewriter(tutorialMessage, stepData.message, 2000, null);
+                phoneScreen.src = stepData.image;
             }
 
-            function goToNextStep() {
-                if (currentStep < tutorialSteps.length - 1) {
-                    updateTutorialStep(currentStep + 1);
-                }
-            }
+            // --- Funzione Principale di Gestione del Tutorial ---
+            function handleTutorialClick() {
+                if (isTyping) return;
 
-            function goToPrevStep() {
-                // Se siamo all'ultimo step, il pulsante "Indietro" ora riavvia il tutorial
-                if (currentStep === tutorialSteps.length - 1) {
-                    updateTutorialStep(0);
-                } else if (currentStep > 0) {
-                    updateTutorialStep(currentStep - 1);
+                if (tutorialState === 'stopped') {
+                    // --- AVVIO TUTORIAL ---
+                    tutorialState = 'running';
+                    speechBubble.style.opacity = '1';
+                    speechBubble.style.pointerEvents = 'auto';
+                    tutorialButton.innerText = 'PROSEGUI IL TUTORIAL';
+                    displayScene(0);
+
+                } else if (tutorialState === 'running') {
+                    // --- AVANZAMENTO ---
+                    const nextStep = currentStep + 1;
+                    if (nextStep < tutorialSteps.length) {
+                        displayScene(nextStep);
+                    } else {
+                        // --- FINE TUTORIAL ---
+                        tutorialState = 'finished';
+                        tutorialButton.innerText = 'RIVEDI IL TUTORIAL';
+                    }
+                } else if (tutorialState === 'finished') {
+                    // --- RIAVVIO ---
+                    tutorialState = 'running';
+                    tutorialButton.innerText = 'PROSEGUI IL TUTORIAL';
+                    displayScene(0);
                 }
             }
 
             // --- Event Listeners ---
-            nextButton.addEventListener('click', goToNextStep);
-            prevButton.addEventListener('click', goToPrevStep);
-            mascotContainer.addEventListener('click', goToNextStep);
+            tutorialButton.addEventListener('click', handleTutorialClick);
+            mascotContainer.addEventListener('click', handleTutorialClick);
 
             // --- Inizializzazione ---
-            updateTutorialStep(0);
+            // La pagina parte con lo stato iniziale definito in HTML/CSS
+            // L'autoplay del video 1 è stato rimosso, quindi rimane fermo
+            // Il fumetto è invisibile via CSS
+            // L'immagine del telefono è home.jpg via HTML
+            // Nessuna funzione viene chiamata al caricamento, si attende l'input dell'utente.
+            const firstVideo = document.querySelector(tutorialSteps[0].video);
+            firstVideo.classList.add('active'); // Mostra il primo video, ma non lo avvia
         });
     </script>
 
