@@ -677,42 +677,56 @@
                 type();
             }
 
-            // --- Funzione per Effetto Boomerang ---
+            // --- Funzione per Effetto Boomerang (Versione Corretta) ---
             function playBoomerangEffect(videoElement, onCompleteCallback) {
-                // Assicura che l'evento 'ended' precedente sia rimosso per evitare duplicati
-                // (anche se 'once' dovrebbe già gestirlo, questa è una sicurezza aggiuntiva)
-                videoElement.removeEventListener('ended', onCompleteCallback);
+                let hasRewound = false;
 
-                // 1. Funzione per la seconda riproduzione in avanti
-                const playForwardSecondTime = () => {
-                    videoElement.currentTime = 0;
-                    videoElement.play().catch(e => console.error("Boomerang: Play forward (2nd) failed", e));
-                    // 5. Al termine della seconda riproduzione, esegui il callback finale
-                    videoElement.addEventListener('ended', onCompleteCallback, { once: true });
-                };
+                const onVideoEnd = () => {
+                    if (!hasRewound) {
+                        // Prima fine: avvia il rewind
+                        hasRewound = true;
 
-                // 2. Funzione per il riavvolgimento (rewind)
-                const rewind = () => {
-                    // La velocità di rewind può essere aggiustata qui (es. 0.04 per più veloce)
-                    videoElement.currentTime -= 0.05;
-                    if (videoElement.currentTime > 0) {
-                        requestAnimationFrame(rewind);
+                        // A volte 'ended' blocca currentTime, un piccolo passo indietro lo sblocca
+                        if (videoElement.currentTime > videoElement.duration - 0.1) {
+                            videoElement.currentTime = videoElement.duration - 0.1;
+                        }
+                        requestAnimationFrame(rewindFrame);
                     } else {
-                        // 4. Una volta terminato il rewind, avvia la seconda riproduzione
-                        playForwardSecondTime();
+                        // Seconda fine: boomerang completato
+                        videoElement.removeEventListener('ended', onVideoEnd);
+                        if (onCompleteCallback) {
+                            onCompleteCallback();
+                        }
                     }
                 };
 
-                // 3. Funzione chiamata al termine della prima riproduzione
-                const onFirstPlayEnd = () => {
-                    // Avvia l'animazione di rewind
-                    requestAnimationFrame(rewind);
+                const rewindFrame = () => {
+                    if (videoElement.currentTime <= 0) {
+                        // Rewind finito, riproduci di nuovo
+                        videoElement.currentTime = 0;
+                        videoElement.play().catch(e => console.error("Boomerang: Play forward (2nd) failed", e));
+                    } else {
+                        videoElement.currentTime -= 0.05; // Velocità di rewind
+                        requestAnimationFrame(rewindFrame);
+                    }
                 };
 
-                // Inizia il processo: riproduci il video la prima volta
+                // Pulisci listener precedenti per sicurezza e avvia
+                videoElement.removeEventListener('ended', onCompleteCallback);
+                // Rimuovi la versione precedente di questo stesso listener se esiste
+                const existingListeners = videoElement.__boomerangListeners;
+                if (existingListeners) {
+                    videoElement.removeEventListener('ended', existingListeners.onVideoEnd);
+                }
+
+                videoElement.addEventListener('ended', onVideoEnd);
+
+                // Salva un riferimento al listener per poterlo rimuovere in futuro se necessario
+                videoElement.__boomerangListeners = { onVideoEnd };
+
                 videoElement.currentTime = 0;
+                hasRewound = false; // Resetta lo stato per questa esecuzione
                 videoElement.play().catch(e => console.error("Boomerang: Play forward (1st) failed", e));
-                videoElement.addEventListener('ended', onFirstPlayEnd, { once: true });
             }
 
             // --- Funzione per Resettare il Tutorial ---
