@@ -711,7 +711,7 @@
 
                 const rewindFrame = () => {
                     state = 'rewinding_inprogress';
-                    videoElement.currentTime = Math.max(0, videoElement.currentTime - 0.04);
+                    videoElement.currentTime = Math.max(0, videoElement.currentTime - 0.05);
                 };
 
                 const onEnded = () => {
@@ -748,6 +748,7 @@
                 isAnimating = false;
                 tutorialState = 'stopped';
                 currentStep = 0;
+                tutorialButton.disabled = false;
 
                 // Nascondi fumetto
                 speechBubble.style.opacity = '0';
