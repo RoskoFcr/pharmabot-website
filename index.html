@@ -381,9 +381,9 @@
         <div class="container mx-auto px-6">
             <!-- 1. Sezione introduttiva (Hero) -->
             <section class="hero-tutorial text-center py-16 px-6">
-                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 font-montserrat">Un'esperienza guidata, <span class="text-teal-600">pensata per te.</span></h1>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 font-montserrat">UN ESPERIENZA GUIDATA <span class="text-teal-600">PENSATA PER TE!</span></h1>
                 <p class="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-                    Il nostro robottino ti mostrerà quanto è semplice usare Pharmabot. Premi 'AVVIA' e segui le sue indicazioni!
+                    Il nostro robottino ti mostrerà quanto è semplice usare Pharmabot.<br> Premi 'AVVIA' e segui le sue indicazioni!
                 </p>
             </section>
 
@@ -421,7 +421,7 @@
                 <!-- Controlli di Navigazione -->
                 <div id="navigation-controls" class="text-center mt-12 max-w-lg mx-auto">
                     <button id="btn-tutorial" class="nav-button">AVVIA TUTORIAL</button>
-                    <p class="mt-4 text-sm text-gray-500">Puoi anche premere sul robottino per andare avanti</p>
+                    <p class="mt-4 text-sm text-gray-500">Puoi anche premere sul robottino per andare avanti<br> <br></p>
                 </div>
             </section>
 
@@ -432,7 +432,7 @@
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2 -mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
                         </svg>
-                        Scarica l'App e dì addio alle code!
+                        SCARICA L'APP
                     </a>
                 </div>
             </section>
@@ -737,7 +737,7 @@
                 videoElement.addEventListener('seeked', onSeeked);
 
                 state = 'playing_forward_first';
-                videoElement.playbackRate = 0.8; // Rallenta il video
+                videoElement.playbackRate = 0.6; // Rallenta il video
                 videoElement.currentTime = 0;
                 videoElement.play().catch(e => {
                     console.error("Boomerang: Play failed", e);
