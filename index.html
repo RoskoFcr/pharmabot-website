@@ -710,7 +710,7 @@
                         videoElement.currentTime = 0;
                         videoElement.play();
                     } else {
-                        videoElement.currentTime = Math.max(0, videoElement.currentTime - 0.05); // Velocità di rewind
+                        videoElement.currentTime = Math.max(0, videoElement.currentTime - 0.025); // Velocità di rewind DIMEZZATA per renderla più visibile
                         animationFrameId = requestAnimationFrame(rewindFrame);
                     }
                 };
